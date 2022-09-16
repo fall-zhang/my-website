@@ -16,8 +16,8 @@ const config = {
 
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
-  organizationName: 'whithout org', // Usually your GitHub org/user name.
-  projectName: 'my-website', // Usually your repo name.
+  organizationName: 'fall_zhang', // Usually your GitHub org/user name.
+  projectName: 'front-end-note', // Usually your repo name.
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
@@ -33,6 +33,7 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
+          path:'./my-docs',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容
           numberPrefixParser (filename) {
@@ -53,7 +54,7 @@ const config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容
+          editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容，删除则全删除
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),
