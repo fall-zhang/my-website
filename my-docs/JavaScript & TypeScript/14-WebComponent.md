@@ -1,3 +1,7 @@
+---
+sidebar_position: 40
+---
+
 > Create by **fall** on 2021-10-17
 > Recently revised in 2021-11-29
 
@@ -202,8 +206,6 @@ document.querySelector('my-button').addEventListener('onClick',(res)=>{
   <p>Another Text from outside</p>
 </my-button>
 ```
-
-
 
 ### customElements对象
 

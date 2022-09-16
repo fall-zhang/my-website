@@ -3,7 +3,7 @@ sidebar_position: 2
 ---
 
 > Create by **fall** on 2021-12-13
-> Recently revised in 2022-03-20
+> Recently revised in 2022-08-24
 
 Window 对象上的内容
 
@@ -266,6 +266,8 @@ window.status
 ## 全局方法
 
 `parseInt(string[,radix])` 其中 radix 的范围是 `2-36`，即从 2 进制到 36 进制去解析前面的字符串。默认是十进制。
+
+parseInt 的意思就是，将字符串，按照什么进制进行解析
 
 `Number.parseInt === parseInt` 为 true
 

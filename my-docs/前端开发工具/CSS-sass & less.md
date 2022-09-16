@@ -1,0 +1,299 @@
+> Create by **fall** on 2021-12-14
+> Recently revised in 2021-12-14
+
+## 变量的声明
+
+**less变量的声明**
+
+```
+@number : 40px;
+@boxname : .box1;
+@{boxname}{
+    height:@number;
+}
+```
+
+**sass变量的声明**
+
+```
+$number :40px;
+$boxname :box2;
+#{$boxname}{
+     height:$number;
+}
+```
+
+## 选择器的嵌套
+
+> SCSS 和 LESS大部分嵌套方式没有太大区别
+
+```scss
+body {
+  .container{
+    .top_left{
+      .title{
+        height: 400px;
+        width: 400px;
+      }
+      .content{
+        margin-top: 2px;
+        box-shadow:  2px saddlebrown ;
+      }
+    }
+    .top_right{
+      .detail{}
+    }
+  }  
+}
+//伪类选择器   可以使用&符号取消生成css后中间的空格
+box1{
+  &:hover{
+    background-color : pink
+  }
+  :hover{
+  }
+}
+```
+
+> sass独有属性嵌套
+
+```
+.box{
+    font{
+        size:14px;
+        weight:2;
+    }
+}
+```
+
+## 单位的转译
+
+**less**
+
+1. 按照第一个出现的单位进行转变
+2. 如果出现"/"号，在font里面会保留
+
+ **scss**
+
+1. 如果单位不同，报错
+2. scss的默认规则比less更加严谨
+
+## 内置函数
+
+| 函数名称       | 函数作用           | 支持       |
+| -------------- | ------------------ | ---------- |
+| **round**      | 进行四舍五入取整   |            |
+| **percentage** | : 自动转化为百分比 |            |
+| **random**     | ：生成一个随机数   | 仅scss支持 |
+| **sqrt**       | 开平方             | less       |
+
+> 注 ：**sass支持自定义函数**
+> 书写格式：
+> @function  sum($n,$m){
+> @return $n+$m;}
+> font-size: sum(5px,6px)
+
+## 混合输入
+
+**less**的混入
+
+```
+.hide{
+    display:none;
+}
+.some(){
+    font-size：50px;
+}
+// 可以传入参数
+.way(@bgcolor){
+    background-color:@bgcolor;
+}
+.box{
+    height:400px;
+    .hide;
+    .some();
+    .way(yellow)
+}
+// 将混合输入的对象进行封装
+#pj1{
+    .some(){
+        height:50px;
+    }
+}
+.box2{
+    .some();
+    #pj1.some();
+}
+```
+
+**scss**的混入
+
+```
+@mixin show {
+    display :block;
+}
+@mixin hide($color){
+    display : none;
+    color :$color;
+}
+.box{
+    width:100px;
+    @include show;
+}
+```
+
+## 继承
+
+less的继承
+
+```
+.dis{
+    display: inline;
+}
+.box5{
+    &:extend(.dis);
+}
+.box6{
+    &:extend(.dis);
+}
+```
+
+scss的继承
+
+```
+// %作为占位符，编译之后不显示
+%line{
+    display:inline;
+}
+.box1{
+    @extend %line
+}
+.box2{
+    @extend %line
+}
+```
+
+## 多个属性并列操作
+
+less
+
+```
+// "+"可以把并列的属性书写在一起
+// 在后面添加"_"用于将连接的","更换成" " 空格
+.box{
+    background+ :url(a.png);
+    background+ :url(b.png);
+    transform+_ :scale(2);
+    transform+_ :rotate(30deg);
+}
+```
+
+scss
+
+```
+// 对url进行统一管理
+$bg :(
+	a:url(a.png),
+    b:url(b.png),
+);
+$transform : (
+	a : scale(2),
+    b : rotate(30deg)
+)
+box{
+    background: map-values($bg);
+    transform : zip(map-values(transform)...)
+}
+```
+
+## 媒体查询
+
+> 多端兼容
+
+**less** 和 **scss**
+
+```
+.box10{
+    width : 100px ;
+    @media all and (min-width:768px){
+        width :600px;
+    }
+    @media all and (min-width:1440px){
+        width : 900px
+    }
+}
+```
+
+## 逻辑运算
+
+less的逻辑运算
+
+```less
+// 判断语句
+@count :3366;
+.get(@cn) when (@cn >4){
+    width : 100px + @cn;
+}
+.get(@cn) when (@cn<4){
+    width :10px +@cn;
+}
+.box{
+    .get(@count);
+}
+// 通过递归实现循环
+@count2 :0;
+.get(@cn) when (@cn<3){
+    .box-@{cn}{
+        width: 100px+10*@cn
+    }
+    .get2((@cn+1));
+}
+```
+
+scss的逻辑运算
+
+```
+// 判断语句
+$count :5;
+.box{
+    @if($count >4){
+        width : 100px + $count;
+    }
+    @else{
+        width :10px +$count;
+    }
+}
+//循环语句
+@for $i from 0 through 2{
+    .box-#{$i}{
+        width : 100px +$i;
+    }
+}
+```
+
+## 库的引入
+
+less的引入
+
+```
+@import "./reset.less";
+```
+
+scss的引入
+
+```
+@import "./reset.scss";
+```
+
+## CSS架构
+
+| 文件夹     | 作用                                                         |
+| ---------- | ------------------------------------------------------------ |
+| base       | 初始通用样式，或者动画，工具，打印等                         |
+| components | 用于构建页面的所有组件，按钮，表单，表格，弹窗               |
+| layout     | 用于布局页面的不同部分，页眉，页脚，弹性布局，网格布局       |
+| pages      | 放置页面之间不同的样式，如首页特殊样式，列表页特殊样式       |
+| themes     | 应用不同的主题样式，如管理员，普通用户，不同用户群体看到不同的页面 |
+| abstracts  | 放置变量，函数，响应式等辅助开发的部分                       |
+| vendors    | 放置一些第三方独立的CSS文件，bootstrap,iconfont              |
+

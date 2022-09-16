@@ -3,20 +3,22 @@ sidebar_position: 2
 ---
 
 > Create by **Fall** on 2019-07-11
->Recently revised in 2022-04-30
+>Recently revised in 2022-06-10
 
 # HTML5
 
 > `HTML`指的是`Hyper Text Markup Language` 即超文本标记语言
 >
 > 超文本标记语言的意义：标记特定文本实现特定的效果
+>
+> xhtml 是更加严格的 html 模式，因为移动端的出现，对于浏览器的需求变更，从此舍弃了 xhtml。
 
 ## 基础标签
 
-> 标签分为双标签和单标签
->
-> - 双标签：有开头，有结尾，比如：`<div></div>`、`<span></span>`
-> - 单标签：单个标签，比如：`<img>`
+标签分为双标签和单标签
+
+- 双标签：有开头，有结尾，比如：`<div></div>`、`<span></span>`
+- 单标签：单个标签，比如：`<img>`
 
 ### 注释
 
@@ -118,6 +120,15 @@ base - >单标签在head中使用，进行网页的整体打开方式的编辑
 <a href='www.4399.com' target='_blank'>点击进入新的页面</a>
 ```
 
+### 链接和锚点
+
+锚点可以使用进行当前页面的跳转，跳转到该锚点处
+
+两种方式：
+
+- 使用 # + id 属性
+- 使用 # + name 属性(name使用于`<a name=""></a>`)
+
 ### 列表标签
 
 列表是用来展示一系列的数据，譬如下面的数据：
@@ -131,13 +142,33 @@ base - >单标签在head中使用，进行网页的整体打开方式的编辑
   <li>香蕉</li>
   <li>橘子</li>
 </ul>
-
-
 共有三类列表：
 
-- 无序列表： `ul > li`  符合嵌套的规范，即 `ul` 内部嵌套 `li` 
+- 无序列表：`ul > li`  符合嵌套的规范，即 `ul` 内部嵌套 `li` 
 - 有序列表：`ol > li `  一般使用较少，可以用无序列表进行替代
 - 自定义列表：`dl > dd/dt`  `dt`（正常子节点显示） `dd`（本行开头多加一个制表符） 
+
+### 脚本标签
+
+`<script src='./index.js'></script>`
+
+> 标签中有的是使用 `href` 属性引入资源，有的是使用 `src` 引入资源，前者的意为：`hypertext reference` 的缩写，即超文本引入，加载这些资源的时候，不会停止对于当前文档的处理。
+>
+> `src` 引入则表示作为资源进行引入，浏览器需要加载完毕 `src` 的内容才会继续往下走。 
+
+## 特殊符号
+
+由于浏览器会将一部分代码识别，无法渲染，想要使用该符号需要使用这些格式
+
+| 写法     | 表示的符号     |
+| -------- | -------------- |
+| `&lt;`   | 左尖括号       |
+| `&gt;`   | 右尖括号       |
+| `&nbsp;` | 空格           |
+| `&reg;`  | &reg;商标符号  |
+| `&copy;` | &copy;版权符号 |
+
+>  `&nbsp;` 因为浏览器只能识别文本中的一个空格，如果想添加空格，需要使用特殊写法
 
 ## 表格标签
 
@@ -216,10 +247,10 @@ base - >单标签在head中使用，进行网页的整体打开方式的编辑
 下拉菜单中如果select中添加`multiple='true'` 实现多选功能
 
 <select name="cars">
-	<option value="cheap">奥拓</option>
-    <option value="middle">大众</option>
-    <option value="expensive">宾利</option>
-    <option value="top">保时捷</option>
+	<option name="cheap">奥拓</option>
+    <option name="middle">大众</option>
+    <option name="expensive">宾利</option>
+    <option name="top">保时捷</option>
 </select>
 ### input标签
 
