@@ -75,7 +75,7 @@ const config = {
         items: [
           {
             type: 'doc',
-            docId: '笔记介绍',
+            docId: 'README',
             position: 'left',
             label: '笔记',
           },
