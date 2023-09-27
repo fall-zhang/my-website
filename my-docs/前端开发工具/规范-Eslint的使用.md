@@ -1,5 +1,5 @@
-> Create by **fall** on 2020-08
-> Recently revised in 2022-07-11
+> Create by **fall** on Aug 2020
+> Recently revised in 28 Jun 2023
 
 ## Eslint
 
@@ -27,7 +27,7 @@ module.exports = {
     "no-console": process.env.NODE_ENV === "production" ? "error" : "off",
     "no-debugger": process.env.NODE_ENV === "production" ? "error" : "off"
   },
-  parserOptions: { //用来指定eslint解析器的
+  parserOptions: { // 用来指定 eslint 解析器的
     parser: "babel-eslint"
   }
 };
@@ -39,71 +39,139 @@ module.exports = {
 - `warn` 或者 `1` 打开规则，表示警告，打印黄色字体（黄色波浪线）
 - `error` 或者 `2` 打开规则，并且作为错误，打印红色字体（红色波浪线）
 
-## TypeScript
+### 插件
 
-TypeScript 也是使用 eslint 进行格式化，tslint 已经不再维护，而是合并到 eslint 中
+**eslint-plugin-html**
+
+这个插件你可以让 eslint 去检测 html 文件 script 标签里的 js 代码
+
+**eslint-plugin-import**
+
+添加 import 和 export 的支持
+
+**eslint-plugin-node**
+
+添加对 node 的 eslint 支持
+
+**eslint-plugin-promise**
+
+添加对 promise 语法的解析
+
+**eslint-plugin-standard**
+
+为 Standard Linter 做的补充插件 This module is for advanced users.
 
 ## 推荐配置
 
-### vue
+### node
+
+纯 node 的后端项目，只需要安装 eslint
+
+package.json 中的 type 属性为 module 时，eslint 识别会混乱，是无法格式化代码的，确保移除该内容
+
+```js
+module.exports = {
+  env: {
+    node: true,
+    es2021: true
+  },
+  parserOptions: {
+    ecmaVersion: 'latest',
+    sourceType: 'module'
+  },
+  root: true,
+  extends: ['eslint:recommended'],
+  rules: {
+    'no-console': 1,
+    quotes: [ 1,  'single',
+      {
+        avoidEscape: true,
+        allowTemplateLiterals: true
+      }
+    ]
+  }
+}
+```
+
+### TypeScript
+
+TypeScript 也是使用 eslint 进行格式化，tslint 已经不再维护，而是合并到 eslint 中，添加额外插件即可使用
+
+安装：除了 `eslint`、`typescript` 之外，还需要安装 `@typescript-eslint/parser`、`@typescript-eslint/eslint-plugin`
+
+```js
+// .eslintrc.cjs || cjs:commonjs
+module.exports = {
+  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
+  parser: '@typescript-eslint/parser', // 修改解析器
+  plugins: ['@typescript-eslint'], // 添加插件
+  root: true,
+};
+```
+
+### Vue
+
+保证 eslint 能够生效的同时，不会和 eslint 产生冲突
 
 ```json
 {
   rules: {
     // vue
-    'vue/max-attributes-per-line': ['error', {
-      singleline: {
-        max: 4
-      },
-      multiline: {
-        max: 1
-      }
-    }],
-    'vue/singleline-html-element-content-newline': 'off',
-    'vue/multiline-html-element-content-newline': 'off',
-    'vue/html-indent': ['error', 2],
-    'vue/script-indent': ['error', 2],
-    'vue/html-quotes': ['error', 'single'],
-    'vue/multi-word-component-names': ['off'],
+    "vue/html-self-closing": 'off',
+    "vue/html-indent": ["off", 2],
+    "vue/singleline-html-element-content-newline": "off",
+    "vue/multiline-html-element-content-newline": "off",
+    "vue/html-quotes": ["error", "double"],
+    "vue/multi-word-component-names": ["off"],
+    "vue/first-attribute-linebreak": 0,
+    "vue/html-closing-bracket-newline": 0,
+    // "vue/max-attributes-per-line":[2,0],
+    "vue/max-attributes-per-line": 0, // 每行最多有多少属性
+    "vue/attribute-hyphenation": 0, // 使用 - 分割去代替标签中大写的属性
     // js
-    quotes: ['error', 'single'], // 单引号
-    indent: ['error', 2], // 2 行缩进
-    semi: ['error', 'never'], // 禁止使用分号
-    'no-debugger': 'warn', // 使用 debugger 会警告
-    'no-else-return': 'error', // 如果 if 语句里面有 return ,后面不能跟 else 语句
-    'space-infix-ops': ['error', { int32Hint: false }], // 要求操作符周围有空格
-    'no-multi-spaces': 'error', // 禁止多个空格
-    'no-multiple-empty-lines': ['error', { max: 2 }], // 空行最多不能超过2行
-    'no-whitespace-before-property': 'error', // 禁止在属性前使用空格
-    'space-before-blocks': 'error', // 在块之前强制保持一致的间距
-    'no-trailing-spaces': 'error', // 一行结束后面不要有空格
-    'space-before-function-paren': ['error', 'never'], // 在“ function”定义打开括号之前强制不加空格
-    'space-in-parens': ['error', 'never'], // 强制括号左右的不加空格
-    'spaced-comment': ['error', 'always'], // 注释间隔
-    'template-tag-spacing': ['error', 'always'], // 在模板标签及其文字之间需要空格
-    'no-var': 'error', // 禁止使用 var
-    'prefer-destructuring': ['error',{// 优先使用数组和对象解构
+    indent: ["error", 2], // 2 行缩进
+    semi: ["error", "never"], // 禁止使用分号
+    "no-debugger": "warn", // 使用 debugger 会警告
+    "no-else-return": "error", // 如果 if 语句里面有 return ,后面不能跟 else 语句
+    "space-infix-ops": ["error", { int32Hint: false }], // 要求操作符周围有空格
+    "no-multi-spaces": "error", // 禁止多个空格
+    "no-multiple-empty-lines": ["error", { max: 2 }], // 空行最多不能超过2行
+    "no-whitespace-before-property": "error", // 禁止在属性前使用空格
+    "space-before-blocks": "error", // 在块之前强制保持一致的间距
+    "no-trailing-spaces": "error", // 一行结束后面不要有空格
+    "space-in-parens": ["error", "never"], // 强制括号左右的不加空格
+    "spaced-comment": ["error", "always"], // 注释间隔
+    "template-tag-spacing": ["error", "always"], // 在模板标签及其文字之间需要空格
+    "no-var": "error", // 禁止使用 var
+    "prefer-destructuring": [
+      "error",
+      {
+        // 优先使用数组和对象解构
         array: false,
         object: false
-      }, {
+      },
+      {
         enforceForRenamedProperties: false
-      }],
+      }
+    ],
     // 组件名称为多个单词，忽略的组件名称
-    'comma-dangle': ['error', 'never'], // 最后一个属性不允许有逗号
-    'arrow-spacing': 'error', // 箭头函数空格
-    'prefer-template': 'error',
-    'template-curly-spacing': 'error',
-    'quote-props': ['error', 'as-needed'], // 对象字面量属性名称使用引号
-    'object-curly-spacing': ['error', 'always'], // 强制在花括号中使用一致的空格
-    'no-unneeded-ternary': 'error', // 禁止可以表达为更简单结构的三元操作符
-    'no-restricted-syntax': ['error', 'WithStatement', 'BinaryExpression[operator="in"]'], // 禁止with/in语句
-    'no-lonely-if': 'error', // 禁止 if 语句作为唯一语句出现在 else 语句块中
-    'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }], // 要求方法链中每个调用都有一个换行符
+    "comma-dangle": ["error", "never"], // 最后一个属性不允许有逗号
+    "arrow-spacing": "error", // 箭头函数空格
+    "template-curly-spacing": "error",
+    "quote-props": ["error", "as-needed"], // 对象字面量属性名称使用引号
+    "object-curly-spacing": ["error", "always"], // 强制在花括号中使用一致的空格
+    "no-unneeded-ternary": "error", // 禁止可以表达为更简单结构的三元操作符
+    // 禁止 with/in 语句
+    "no-restricted-syntax": [
+      "error",
+      "WithStatement",
+      "BinaryExpression[operator=\"in\"]"
+    ],
+    "no-lonely-if": "error", // 禁止 if 语句作为唯一语句出现在 else 语句块中
+    "newline-per-chained-call": ["error", { ignoreChainWithDepth: 2 }], // 要求方法链中每个调用都有一个换行符
     // 路径别名设置
-    'no-submodule-imports': ['off', '/@'],
-    'no-implicit-dependencies': ['off', ['/@']],
-    // typescript
-    '@typescript-eslint/no-explicit-any': 'warn' // 类型可以使用any
+    "no-submodule-imports": ["off", "/@"],
+    "no-implicit-dependencies": ["off", ["/@"]]
   }
 }
 ```
@@ -147,17 +215,58 @@ TypeScript 也是使用 eslint 进行格式化，tslint 已经不再维护，而
 }
 ```
 
+## 同 IDE 使用
+
+酌情修改 VScode 中 `setting.json` 的内容、
+
+```json
+{
+  "eslint.enable": true, //是否开启vscode的eslint
+  "eslint.autoFixOnSave": true, //是否在保存的时候自动fix eslint
+  "eslint.options": { //指定vscode的eslint所处理的文件的后缀
+    "extensions": [
+      ".js",
+      ".vue",
+      ".ts",
+      ".tsx"
+    ]
+  },
+  "eslint.validate": [ // 确定校验准则
+    "javascript",
+    "javascriptreact",
+    {
+      "language": "html",
+      "autoFix": true
+    },
+    {
+      "language": "vue",
+      "autoFix": true
+    },
+    {
+      "language": "typescript",
+      "autoFix": true
+    },
+    {
+      "language": "typescriptreact",
+      "autoFix": true
+    }
+  ]
+}
+```
+
+
+
+
+
 
 
 ## Eslint 语法配置清单
-
-
 
 > P.S.我认为经常使用的会优先排列在前面
 
 ```json
 {
-  "no-alert": 0,// 禁止使用alert confirm prompt
+  "no-alert": 0,// 禁止使用 alert confirm prompt（原生弹出框）
   "no-array-constructor": 2,// 禁止使用数组构造器，箭头函数
   "no-console": 2,// 禁止使用 console
   "no-const-assign": 2,// 禁止修改const声明的变量
@@ -331,3 +440,10 @@ TypeScript 也是使用 eslint 进行格式化，tslint 已经不再维护，而
   "yoda": [2, "never"]// 禁止尤达条件
 }
 ```
+
+## 参考文章
+
+| 作者        | 链接                                       |
+| ----------- | ------------------------------------------ |
+| yuxiaoliang | https://juejin.cn/post/6844903880006844424 |
+

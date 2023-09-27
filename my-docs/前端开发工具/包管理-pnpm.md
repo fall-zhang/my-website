@@ -105,11 +105,13 @@ packages:
 
 配置是统一的配置文件 `.npmrc`
 
-`shamefully-hoist=true` 可以让包名提升，即还可以实现幽灵引用
+- `shamefully-hoist=true` 可以让包名提升，即还可以实现幽灵引用
+- `enable-pre-post-scripts=true` 提供 `pre`、`post` 前置脚本，后置脚本
 
 ```
 // .npmrc
 shamefully-hoist=true
+enable-pre-post-scripts=true
 ```
 
 ## 参考文章

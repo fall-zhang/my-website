@@ -5,7 +5,7 @@
 
 **less变量的声明**
 
-```
+```less
 @number : 40px;
 @boxname : .box1;
 @{boxname}{
@@ -15,7 +15,7 @@
 
 **sass变量的声明**
 
-```
+```scss
 $number :40px;
 $boxname :box2;
 #{$boxname}{

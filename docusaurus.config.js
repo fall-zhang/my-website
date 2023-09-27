@@ -13,7 +13,7 @@ const config = {
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
   favicon: './img/favicon.ico',
-
+  // isMDXComponent: true,
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'fall_zhang', // Usually your GitHub org/user name.
@@ -33,10 +33,10 @@ const config = {
       /** @type {import('@docusaurus/preset-classic').Options} */
       ({
         docs: {
-          path:'./my-docs',
+          path: './my-docs',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容
-          numberPrefixParser (filename) {
+          numberPrefixParser(filename) {
             // // Implement your own logic to extract a potential number prefix
             // const numberPrefix = findNumberPrefix(filename);
             // // Prefix found: return it with the cleaned filename

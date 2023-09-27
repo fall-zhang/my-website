@@ -1,5 +1,5 @@
-> Create by **fall** on 2021-08-13
-> Recently revised in 2022-07-24
+> Create by **fall** on 13 Aug 2021
+> Recently revised in 10 Apr 2023
 
 ## Vite
 
@@ -7,17 +7,39 @@
 
 `pnpm create vite` 然后选择所需的技术栈搭建项目。
 
-> 如果是 vue 项目，可以参考该文章  https://juejin.cn/post/7058201396113309703
+Vite 需要 [Node.js](https://nodejs.org/en/) 版本 14.18+，16+，使用前确保 Node 版本。
 
-### 预构建
+> 两个模板项目：
+>
+> - React 模板：https://github.com/fall-zhang/vite-typescript-react-template
+> - Vue 模板：https://github.com/fall-zhang/vite-vue3-TS-lint
+>
+> 如果是 vue 项目，还可以参考该文章  https://juejin.cn/post/7058201396113309703
 
-基于冷启动的打包构建方式必须先将所有包都打包完成，然后才能提供服务，但应用逐渐变大，速度也会更慢。
+## 实现原理
 
-预构建：Vite 选择 **ESbuild** 作为**预构建工具**提高本地开发的冷启动速度（ESbuild 的构建速度，至少是 JavaScript 构建器速度的10-100倍）。
+Vite 会将用户**源码**和**依赖**的代码分隔开进行处理。
+
+- 依赖：使用 esbuild 进行预构建。
+- 源码：以 [原生 ESM](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Modules) 方式提供源码。可能是一些需要预处理的文件（例如 JSX， Vue/Svelte 组件）
+
+依赖会通过 `Cache-Control: max-age=31536000,immutable` 在浏览器内进行强制缓存。
+
+源码模块的请求会根据 `304 Not Modified` 进行协商缓存。
+
+### 依赖解析和预构建
+
+传统的打包方式是基于冷启动的方式，必须先将所有包都打包完成，然后才能提供服务，但应用逐渐变大，速度也会更慢。
+
+使用预构建：Vite 选择 **ESbuild** 作为**预构建工具**提高本地开发的冷启动速度（ESbuild 的构建速度，至少是 JavaScript 构建器速度的10-100倍）。
+
+预构建需要将 CommonJS / UMD 转换为 ESM 格式，以及将导入转换为合法的 URL
 
 ```js
-// ES 导入不支持下面这种导入方式，所以 Vite 会对所有该导入方式进行预构建
+// 原生 ES 导入不支持下面这种导入方式，所以 Vite 会对所有该导入方式进行预构建
 import { oneMethod } from 'my-dev'
+// 处理成类似于这种
+// /node_modules/.vite/deps/my-dev.js?v=f3sf2ebd
 ```
 
 首次启动：
@@ -76,7 +98,7 @@ import { oneMethod } from 'my-dev'
 
 任何一项发生改变，都会导致 hash 发生变化，vite 启动时，缓存会失效，然后需要重新构建 `.vite` 缓存，如果手动删除，也会重新构建。
 
-### 打包
+### 打包构建
 
 打包时，首先移除打包后内容的目录，默认是 `dist`，然后从入口文件 `index.html` 开始解析（使用 `buildHtmlPlugin` 进行解析 `.html` 文件）
 
@@ -88,77 +110,38 @@ import { oneMethod } from 'my-dev'
 
 调用 `bundle.generate` 生成 `output` （对象），包含每一个 `chunk` 内容，最后通过遍历，并调用 `fs` 模块生成 `chunk` 文件，结束打包。
 
+**CSS 内容的打包**
+
+Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 `<link>` 标签载入。
+
+如果想禁用该功能，可以使用 `build.cssCodeSplit` 为 `false`。
+
 ### CSS
 
 Vite 中集成配置了 PostCSS，所以可以直接使用
 
 以 `module.css` 为后缀结尾的文件都将被视为 CSS modules 文件，会返回一个响应的模块对象。
 
-### Vite 配置
+在 `vite.config.js` 中，`css.modules.localsConvention` 
 
-`vite.config.js`
-
-```js
-export default {
-  // 配置服务的端口，代理操作
-  server: {
-    port: 3001,
-    proxy: {
-      '/api': {
-        target: 'http://jsonplaceholder.typicode.com',
-        changeOrigin: true,
-        cookieDomainRewrite: '',
-        secure: false,
-        rewrite: (p) => p.replace(/^\/api/, ''),
-      }
-    }
-  },
-  // 定义路径别名
-  resolve: {
-    alias: {
-      '@': path.resolve(__dirname, 'src'),
-      '@C': path.resolve(__dirname, 'src/components'),
-      '@U': path.resolve(__dirname, 'src/utils'),
-      '@H': path.resolve(__dirname, 'src/hooks'),
-    }
-  }
-}
+```
+localsConvention: 'camelCaseOnly'
+.apply-color -> applyColor
+可以将 css 的调用格式转换
 ```
 
-使用
+样式注入
 
-```js
-// 使用代理
-fetch("/api/users")
-  .then(response => response.json())
-  .then(json => console.log(json));
-// 使用路径别名
-import CourseAdd from "@C/CourseAdd.vue";
-import Comp from "@U/sum.js";
+使用 `?inline` 可以避免 CSS 样式注入页面
+
+```
+import './foo.css' // 样式将会注入页面
+import otherStyles from './bar.css?inline' // 样式不会注入页面
 ```
 
-使用 mock 
+### TypeScript
 
-```js
-npm i mockjs -S
-npm i vite-plugin-mock cross-env -D
-```
-
-```js
-// vite.config.ts
-plugins: [
-  createMockServer({
-    // close support .ts file
-    supportTs: false,
-  }),
-]
-// package.json 中的 script
-"dev": "cross-env NODE_ENV=development vite"
-```
-
-
-
-### 相关配置
+相关配置
 
 `tsconfig.json` 中的一些配置，比如说当 `"isolatedModules": true` 时
 
@@ -187,6 +170,68 @@ document.getElementById('hero-img').src = imgUrl
 - 使用 `?raw` 作为字符串引入 `import shaderString from './shader.glsl?raw'`
 - 同理，使用 `?url` 表示导入一个 URL
 - 导入为 `worker` 时，路径后面拼接 `?worker` 或者 `?sharedworker`
+- 在构建时 Web Worker 内联为 base64 字符串 `import InlineWorker from './worker.js?worker&inline'`
+
+### JSON
+
+JSON 文件可以被直接导入，也可以被具名导入
+
+```js
+// 导入整个对象
+import json from './example.json'
+// 对一个根字段使用具名导入 —— 有效帮助 treeshaking
+import { field } from './example.json'
+```
+
+### Glob 导入
+
+可以从文件系统内导入多个模块
+
+导入多个模块是通过 [fast-glob](https://github.com/mrmlnc/fast-glob) 实现的
+
+```js
+const modules = import.meta.glob('./dir/*.js')
+// 如果以 ! 开头，表示忽略该文件，如：'!**/bar.js'
+```
+
+```js
+// module 的形式如下
+const modules = {
+  './dir/foo.js': () => import('./dir/foo.js'),
+  './dir/bar.js': () => import('./dir/bar.js'),
+}
+```
+
+Glob 无法直接处理进行 tree-shaking，所以需要一些标注来进行推断
+
+```js
+const modules = import.meta.glob('./dir/*.js', {
+  import: 'setup',
+  eager: true, // 标注为热模块
+})
+```
+
+Vite 也支持带变量的动态导入。
+
+```js
+const module = await import(`./dir/${file}.js`)
+```
+
+变量仅能代表单层的文件名。如果 `file` 是 `foo/bar`，将会导入失败。
+
+### WASM
+
+```js
+import init from './example.wasm?init'
+```
+
+### Web Worker
+
+```js
+const worker = new Worker(new URL('./worker.js', import.meta.url))
+```
+
+
 
 ## 插件
 
@@ -353,7 +398,69 @@ export default defineConfig({
 });
 ```
 
-## 默认配置
+## vite.config.js
+
+### 配置
+
+`vite.config.js`
+
+```js
+export default {
+  // 配置服务的端口，代理操作
+  server: {
+    port: 3001,
+    proxy: {
+      '/api': {
+        target: '',
+        changeOrigin: true,
+        cookieDomainRewrite: '',
+        secure: false,
+        rewrite: (p) => p.replace(/^\/api/, ''),
+      }
+    }
+  },
+  // 定义路径别名
+  resolve: {
+    alias: {
+      '@': path.resolve(__dirname, 'src'),
+      '@C': path.resolve(__dirname, 'src/components'),
+      '@U': path.resolve(__dirname, 'src/utils'),
+      '@H': path.resolve(__dirname, 'src/hooks'),
+    }
+  }
+}
+```
+
+使用
+
+```js
+// 使用代理
+fetch("/api/users")
+  .then(response => response.json())
+  .then(json => console.log(json));
+// 使用路径别名
+import CourseAdd from "@C/CourseAdd.vue";
+import Comp from "@U/sum.js";
+```
+
+使用 mock 
+
+```js
+npm i mockjs -S
+npm i vite-plugin-mock cross-env -D
+```
+
+```js
+// vite.config.ts
+plugins: [
+  createMockServer({
+    // close support .ts file
+    supportTs: false,
+  }),
+]
+// package.json 中的 script
+"dev": "cross-env NODE_ENV=development vite"
+```
 
 ### react
 
@@ -424,7 +531,7 @@ import { ElementPlusResolver } from 'unplugin-vue-components/resolvers'
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  host:true, // 表示可以通过 ip 进行访问
+  host:true, // 表示可以通过 ip 在局域网进行访问
   resolve: {
     alias: {
       '@': pathResolve(__dirname, 'src'),
@@ -449,10 +556,9 @@ export default defineConfig({
 
 ## 参考文章
 
-| 作者     | 链接                                       |
-| -------- | ------------------------------------------ |
-| 前端论道 | https://juejin.cn/post/7078622707104874503 |
-|          |                                            |
-|          |                                            |
-|          |                                            |
-
+| 作者             | 链接                                       |
+| ---------------- | ------------------------------------------ |
+| 前端论道         | https://juejin.cn/post/7078622707104874503 |
+| 字节跳动ADFE团队 | https://juejin.cn/post/7064853960636989454 |
+|                  |                                            |
+|                  |                                            |
