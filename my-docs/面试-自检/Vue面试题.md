@@ -157,7 +157,7 @@ MVC 全名是 Model View Controller，是模型(model)－视图(view)－控制�
 - View（视图）：是应用程序中处理数据显示的部分。通常视图是依据模型数据创建的
 - Controller（控制器）：是应用程序中处理用户交互的部分。通常控制器负责从视图读取数据，控制用户输入，并向模型发送数据
 
-<img src="https://filescdn.proginn.com/8d0163ed29f2ed3be88558271f2db16e/8c2f2df56c0b575539f3f5ba37ebecb9.webp" alt="img" style="zoom:80%;" />
+<img src="https://filescdn.proginn.com/8d0163ed29f2ed3be88558271f2db16e/8c2f2df56c0b575539f3f5ba37ebecb9.webp" alt="img" style={{zoom:"80%"}} />
 
 MVC 的思想：一句话描述就是 Controller 负责将 Model 的数据用 View 显示出来，换句话说就是在 Controller 里面把 Model 的数据赋值给 View。
 

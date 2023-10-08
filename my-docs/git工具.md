@@ -13,7 +13,7 @@
 
 **Git工作流程图**（最左侧为远程，中间和右侧为本地）
 
-<img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="img" style="zoom:80%;" />
+<img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="img" style={{zoom:"80%"}} />
 
 一些术语
 

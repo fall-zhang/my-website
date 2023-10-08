@@ -2,7 +2,7 @@
 
 ### 椭圆
 
-<div style="width: 200px;height: 100px;background: pink;border-radius: 200px / 100px;"></div>
+<div style={{width: "200px",height: "100px",background: "pink",borderRadius: "200px / 100px"}}></div>
 
 ```css
 .box {width: 200px;height: 100px;background: pink;border-radius: 100px / 50px;}
@@ -10,9 +10,9 @@
 
 ### 圆柱
 
-<div style="position:relative;height: 100px;">
-  <div style="position:absolute;border-radius: 200px / 50px;width: 200px;height: 100px;background: pink;"></div>
-  <div style="position:absolute;border-radius: 200px / 50px;width: 200px;height: 50px;background: lightpink;">
+<div style={{position:"relative",height: "100px"}}>
+  <div style={{position:"absolute",borderRadius: "200px / 50px",width: "200px",height: "100px",background: "pink"}}></div>
+  <div style={{position:"absolute",borderRadius: "200px / 50px",width: "200px",height: "50px",background: "lightpink"}}>
   </div>
 </div>
 
@@ -46,7 +46,7 @@
 
 ### 梯形
 
-<div style="width: 150px;height:0px;border-bottom:100px blue solid;border-left:40px solid magenta;border-right:40px solid transparent;"></div>
+<div style={{width: "150px",height:"0px",borderBottom:"100px blue solid",borderLeft:"40px solid magenta",borderRight:"40px solid transparent"}}></div>
 
 ```css
 .box{
@@ -60,8 +60,8 @@
 
 ### 六角星
 
-<div style="width: 0;height: 0;border-left: 50px solid transparent;border-right: 50px solid transparent;border-bottom: 100px solid red;position: relative;">
-  <div style="width: 0;height: 0;border-left: 50px solid transparent;border-right: 50px solid transparent;border-top: 100px solid red;position: absolute;top: 30px;left: -50px;">  </div>
+<div style={{width: 0,height: 0,borderLeft: "50px solid transparent",borderRight: "50px solid transparent",borderBottom: "100px solid red",position: "relative"}}>
+  <div style={{width: 0,height: 0,borderLeft: "50px solid transparent",borderRight: "50px solid transparent",borderTop: "100px solid red",position: "absolute",top: "30px",left: "-50px"}}>  </div>
 </div>
 
 

@@ -349,11 +349,11 @@ funcs[0](); // 0
 
 **require 基本原理**
 
- <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0f1dbabee4d849d3a3e018c91f04c619~tplv-k3u1fbpfcp-watermark.image" alt="图片.png" style="zoom:80%;" />
+ <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0f1dbabee4d849d3a3e018c91f04c619~tplv-k3u1fbpfcp-watermark.image" alt="图片.png" style={{zoom:"80%"}} />
 
 **require 查找路径**
 
-<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e49999989bcf496facdbc91179bebd71~tplv-k3u1fbpfcp-watermark.image" alt="图片.png" style="zoom:80%;" />
+<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e49999989bcf496facdbc91179bebd71~tplv-k3u1fbpfcp-watermark.image" alt="图片.png" style={{zoom:"80%"}} />
 
 require 和 module.exports 干的事情并不复杂，我们先假设有一个全局对象{}，初始情况下是空的，当你 require 某个文件时，就将这个文件拿出来执行，如果这个文件里面存在 module.exports，当运行到这行代码时将 module.exports 的值加入这个对象，键为对应的文件名，最终这个对象就长这样：
 
