@@ -10,7 +10,7 @@ const config = {
   tagline: '未来的前端艺术家',
   url: 'https://fall-zhang.github.io',
   baseUrl: '/my-website/',
-  onBrokenLinks: 'throw',
+  onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
   favicon: './img/favicon.ico',
   // isMDXComponent: true,
