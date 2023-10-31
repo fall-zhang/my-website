@@ -1,7 +1,9 @@
 > Create by **fall** on — — 2020
-> Recently revised in 16 Sep 2023
+> Recently revised in 11 Oct 2023
 
-## npm 的使用
+> 注：npm 会随着 node 的安装进行安装，安装 node 后，就可以使用 npm 命令。
+
+## npm
 
 npm 的功能：
 

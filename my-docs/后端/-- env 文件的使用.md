@@ -1,11 +1,11 @@
 > Create by **fall** on ——
-> Recently revised in 16 Agu 2023
+> Recently revised in 11 Oct 2023
+
+> 注：Node v20.6.0 版本开始，版本内置了对 .env 文件的支持，也许不再需要 dotenv 了。
 
 ## 常见文件配置
 
 `.env` 文件表示配置文件
-
-`.env` 文件示例
 
 建议所有的变量都大写并且通过 `_` 进行连接
 

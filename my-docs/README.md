@@ -1,3 +1,7 @@
+---
+sidebar_position: 1
+---
+
 > Create by **fall** on 18 Nov 2020
 > Recently revised in 07 May 2023
 
@@ -29,7 +33,7 @@
 
 最稳定的一部分，很少修改，以 HTML/CSS 知识点为主，只涉及到样式和布局，或者是最基础的 DOM 元素。
 
-[HTML和CSS](./HTML和CSS)
+HTML和CSS
 
 ## JavaScript & TypeScript
 

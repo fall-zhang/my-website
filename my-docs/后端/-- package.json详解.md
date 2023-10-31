@@ -433,7 +433,7 @@ npm 上所有的文件都开启 CND 服务，该 CND 服务由 unpkg 提供
 
 不同的 npm 版本导致的 npm 安装依赖的策略和算法不同，根据 `package.json` 中的 [semver-range version](https://link.juejin.cn?target=https%3A%2F%2Fdocs.npmjs.com%2Fcli%2Fv6%2Fusing-npm%2Fsemver) 更新依赖，可能某些依赖自上次安装以后，己经发布了新的版本。
 
-## 资料参考
+## 参考文章
 
 | 文章（作者） | 链接                                       |
 | ------------ | ------------------------------------------ |

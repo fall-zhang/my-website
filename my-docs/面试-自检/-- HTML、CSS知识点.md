@@ -1,5 +1,131 @@
-> Create by **fall** on 2021-10-18
-> Recently revised in 2021-10-18
+> Create by **fall** on 18 Oct 2021
+> Recently revised in 11 Oct 2023
+
+https://github.com/haizlin/fe-interview/blob/master/category/css.md
+> 现在学习更新到 issue 107
+
+## 初级
+
+### html 标签的类型（`head`， `body`，`!Doctype`） 他们的作用是什么
+
+- head 头部元素的容器，大多数标签不会展示给用户，一般含有 meta，link 等
+- body 是主体内容，
+- !DOCTYPE 指示浏览器关于页面使用哪个 HTML 版本进行编写的指令。
+
+### html5 语义化标签
+
+```
+<header>     <!--：页眉通常包括网站标志、主导航、全站链接以及搜索框。-->
+<nav>        <!--：标记导航，仅对文档中重要的链接群使用。-->
+<main>       <!--：页面主要内容，一个页面只能使用一次。如果是web应用，则包围其主要功能。-->
+<article>    <!--：定义外部的内容，其中的内容独立于文档的其余部分。-->
+<section>    <!--：定义文档中的节（section、区段）。比如章节、页眉、页脚或文档中的其他部分。-->
+<aside>      <!--：定义其所处内容之外的内容。如侧栏、文章的一组链接、广告、友情链接、相关产品列表等。-->
+<footer>     <!--：页脚，只有当父级是body时，才是整个页面的页脚。-->
+<strong>     <!--：和 em 标签一样，用于强调文本，但它强调的程度更强一些。-->
+<mark>       <!--：使用黄色突出显示部分文本。-->
+<del>        <!--：移除的内容。-->
+<code>       <!--：标记代码。-->
+```
+
+### audio 有哪些属性
+
+| **属性** | **属性值** | **注释**                                                     |
+| -------- | ---------- | ------------------------------------------------------------ |
+| src      | url        | 播放的音乐的url地址（火狐只支持 ogg 的音乐，chrome 貌似全支持） |
+| preload  | preload    | 预加载（在页面被加载时进行加载或者说缓冲音频）如果使用了autoplay 的话那么该属性失效。 |
+| loop     | loop       | 循环播放                                                     |
+| controls | controls   | 是否显示默认控制条（控制按钮）                               |
+| autoplay | autoplay   | 自动播放                                                     |
+
+audio 属性
+
+- duration：获取媒体文件的总时长，以s为单位，如果无法获取，返回 NaN
+- paused：如果媒体文件被暂停，那么paused属性返回true，反之则返回false
+- ended：如果媒体文件播放完毕返回true
+- muted：用来获取或设置静音状态。值为boolean
+- volume：控制音量的属性值为0-1;0为音量最小，1为音量最大
+- startTime：返回起始播放时间
+- error：返回错误代码，为uull的时候为正常。否则可以通过Music.error.code来获取具体的错误代码： 1.用户终止 2.网络错误 3.解码错误 4.URL无效 
+- currentTime：用来获取或控制当前播放的时间，单位为s。
+- currentSrc：以字符串形式返回正在播放或已加载的文件
+
+常用的控制用的函数：
+
+- `load()`：加载音频、视频软件
+- `play()`：加载并播放音频、视频文件或重新播放暂停的的音频、视频
+- `pause()`：暂停出于播放状态的音频、视频文件
+- `canPlayType()`：测试是否支持给定的Mini类型的文件
+
+常用 audio 的事件：
+
+- `loadstart`：客户端开始请求数据
+- `progress`：客户端正在请求数据（或者说正在缓冲）
+- `play`：play()和autoplay播放时
+- pause：pause()方法促发时
+- ended：当前播放结束
+- timeupdate：当前播放时间发生改变的时候。播放中常用的时间处理哦
+- canplaythrough：歌曲已经载入完全完成
+- canplay：缓冲至目前可播放状态。
+
+### 使用 `<link>` 和 `@import` 有什么区别？
+
+- link 是 HTML 的标签，`@import` 是 CSS 提供的
+- link 除加载 CSS 外，还可以定义 `rel` 连接属性等，`@import` 只能加载 CSS
+- 如果用 link 引用 CSS，则与页面同步加载，`@import`引用 CSS，则等页面完全载入后加载 CSS 文件，即异步加载
+- link 是 XHTML 标签，`@import` 是在 CSS2.1 引入的
+- 通过 js 操作 DOM，可以插入 link 标签来改变样式；由于 DOM 方法是基于文档的，无法使用 `@import` 方式插入样式
+- 在文档中添加link标签，浏览器会识别该文档为css文件，就会并行下载资源并且**不会**停止对当前文档的处理。这也是为什么建议使用link方式来加载css，而不是使用@import方式
+
+### CSS3 有哪些新特性？
+
+盒子：
+
+- border-radius、box-shadow、background-clip、background-origin、background-size
+
+渐变
+
+- linear-gradient
+- radial-gradient
+
+转换
+
+- transform、rotate、scale、translate、transform-origin
+
+动画和过度
+
+- transition、animation、`@keyframe`
+
+### CSS 新增的伪类？
+
+- `:not()` 否定选择器
+- `:only-child` 只有一个子元素时才会生效
+- `:empty` 选择连空格都没有的元素
+- `:root` html 根元素
+
+### 说明一下 `::before` 和 `::after`
+
+在 CSS2 中提出的是，`:before` 和 `:after`，之后为了区分伪类和伪元素改为 `::before` 和 `::after`
+
+- 是伪元素，并且默认 `display: inline`，`user-select: none`
+- 必须要设置 content 属性，才能正常使用
+- 可以结合伪类使用
+
+伪类和伪元素有什么区别
+
+- 伪类：表示不能通过类去触碰的地方，或者是特殊的状态
+- 伪元素：某些内容的特殊位置，比如第一个字符 `::first-letter`
+
+### rgba()和opacity这两个的透明效果有什么区别呢？
+
+- opacity 会设置整个容器的透明度，无论是里面的字体还是背景颜色，
+- rgba 设置的是颜色，只会对设置该颜色的内容产生影响。
+
+### 如何使元素进行隐藏
+
+- opacity：设置整个 DOM 的透明度
+- visibility：设置是否可见，隐藏后不能触发事件，不可到达（比如 tab，切换表单的事件）
+- display：none 在渲染树中移除整个 DOM。
 
 ### css 的渲染层合成是什么，浏览器如何创建新的渲染层
 
@@ -21,6 +147,26 @@
 - overflow 不为 visible
 
 > 注意！不少人会将这些**合成层的条件和渲染层产生的条件**混淆，这两种条件发生在两个不同的层处理环节，是完全不一样的 具体可以看看这篇文章 [浏览器层合成与页面渲染优化](https://juejin.cn/post/6844903966573068301)
+
+### 什么是 FOUC？style 标签放在 body 前，后的区别
+
+FOUC：Flash of Unstyled Content，无样式的渲染，然后突然变更样式，进行的闪烁。
+
+导致的原因：将 style 标签写在 body 标签后：由于浏览器以逐行方式对 html 文档进行解析；当解析到写在尾部的样式表（外联或写在 style 标签）会导致浏览器停止之前的渲染，等待加载且解析样式表完成之后重新渲染，因此可能会出现 FOUC 现象（即样式失效导致的页面闪烁问题）
+
+解决方案：style 写在 body 标签前，这样利于浏览器逐步渲染。
+
+### 浏览器解析CSS选择器的过程？
+
+从右到左，因为 CSSOM 是树状的
+
+如果从左到右：顶到根，会判断非常多的内容（一个节点，和节点的子节点也不能放过，不断向下遍历，找到符合条件）
+
+如果从右到左：根到顶（根不正确直接舍弃去查找），则只需要向上判断（父节点，父节点的节点，都会很容易找）
+
+例如，我选择 ul.tree li.apple ，
+
+顶到根，我要查找所有 ul.tree，ul.tree 也要向下遍历去找到 li 是否有 apple（所有节点都要查），根到顶，我找到所有 li.apple，判断顶上是否有 ul.tree。
 
 ### css 优先级是怎么计算的
 
@@ -161,6 +307,11 @@ function _render(vnode) {
 
 ## 中等
 
+### 如何取消 Chrome 中自动填充的黄色背景
+
+- 设置设置内阴影： `box-shadow: inset`
+- 设置文字填充颜色：`-webkit-text-fill-color`
+
 ### css 开启硬件加速
 
 硬件加速即 GPU 加速
@@ -198,17 +349,11 @@ vuex 和 vue-router 的插件注册方法 install 判断如果系统存在实例
 
 - 策略模式 策略模式指对象有某个行为,但是在不同的场景中,该行为有不同的实现方案-比如选项的合并策略
 
-### 浏览器缓存策略是怎样的（强缓存 协商缓存）具体是什么过程？
 
-这个也是经典的前端缓存问题 知识点加起来是一篇文章了 推荐大家看 [前端浏览器缓存知识梳理](https://juejin.cn/post/6947936223126093861)
 
-### https 加密过程是怎样的
 
-使用了对称加密和非对称加密的混合方式
 
-具体过程请看 [前端进阶高薪必看-HTTPS 篇](https://juejin.cn/post/6844904150115827725)
-
-### flex:是哪些属性组成的
+### flex是哪些属性组成的
 
 flex 实际上是 flex-grow、flex-shrink 和 flex-basis 三个属性的缩写。
 
@@ -232,71 +377,7 @@ flex-basis： 定义在分配多余空间之前，项目占据的主轴空间（
 设置后项目将占据固定空间。
 ```
 
-### 304 是什么意思一般什么场景出现 ，命中强缓存返回什么状态码
-
-**协商缓存命中返回 304**
-
-这种方式使用到了 headers 请求头里的两个字段，Last-Modified & If-Modified-Since 。服务器通过响应头 Last-Modified 告知浏览器，资源最后被修改的时间：
-
-Last-Modified: Thu, 20 Jun 2019 15:58:05 GMT
-
-当再次请求该资源时，浏览器需要再次向服务器确认，资源是否过期，其中的凭证就是请求头 If-Modified-Since 字段，值为上次请求中响应头 Last-Modified 字段的值：
-
-If-Modified-Since: Thu, 20 Jun 2019 15:58:05 GMT
-
-浏览器在发送请求的时候服务器会检查请求头 request header 里面的 If-modified-Since，如果最后修改时间相同则返回 304，否则给返回头(response header)添加 last-Modified 并且返回数据(response body)。
-
-另外，浏览器在发送请求的时候服务器会检查请求头(request header)里面的 if-none-match 的值与当前文件的内容通过 hash 算法（例如 nodejs: cryto.createHash('sha1')）生成的内容摘要字符对比，相同则直接返回 304，否则给返回头(response header)添加 etag 属性为当前的内容摘要字符，并且返回内容。
-
-综上总结为：
-
-```
-请求头last-modified的日期与响应头的last-modified一致
-请求头if-none-match的hash与响应头的etag一致
-这两种情况会返回Status Code: 304
-```
-
-**强缓存命中返回 200** 
-
-### tree shaking 是什么，原理是什么
-
-Tree shaking 是一种通过**清除多余代码方式**来优化项目打包体积的技术，专业术语叫 Dead code elimination
-
-tree shaking 的**原理**是什么?
-
-```
-ES6 Module引入进行静态分析，故而编译的时候正确判断到底加载了那些模块
-
-静态分析程序流，判断那些模块和变量未被使用或者引用，进而删除对应代码
-```
-
-> 扩展：common.js 和 es6 中模块引入的区别？
-
-CommonJS 是一种模块规范，最初被应用于 Nodejs，成为 Nodejs 的模块规范。运行在浏览器端的 JavaScript 由于也缺少类似的规范，在 ES6 出来之前，前端也实现了一套相同的模块规范 (例如: AMD)，用来对前端模块进行管理。自 ES6 起，引入了一套新的 ES6 Module 规范，在语言标准的层面上实现了模块功能，而且实现得相当简单，有望成为浏览器和服务器通用的模块解决方案。但目前浏览器对 ES6 Module 兼容还不太好，我们平时在 Webpack 中使用的 export 和 import，会经过 Babel 转换为 CommonJS 规范。在使用上的差别主要有：
-
-1、CommonJS 模块输出的是一个值的拷贝，ES6 模块输出的是值的引用。
-
-2、CommonJS 模块是运行时加载，ES6 模块是编译时输出接口（静态编译）。
-
-3、CommonJs 是单个值导出，ES6 Module 可以导出多个
-
-4、CommonJs 是动态语法可以写在判断里，ES6 Module 静态语法只能写在顶层
-
-5、CommonJs 的 this 是当前模块，ES6 Module 的 this 是 undefined
-
-### babel 是什么，原理了解吗
-
-Babel 是一个 JavaScript 编译器。他把最新版的 javascript 编译成当下可以执行的版本，简言之，利用 babel 就可以让我们在当前的项目中随意的使用这些新最新的 es6，甚至 es7 的语法。
-
-Babel 的三个主要处理步骤分别是： 解析（parse），转换（transform），生成（generate）。
-
-- 解析 将代码解析成抽象语法树（AST），每个 js 引擎（比如 Chrome 浏览器中的 V8 引擎）都有自己的 AST 解析器，而 Babel 是通过 Babylon 实现的。在解析过程中有两个阶段：词法分析和语法分析，词法分析阶段把字符串形式的代码转换为令牌（tokens）流，令牌类似于 AST 中节点；而语法分析阶段则会把一个令牌流转换成 AST 的形式，同时这个阶段会把令牌中的信息转换成 AST 的表述结构。
-- 转换 在这个阶段，Babel 接受得到 AST 并通过 babel-traverse 对其进行深度优先遍历，在此过程中对节点进行添加、更新及移除操作。这部分也是 Babel 插件介入工作的部分。
-- 生成 将经过转换的 AST 通过 babel-generator 再转换成 js 代码，过程就是深度优先遍历整个 AST，然后构建可以表示转换后代码的字符串。
-
-还想深入了解的可以看 [[实践系列\]Babel 原理](https://juejin.cn/post/6844903760603398151)
-
-### 13 RAF 和 RIC 是什么
+### RAF 和 RIC 是什么
 
 **requestAnimationFrame：** 告诉浏览器在下次重绘之前执行传入的回调函数(通常是操纵 dom，更新动画的函数)；由于是每帧执行一次，那结果就是每秒的执行次数与浏览器屏幕刷新次数一样，通常是每秒 60 次。
 
@@ -304,94 +385,22 @@ Babel 的三个主要处理步骤分别是： 解析（parse），转换（trans
 
 > 这个题目可以深入去问浏览器每一帧的渲染流程 具体可以看看这篇 [requestIdleCallback 和 requestAnimationFrame 详解](https://juejin.cn/post/6844903848981577735)
 
-### 困难
+## 困难
 
-#### Es6 的 let 实现原理
-
-原始 es6 代码
-
-```js
-var funcs = [];
-for (let i = 0; i < 10; i++) {
-  funcs[i] = function () {
-    console.log(i);
-  };
-}
-funcs[0](); // 0
-```
-
-babel 编译之后的 es5 代码（polyfill）
-
-```js
-var funcs = [];
-
-var _loop = function _loop(i) {
-  funcs[i] = function () {
-    console.log(i);
-  };
-};
-
-for (var i = 0; i < 10; i++) {
-  _loop(i);
-}
-funcs[0](); // 0
-```
-
-其实我们根据 babel 编译之后的结果可以看得出来 let 是借助闭包和函数作用域来实现块级作用域的效果的在不同的情况下 let 的编译结果是不一样的
-
-#### 如何设计实现一个渲染引擎
+### 如何设计实现一个渲染引擎
 
 这道题是字节终面的最后一个题目 属于**开放性问题** 没有固定答案 我当时觉得题目概念太大了 把我整懵了 我只是回答了下浏览器渲染原理啥的 貌似面试官不太满意 哈哈 如果叫你设计一个渲染引擎 应该从哪些方面着手呢
 
 大家可以参考看看文章 [你不知道的浏览器页面渲染机制](https://juejin.cn/post/6844903815758479374)
 
-#### require 具体实现原理是什么
 
-**require 基本原理**
-
- <img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0f1dbabee4d849d3a3e018c91f04c619~tplv-k3u1fbpfcp-watermark.image" alt="图片.png" style={{zoom:"80%"}} />
-
-**require 查找路径**
-
-<img src="https://p9-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e49999989bcf496facdbc91179bebd71~tplv-k3u1fbpfcp-watermark.image" alt="图片.png" style={{zoom:"80%"}} />
-
-require 和 module.exports 干的事情并不复杂，我们先假设有一个全局对象{}，初始情况下是空的，当你 require 某个文件时，就将这个文件拿出来执行，如果这个文件里面存在 module.exports，当运行到这行代码时将 module.exports 的值加入这个对象，键为对应的文件名，最终这个对象就长这样：
-
-```
-{
-  "a.js": "hello world",
-  "b.js": function add(){},
-  "c.js": 2,
-  "d.js": { num: 2 }
-}
-```
-
-当你再次 require 某个文件时，如果这个对象里面有对应的值，就直接返回给你，如果没有就重复前面的步骤，执行目标文件，然后将它的 module.exports 加入这个全局对象，并返回给调用者。这个全局对象其实就是我们经常听说的缓存。所以 require 和 module.exports 并没有什么黑魔法，就只是运行并获取目标文件的值，然后加入缓存，用的时候拿出来用就行。
-
-具体可以看看这篇 [深入 Node.js 的模块加载机制，手写 require 函数](https://juejin.cn/post/6866973719634542606)
-
-#### 4 前端性能定位以及优化指标
-
-前端性能优化 已经是**老生常谈**的一项技术了 很多人说起性能优化方案的时候头头是道 但是真正的对于性能分析定位和性能指标这块却一知半解 所以这道题虽然和性能相关 但是考察点在于平常项目如何进行**性能定位和分析**
-
-1. 我们可以从 前端性能监控-**埋点**以及 **window.performance**相关的 api 去回答
-2. 也可以从性能分析工具 Performance 和 **Lighthouse**
-3. 还可以从**性能指标** LCP FCP FID CLS 等去着手
-
-> 以下为性能相关的文章 大家可以去看看
-
-[5 分钟撸一个前端性能监控工具](https://juejin.cn/post/6844903662020460552)
-
-[前端性能优化之谈谈通用性能指标及上报策略](https://juejin.cn/post/6844904150057091086)
-
-[前端性能优化指标 + 检测工具](https://juejin.cn/post/6974565176427151397)
 
 ## 参考文章
 
 | 作者         | 链接                                       |
 | ------------ | ------------------------------------------ |
 | Big shark@LX | https://juejin.cn/post/7004638318843412493 |
-|              |                                            |
+| haizlin      | https://github.com/haizlin/fe-interview    |
 |              |                                            |
 |              |                                            |
 

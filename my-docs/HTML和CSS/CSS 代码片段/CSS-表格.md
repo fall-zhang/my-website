@@ -2,33 +2,33 @@
 
 ```less
 .pure-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    border: 1px solid #cbcbcb;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
 }
 .pure-table caption {
-    color: #000;
-    font: italic 85%/1 arial,sans-serif;
-    padding: 1em 0;
-    text-align: center;
+  color: #000;
+  font: italic 85%/1 arial,sans-serif;
+  padding: 1em 0;
+  text-align: center;
 }
 .pure-table td,.pure-table th {
-    border-left: 1px solid #cbcbcb;
-    border-width: 0 0 0 1px;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible;
-    padding: .5em 1em;
+  border-left: 1px solid #cbcbcb;
+  border-width: 0 0 0 1px;
+  font-size: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: .5em 1em;
 }
 .pure-table thead {
-    background-color: #e0e0e0;
-    color: #000;
-    text-align: left;
-    vertical-align: bottom;
+  background-color: #e0e0e0;
+  color: #000;
+  text-align: left;
+  vertical-align: bottom;
 }
 .pure-table td {
-    background-color: transparent;
+  background-color: transparent;
 }
 ```
 
@@ -36,36 +36,34 @@
 
 ```less
 .pure-table {
-    border-collapse: collapse;
-    border-spacing: 0;
-    empty-cells: show;
-    border: 1px solid #cbcbcb;
+  border-collapse: collapse;
+  border-spacing: 0;
+  empty-cells: show;
+  border: 1px solid #cbcbcb;
 }
 .pure-table caption {
-    color: #000;
-    font: italic 85%/1 arial,sans-serif;
-    padding: 1em 0;
-    text-align: center;
+  color: #000;
+  font: italic 85%/1 arial,sans-serif;
+  padding: 1em 0;
+  text-align: center;
 }
 .pure-table td,.pure-table th {
-    border-left: 1px solid #cbcbcb;
-    border-width: 0 0 0 1px;
-    font-size: inherit;
-    margin: 0;
-    overflow: visible;
-    padding: .5em 1em;
+  font-size: inherit;
+  margin: 0;
+  overflow: visible;
+  padding: .5em 1em;
 }
 .pure-table thead {
-    background-color: #e0e0e0;
-    color: #000;
-    text-align: left;
-    vertical-align: bottom;
+  background-color: #e0e0e0;
+  color: #000;
+  text-align: left;
+  vertical-align: bottom;
 }
 .pure-table td {
-    background-color: transparent;
+  background-color: transparent;
 }
 .pure-table-odd td {
-    background-color: #f2f2f2;
+  background-color: #f2f2f2;
 }
 ```
 
@@ -142,18 +140,18 @@
 ```html
 <style>
 .b {
-    outline: 1px solid green;
-    outline-offset: -1px;
-    width: 100px;
-    height: 100px;
-    transform: translate(0, 0);
+  outline: 1px solid green;
+  outline-offset: -1px;
+  width: 100px;
+  height: 100px;
+  transform: translate(0, 0);
 }
 .d {
-    width: 20px;
-    position: fixed;
-    right: 0;
-    height: 20px;
-    background: red;
+  width: 20px;
+  position: fixed;
+  right: 0;
+  height: 20px;
+  background: red;
 }
 </style>
 <div class="b">
@@ -168,27 +166,27 @@
 ```html
 <style>
 .btn {
-    width: 50px;
-    margin: 0 25px;
-    text-align: center;
-    display: inline-block;
-    vertical-align: top;
-    outline: 1px solid green;
-    outline-offset: -1px;
-    cursor: pointer;
-    margin-bottom: 10px;
+  width: 50px;
+  margin: 0 25px;
+  text-align: center;
+  display: inline-block;
+  vertical-align: top;
+  outline: 1px solid green;
+  outline-offset: -1px;
+  cursor: pointer;
+  margin-bottom: 10px;
 }
 
 .detail {
-    position: absolute;
-    padding-top: 20px;
-    left: 0;
-    right: 0;
-    height: 50px;
-    text-align: center;
-    background-color: red;
-    visibility: hidden;
-    transition: visibility 99999s linear;
+  position: absolute;
+  padding-top: 20px;
+  left: 0;
+  right: 0;
+  height: 50px;
+  text-align: center;
+  background-color: red;
+  visibility: hidden;
+  transition: visibility 99999s linear;
 }
 
 .btn:hover + .detail {

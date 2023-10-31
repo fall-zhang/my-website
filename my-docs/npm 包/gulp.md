@@ -1,7 +1,9 @@
 > Create by **fall** on:——
-> Recently revised in:2022-02-17
+> Recently revised in 11 Oct 2023
 
-## gulp的产生
+## gulp
+
+> 已经 4 年没有维护，所以不建议使用该插件
 
 **什么是 gulp？**
 
@@ -23,7 +25,7 @@
 >
 > `npm install --save-dev gulp gulp-less`：局部安装为了执行编写任务时使用 gulp 的 API
 >
-> 默认配置文件`gulpfile.js`
+> 默认配置文件 `gulpfile.js`
 
 ```js
 // 编程式引入
