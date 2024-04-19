@@ -1,11 +1,11 @@
-> Create by **fall** on:2022-05-30
-> Recently revised in:2022-05-30
+> Create by **fall** on 30 May 2022
+> Recently revised in 19 Apr 2024
 
 ## json-server
 
 应用场景：官方文档也提到：
 
-Created with <3 for front-end developers who need a quick back-end for prototyping and mocking.
+Created with less than 3 for front-end developers who need a quick back-end for prototyping and mocking.
 
 小于三个前端开发者，需要搭建一个快速的后端
 

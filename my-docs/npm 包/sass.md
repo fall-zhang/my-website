@@ -89,9 +89,12 @@ box1{
 
 > 注 ：**sass支持自定义函数**
 > 书写格式：
-> @function  sum($n,$m){
-> @return $n+$m;}
-> font-size: sum(5px,6px)
+
+```scss
+@function  sum($n,$m){
+@return $n+$m;}
+font-size: sum(5px,6px)
+```
 
 ## 混合输入
 

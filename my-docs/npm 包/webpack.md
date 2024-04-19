@@ -319,7 +319,7 @@ dist目录生成index.html文件，而且会自动更新，不需要我们手动
 |        hash        |         Boolean         |    false    | 如果为`true`，则将唯一的webpack编译hash追加到所有包含js和css文件中。这对于缓存崩溃是有用的 |
 |       cache        |         Boolean         |    true     |                 仅在文件被更改时才发出该文件                 |
 |     showErrors     |         Boolean         |    true     |                   错误详情将被写到html页面                   |
-|       chunks       |           {?}           |      ?      |                     允许只添加一些chunks                     |
+|       chunks       |            ?            |      ?      |                     允许只添加一些chunks                     |
 |   chunksSortMode   |     String/Function     |    auto     | 允许控制chunks被包含到html之前应该如何排序。允许值：`none/auto/dependency/manual/function` |
 |   excludeChunks    |          Array          |     ``      |                      允许跳过一些chunks                      |
 |       xhtml        |         Boolean         |    false    |              如果为`true`设置link标签为自动关闭              |

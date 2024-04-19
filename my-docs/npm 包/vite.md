@@ -60,11 +60,11 @@ import { field } from './example.json'
 
 ### 环境变量
 
-- **`import.meta.env.MODE`**: {string} 应用运行的[模式](https://cn.vitejs.dev/guide/env-and-mode.html#modes)。
-- **`import.meta.env.BASE_URL`**: {string} 部署应用时的基本 URL。他由[`base` 配置项](https://cn.vitejs.dev/config/shared-options.html#base)决定。
-- **`import.meta.env.PROD`**: {boolean} 应用是否运行在生产环境。
-- **`import.meta.env.DEV`**: {boolean} 应用是否运行在开发环境 (永远与 `import.meta.env.PROD`相反)。
-- **`import.meta.env.SSR`**: {boolean} 应用是否运行在 [server](https://cn.vitejs.dev/guide/ssr.html#conditional-logic) 上。
+- **`import.meta.env.MODE`**：`string` 应用运行的[模式](https://cn.vitejs.dev/guide/env-and-mode.html#modes)。
+- **`import.meta.env.BASE_URL`**：`string` 部署应用时的基本 URL。他由[`base` 配置项](https://cn.vitejs.dev/config/shared-options.html#base)决定。
+- **`import.meta.env.PROD`**：`boolean` 应用是否运行在生产环境。
+- **`import.meta.env.DEV`**：`boolean` 应用是否运行在开发环境 (永远与 `import.meta.env.PROD`相反)。
+- **`import.meta.env.SSR`**：`boolean` 应用是否运行在 [server](https://cn.vitejs.dev/guide/ssr.html#conditional-logic) 上。
 
 生产环境中，这些环境变量会在构建时被**静态替换**，动态的 key 将无法生效，动态 key 取值 `import.meta.env[key]` 是无效的。
 
