@@ -5,15 +5,17 @@
 
 ### 编写测试
 
+一般情况下，执行测试的文件名中必须包含 `.test.` 或 `.spec.` 。
+
 ```js
-// sum.js
+// 源文件 sum.js
 export function sum(a, b) {
   return a + b
 }
 ```
 
 ```js
-// sum.test.js
+// 测试文件 sum.test.js
 import { expect, test } from 'vitest'
 import { sum } from './sum'
 
@@ -33,6 +35,10 @@ test('adds 1 + 2 to equal 3', () => {
 ```
 
 最后执行 `npm run test` 就可以执行测试
+
+### 指定测试文件
+
+`vitest checkbox` 只测试文件名称有 checkbox
 
 ### 配置文件
 
@@ -61,6 +67,12 @@ export default defineConfig({
   },
 })
 ```
+
+## Vue
+
+在 vue 中如何使用
+
+
 
 ## 参考文章
 

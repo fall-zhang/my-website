@@ -44,3 +44,10 @@ moment().format()
 | `s ss`     | `0..59`  | 秒钟                                      |
 | `S SS SSS` | `0..999` | 带分数的秒钟                              |
 | `Z ZZ`     | `+12:00` | 从 UTC 偏移为 `+-HH:mm`、`+-HHmm` 或 `Z`  |
+
+### 方法
+
+```javascript
+moment().isLeapYear()
+// 是否是闰年
+```

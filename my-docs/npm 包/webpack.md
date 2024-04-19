@@ -1,11 +1,14 @@
-> Create by **fall** on:2020-12-07
-> Recently revised in:2022-02-17
+> Create by **fall** on 07 Dec 2020
+> Recently revised in 14 Mar 2024
 
 ## webpack
 
 > webpack 是一个前端项目构建工具，为 web 开发中的面临的问题——更好的构建大型 SPA 提供方案。
 >
 > webpack 可以：代码打包；代码分割；代码预处理
+>
+> https://mp.weixin.qq.com/s/SbJNbSVzSPSKBe2YStn2Zw
+> webpack 的万字总结，如果项目确实用到，可以再看一遍
 
 五个基本概念
 
@@ -268,8 +271,6 @@ module.exports = {
 // exclude 该方法添加后，不会处理，node_modules 中的 js 文件
 ```
 
-
-
 ## plugin
 
 ### 使用
@@ -325,7 +326,7 @@ dist目录生成index.html文件，而且会自动更新，不需要我们手动
 
 ### 清理 dist 文件夹
 
-由于过去的代码会遗留在 dist 文件夹中，导致 dist 文件夹十分混乱，webpack 无法追踪那些文件是那个项目中用到的，因此推荐安装`clean-webpack-plugin`  在每次构建前清理 dist 文件夹。
+由于过去的代码会遗留在 dist 文件夹中，导致 dist 文件夹十分混乱，webpack 无法追踪那些文件是那个项目中用到的，因此推荐安装 `clean-webpack-plugin` 在每次构建前清理 dist 文件夹。
 
 `npm i clean-webpack-plugin -D`
 

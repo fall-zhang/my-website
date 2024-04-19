@@ -232,8 +232,6 @@ module.exports = {
 };
 ```
 
-
-
 ### postcss-px-to-viewport-8-plugin
 
 将px转换为 viewport

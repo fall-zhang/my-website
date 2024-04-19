@@ -1,5 +1,5 @@
-> Create by **fall** on:2022-05-30
-> Recently revised in:2022-08-01
+> Create by **fall** on 30 May 2022
+> Recently revised in 16 Nov 2023
 
 ## ECharts
 
@@ -7,7 +7,7 @@
 
 ```js
 import * as echarts from 'echarts'
-// 获取需要进行渲染图表的
+// 获取需要进行渲染图表的 DOM
 let chartDOM = document.getElementById('main');
 // 初始化
 let myChart = echarts.init(chartDom,null,{renderer:'svg'}); // renderer 表示使用什么渲染器，默认为 canvas
@@ -44,6 +44,8 @@ options && myChart.setOption(options); // 存在 options 的时候，进行设�
 > canvas 适合数据量大，某些特殊的渲染依然需要依赖 Canvas：如[炫光尾迹特效](https://echarts.apache.org/option.html#series-lines.effect)、[带有混合效果的热力图](https://echarts.apache.org//examples/editor.html?c=heatmap-bmap)等。
 
 ## 详细参数
+
+可以参考[官方文档](https://echarts.apache.org/zh/option.html)
 
 ### title
 
@@ -82,6 +84,8 @@ const grid = {
 
 ### legend
 
+图例功能
+
 需要先设置 serice 中的 name 属性
 
 ```js
@@ -107,7 +111,6 @@ const legend = {
   selector:'', // 选择器的功能，包括反选和全选
   pageIcons:{}, // type = 'scroll' 时有效，
   pageIconColor:'#2f4554', // 
-  
 }
 ```
 
@@ -147,13 +150,168 @@ const xAxis = {
 
 点击图标后出现的内容，可以通过 `trigger` 更改触发的机制
 
-## 柱状图
+## 图形
 
-## 散点图
+### 柱状图
 
-## 折线图
+```js
+const option =  {
+  color: ['#5b9bd5', "#ed7d31", "#989898", '#57bc6e'],
+  grid: {
+    top: '10%',
+    bottom: '15%',
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b} : {c}'
+  },
+  title: {
+    left: "center",
+    top: 'center',
+    textStyle: {
+      rich: {
+        text: {
+          color: '#000',
+          fontSize: 14,
+          padding: [0, 0, 10, 0]
+        },
+        num: {
+          color: '#000',
+          fontSize: 32
+        }
+      }
+    }
+  },
+  yAxis: {
+    type: 'value'
+  },
+  xAxis: {
+    type: "category",
+    data: ['资产原值', '资产净值', '技术规模', '资产数量']
+  },
+  legend: {
+    position: 'bottom'
+  },
+  series: [
+    {
+      name: '柱状图',
+      type: 'bar',
+      stack: '55',
+      data: stackData1
+    },
+  ]
+}
+```
 
-## 象形柱图
+
+
+### 散点图
+
+```js
+const option =  {
+  color: ['#5b9bd5', "#ed7d31", "#989898", '#57bc6e'],
+  grid: {
+    top: '10%',
+    bottom: '15%',
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b} : {c}'
+  },
+  title: {
+    left: "center",
+    top: 'center',
+    textStyle: {
+      rich: {
+        text: {
+          color: '#000',
+          fontSize: 14,
+          padding: [0, 0, 10, 0]
+        },
+        num: {
+          color: '#000',
+          fontSize: 32
+        }
+      }
+    }
+  },
+  yAxis: {
+    type: 'value'
+  },
+  xAxis: {
+    type: "category",
+    data: ['资产原值', '资产净值', '技术规模', '资产数量']
+  },
+  legend: {
+    position: 'bottom'
+  },
+  series: [
+    {
+      name: '散点图',
+      type: 'scatter',
+      stack: '55',
+      data: stackData1
+    },
+  ]
+}
+```
+
+
+
+### 折线图
+
+```js
+const option =  {
+  color: ['#5b9bd5', "#ed7d31", "#989898", '#57bc6e'],
+  grid: {
+    top: '10%',
+    bottom: '15%',
+  },
+  tooltip: {
+    trigger: 'item',
+    formatter: '{b} : {c}'
+  },
+  title: {
+    left: "center",
+    top: 'center',
+    textStyle: {
+      rich: {
+        text: {
+          color: '#000',
+          fontSize: 14,
+          padding: [0, 0, 10, 0]
+        },
+        num: {
+          color: '#000',
+          fontSize: 32
+        }
+      }
+    }
+  },
+  yAxis: {
+    type: 'value'
+  },
+  xAxis: {
+    type: "category",
+    data: ['资产原值', '资产净值', '技术规模', '资产数量']
+  },
+  legend: {
+    position: 'bottom'
+  },
+  series: [
+    {
+      name: '折线图',
+      type: 'line',
+      stack: '55',
+      data: stackData1
+    },
+  ]
+}
+```
+
+
+
+### 象形柱图
 
 象形柱状图是直角坐标系中的一类图，可以使用 **图片** 或者 `SVG PathData` 进行填充。
 

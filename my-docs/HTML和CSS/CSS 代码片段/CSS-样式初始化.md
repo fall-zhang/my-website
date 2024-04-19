@@ -1,7 +1,3 @@
----
-sidebar_position: 12
----
-
 > Create by **fall** on 04 Apr 2023
 > Recently revised in 04 Apr 2023
 

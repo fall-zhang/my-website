@@ -1,5 +1,5 @@
 > Create by **fall** on — — 2020
-> Recently revised in 11 Oct 2023
+> Recently revised in 10 Apr 2024
 
 > 注：npm 会随着 node 的安装进行安装，安装 node 后，就可以使用 npm 命令。
 
@@ -7,9 +7,9 @@
 
 npm 的功能：
 
-- 允许用户从 NPM 服务器下载别人编写的**第三方包**到本地使用（下载包）。
-- 允许用户从 NPM 服务器下载并安装别人编写的**命令行程序**到本地使用（下载命令程序）。
-- 允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用（上传包和命令程序）。
+- 下载包（脚本）：从 NPM 服务器下载别人编写的**第三方包**到本地使用。
+- 下载命令程序（命令行）：允许用户从 NPM 服务器下载并安装别人编写的**命令行程序**到本地使用。
+- 上传包和命令程序：允许用户将自己编写的包或命令行程序上传到 NPM 服务器供别人使用。
 
 在 Node V10 之后自带 npm，不需要额外下载。
 
@@ -18,28 +18,37 @@ LTS 版本：Long Term Support（[长期支持版本](https://nodejs.org/en/abou
 - 官方网址：https://nodejs.org
 - 安装 npm 组件：https://www.npmjs.com
 
-> 注：因为某些大家知道的原因，需要更换为国内的镜像，或者安装 yarn，代替 npm
->
-> 当然，你可以通过该命令 `npm config get registry` 查看当前使用的镜像。默认：`https://registry.npmjs.org/`
->
-> 可以使用 `npm config set registry https://registry.npm.taobao.org` 更改使用的镜像地址，当然也可以使用这个方法改回原来的地址。
->
+### 更换源（可选）
+
+> 因为某些大家知道的原因，需要更换为国内的镜像，或者安装 yarn，代替 npm
+
+查看当前使用的镜像：`npm config get registry` 。默认是：`https://registry.npmjs.org/`
+
+可以使用下面的命令更改镜像地址，当然也可以使用这个方法改回原来的地址：
+
+`npm config set registry https://registry.npmmirror.com` 
+
+- 最新镜像地址：`https://registry.npmmirror.com` 
+- 淘宝原镜像（已过期）：`https://registry.npm.taobao.org`
+
 > 安装 cnpm：`npm install -g cnpm --registry=https://registry.npm.taobao.org`
 >
 > 安装完成之后就可以通过 cnpm 代替 npm 的所有命令（有些插件使用 cnpm 安装，可能会出现问题）
->
-> `npm -v` 用于检测 npm 是否安装成功
 
-### 包管理命令
+### 命令
+
+`npm -v` 用于检测 npm 是否安装成功
+
+#### 包管理
 
 **安装包**
 
-- 本地的安装包：使用`npm install <package-name>` 安装，并且放置在 node_modules 文件夹中
+- 本地的安装包：使用 `npm install <package-name>` 安装，并且放置在 `node_modules` 文件夹中
 - 全局的安装包：`npm install <package-name> -g` 全局安装，并放在固定的位置。
 
-> **通常所有软件包都应该本地安装而非全局安装**，比如计算机中有数十个项目，就该有十个对应的软件包（node_modules），用来保证每个应用都可以运行不同的版本。如果全局安装，所有的项目都使用同一个版本，可能导致维护上的噩梦，破坏原来的依赖项和兼容性等。
+> **软件包通常都应该本地安装而非全局安装**，比如计算机中有数十个项目，就该有十个对应的软件包（node_modules），用来保证每个应用都可以运行不同的版本。如果全局安装，所有的项目都使用同一个版本，可能导致维护上的噩梦，破坏原来的依赖项和兼容性等。
 >
-> 仅在需要添加一些全局命令的时候，再进行全局安装，比如 `yarn`、`pnpm`
+> 仅在需要**添加一些全局命令**的时候，再进行全局安装，比如 `yarn`、`pnpm`
 
 **安装命令详解**
 
@@ -68,15 +77,7 @@ npm i rollup@3.9.1 -S-D
 
 `npm update <package-name>` 升级特定名称的包
 
-### 配置命令
-
-`npm config get cache` 查看 缓存所在位置
-
-`npm config get registry` 查看当前所使用的镜像
-
-`npm config set registry https://registry.npm.taobao.org`  设置当前的镜像
-
-### 其它命令
+#### 常用命令
 
 **远程查找**
 
@@ -90,11 +91,12 @@ npm i rollup@3.9.1 -S-D
 - 查找当前工作区安装的模块：`npm list`
 - 查看全局安装的主要模块：`npm list -g --depth=0`
 
-| 命令（常用命令）  | 功能                                                         |
-| ----------------- | ------------------------------------------------------------ |
-| `npm root -g`     | 查看全局模块的安装路径<br />如果使用 nvm 管理工具，位置可能会不同 |
-| `npm init`        | 创建 JSON 文件，初始化本地开发环境                           |
-| `npm cache clean` | 清除 npm 本地的缓存，可使用 `-f` 强制清除缓存                |
+| 命令（常用命令）       | 功能                                                         |
+| ---------------------- | ------------------------------------------------------------ |
+| `npm root -g`          | 查看全局模块的安装路径<br />如果使用 nvm 管理工具，位置可能会不同 |
+| `npm init`             | 创建 JSON 文件，初始化本地开发环境                           |
+| `npm cache clean`      | 清除 npm 本地的缓存，可使用 `-f` 强制清除缓存                |
+| `npm config get cache` | 查看 缓存所在位置                                            |
 
 ### npx
 
@@ -143,7 +145,7 @@ npm run env | grep npm_ // 可以用该命令查看提供当前项目的一些�
 npx -c 'echo "$npm_package_name"' // 该代码会输出当前项目的项目名
 ```
 
-### 执行远程代码
+#### 执行远程代码
 
 npx 可以指定直接执行 git 上面的代码，前提是远程代码必须是一个模块，必须包含 package.json 和入口脚本。
 
@@ -153,11 +155,11 @@ npx 可以指定直接执行 git 上面的代码，前提是远程代码必须�
 
 > yarn & pnpm
 >
-> yarn 和 pnpm 都是为了解决 npm 上出现的一些固有的错误，而进行开发的。pmpm 的[官方文档](https://pnpm.io/zh/pnpm-cli)
+> yarn 和 pnpm 都是为了解决 npm 上出现的一些固有的错误以及性能问题等而开发的。pnpm 的[官方文档](https://pnpm.io/zh/pnpm-cli)
 >
 > 现在 PNPM 也作为包管理工具进行使用
 
-### 编写脚本
+### 编写 npm 脚本
 
 分三步走：
 
@@ -215,6 +217,12 @@ disco ld as -v
 
 `npm owner add <user-name> <package-name>` 删除所有者
 
+取消发布
+
+```bash
+npm unpublish vue-fantable@0.1.4
+```
+
 ### 版本控制
 
 监听的文件：
@@ -243,6 +251,40 @@ npm version [major | minor | patch]
 npm init --scope=username
 # 初始化时添加域的名称
 ```
+
+## corepack
+
+corepack 是 node V16.13 后用来管理包管理器的工具
+
+通过以下方式即可启用改管理工具
+
+```bash
+corepack enable
+# 关闭
+corepack disable
+```
+
+该工具会关联 `package.json` 中的 `packageManager` 字段
+
+```json
+{
+  "packageManager": "pnpm@8.15.4"
+}
+```
+
+此时，就会锁定使用的包管理器版本，锁定包管理器后，使用的包不是指定的包管理器，就会报错。
+
+
+
+通过 corepack 切换当前版本
+
+```bash
+corepack use pnpm@8.15.4
+# 版本升级(不升级主版本号)
+corepack up
+```
+
+
 
 ## nvm 的使用
 
@@ -275,10 +317,6 @@ nvm use 12.22.12
 nvm uninstall 8.4.0
 ```
 
-
-
-
-
 ## 参考文章
 
 | 作者            | 链接                                                         |
@@ -286,7 +324,4 @@ nvm uninstall 8.4.0
 | 深入浅出 nodejs | 第二章                                                       |
 | levy9527        | [📦vue组件发布npm最佳实践](https://juejin.cn/post/6844903620916281358) |
 |  谢小飞      |  [从零开始发布自己的NPM包](https://juejin.cn/post/7052307032971411463)    |
-|                 |                                                              |
-
-
-
+| 纪轻昀 | [锁定 Node.js 的包管理：Corepack 使用指南](https://juejin.cn/post/7352739150242496527) |

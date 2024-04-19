@@ -1,5 +1,5 @@
-> Create by **fall** on:2022-07-12
-> Recently revised in:2022-07-12
+> Create by **fall** on 12 Jul 2022
+> Recently revised in 16 Nov 2023
 
 # commander
 
@@ -56,7 +56,7 @@ const program = new Command(packageJson.name).version(packageJson.version);
 ```bash
 # create-react-app <project-directory> --template <template-name> --use-npm
 npx create-react-app my-app --template typescript --use-npm
-复制代码
+
 ```
 
 **配置命令、设置命令处理函数**
@@ -73,7 +73,7 @@ program
   .action((name, options, command) => { projectName = name; }) // 添加命令处理函数，函数参数与命令参数一一对应
   // ...
 program.args() // 使用 .args() 获取命令参数
-复制代码
+
 ```
 
 说明：
@@ -87,7 +87,7 @@ program.args() // 使用 .args() 获取命令参数
 ```bash
 # npx create-react-app <project-directory> --template <template-name> --use-npm
 npx create-react-app my-app --template typescript --use-npm
-复制代码
+
 ```
 
 说明：
@@ -96,29 +96,7 @@ npx create-react-app my-app --template typescript --use-npm
 
 - `--use-npm` 是一个 `布尔型选项`，命令行中使用选项名时，其选项参数值为 `true`，否则为 `false`
 
-- 选项的类型分为 
-
-  ```
-  必填参数选项
-  ```
-
-  、
-
-  ```
-  可选参数选项
-  ```
-
-  、
-
-  ```
-  布尔型选项
-  ```
-
-   和 
-
-  取反选项
-
-  ：
+- 选项的类型分为 必填参数选项、可选参数选项、布尔型选项、取反选项
 
   - `--template <template-name>` 表示 `template` 是一个`必填参数选项`，选项参数必填。如使用 `[]` 则表示一个`可选参数选项`。
   - `--use-npm` 是一个 `布尔型选项`，命令行中使用选项名时，其选项参数值为 `true`，否则为 `false`。
@@ -141,7 +119,7 @@ program
 
 const { template, useNpm } = program.opts(); // { template: 'typescript', useNpm: true }
 createApp(name, template, useNpm)
-复制代码
+
 ```
 
 说明：
@@ -154,7 +132,7 @@ createApp(name, template, useNpm)
   'add the specified type of cheese', // 描述
   'blue' // 默认值
 )
-复制代码
+
 ```
 
 - 如果需要在一个选项中允许用户输入多个选项参数，使用 `...` 设置为可变参数，参数值返回数组。例如：
@@ -168,7 +146,7 @@ program
 // 执行：demo-cli -n 1 2 3 --letter a b c
 console.log('Options: ', program.opts());
 // Options:  { number: [ '1', '2', '3' ], letter: [ 'a', 'b', 'c' ] }
-复制代码
+
 ```
 
 - 在单命令程序中，所有选项都是顶级命令选项，可以直接使用 `program.opts()` 获取解析后的选项值。对于多个单词的长选项，需要使用驼峰法获取，如 `--use-npm` 选项通过 `program.opts().useNpm` 获取
@@ -180,7 +158,7 @@ console.log('Options: ', program.opts());
 
 ```js
 program.parse(); // 相当于 program.parse(process.argv);
-复制代码
+
 ```
 
 `process` 即进程对象，`process.argv` 返回数组，即 `[启动 Node.js 进程的可执行文件的绝对路径名, 当前正在执行 JavaScript 文件的路径, ...启动 Node.js 进程时传入的命令行参数]`。
@@ -196,7 +174,7 @@ program.parse(); // 相当于 program.parse(process.argv);
   'typescript',
   '--use-npm'
 ]
-复制代码
+
 ```
 
 完整示例：
@@ -232,7 +210,7 @@ const program = new commander.Command(packageJson.name)
 // 使用选项参数
 const { verbose, scriptsVersion, template, useNpm, usePnp } = program.opts();
 createApp(projectName, verbose, scriptsVersion, template, useNpm, usePnp);
-复制代码
+
 ```
 
 ### 多命令程序
@@ -278,7 +256,7 @@ program
   );
   
 program.parse(process.argv); // 解析命令行参数
-复制代码
+
 ```
 
 说明：

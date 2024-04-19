@@ -1,5 +1,5 @@
-> Create by **fall** on 2020-11-18
-> Recently revised in 2022-09-26
+> Create by **fall** on 18 Nov 2020
+> Recently revised in 14 Mar 2024
 
 > **下载：** 从淘宝镜像上下载 git
 >
@@ -13,7 +13,7 @@
 
 **Git工作流程图**（最左侧为远程，中间和右侧为本地）
 
-<img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="img" style={{zoom:"80%"}} />
+<img src="http://www.ruanyifeng.com/blogimg/asset/2015/bg2015120901.png" alt="img"  />
 
 一些术语
 
@@ -91,10 +91,9 @@ c、规则：
 **用 Git Bash 创建文件夹**
 
 - 根目录下右键选择“Git Bash Here”进入bash命令窗口；
-- 输入`vim .gitignore`或`touch .gitignore`命令，打开文件（没有文件会自动创建）；
-- 按i键切换到编辑状态，输入规则，例如node_modules/，然后按Esc键退出编辑，输入:wq保存退出。
+- 输入 `vim .gitignore` 或 `touch .gitignore` 命令，打开文件（没有文件会自动创建）；
+- 按 i 键切换到编辑状态，输入规则，例如 node_modules/，然后按Esc键退出编辑，输入 `:wq` 保存退出。
 
-- 
 
 > **生成密钥**
 >
@@ -193,6 +192,7 @@ $ git branch -dr [remote/branch]
 ```bash
 $ git fetch [remote] # 下载远程仓库的所有变动
 $ git pull [remote] [branch] # 取回远程仓库的变化，并与本地分支合并
+# git pull 等价于 git fetch + git merge
 $ git remote -v # 显示所有远程仓库
 $ git remote show [remote] # 显示某个远程仓库的信息
 $ git remote add [shortname] [url] # 增加一个新的远程仓库，并命名

@@ -121,7 +121,7 @@ Vite 中集成配置了 PostCSS，所以可以直接使用
 在 `vite.config.js` 中，`css.modules.localsConvention` 
 
 ```
-localsConvention: 'camelCaseOnly'
+localsConvention: 'camelCaseOnly' // 表示使用小驼峰进行书写，可以将划线转换为小驼峰
 .apply-color -> applyColor
 可以将 css 的调用格式转换
 ```
@@ -140,6 +140,8 @@ import otherStyles from './bar.css?inline' // 样式不会注入页面
 Vite 仅执行 `.ts` 文件的转译工作，**不执行任何类型检查**。并认为你的 IDE 或构建过程处理了类型检查。
 
 > 不把类型检查作为转换过程的一部分，是因为这两项工作在本质上是不同的。转译可以在每个文件的基础上进行，与 Vite  的按需编译模式完全吻合。相比之下，类型检查需要了解整个模块图。转换时如果进行类型检查，将拖慢 Vite 的速度。
+>
+> 类型检查用 tsc，或者 vue tsc
 
 `tsconfig.json` 中的一些配置，比如说当 `"isolatedModules": true` 时
 
@@ -348,7 +350,7 @@ import { oneMethod } from 'my-dev'
 
 以 `index.html` 作为查找入口，将所有来自 `node_modules` 以及在配置文件的 `optimizeDeps.indclude` 选项中的模块找出来。
 
-> `esbuild` 默认支持的入口文件类型有`js`、`ts`、`jsx`、`css`、`json`、`base64`、`dataurl`、`binary`、`file`（`.png`等），并不包括`html`。`vite`自己实现了一个`esbuild`插件`esbuildScanPlugin`，来处理`.vue`和`.html`这种类型的文件。
+> `esbuild` 默认支持的入口文件类型有 `js`、`ts`、`jsx`、`css`、`json`、`base64`、`dataurl`、`binary`、`file`（`.png` 等），并不包括 `html`。`vite` 自己实现了一个 `esbuild` 插件 `esbuildScanPlugin`，来处理 `.vue` 和 `.html` 这种类型的文件。
 
 如果仅仅依靠原生 `esm` 的加载机制，每个依赖的 `import` 都将产生一个请求，浏览器无法支撑，所以客观上需要进行裸模块进行打包，并处理浏览器支持的相对路径（如：`import ElementPlus from '/path/to/.vite/element-plus/es/index.mjs'`）。
 
@@ -356,7 +358,7 @@ import { oneMethod } from 'my-dev'
 
 当前已经得到了需要构建的依赖列表，只需把他们进行打包就好了
 
-为了避免在程序运行过程中发生了错误，导致缓存不可用。`vite` 并没有将`esbuild` 的 `outdir`（输出目录）直接配置为`.vite`目录，而是先将构建产物存放到了一个临时目录。当构建完成后，才将原来旧的 `.vite`（如果有的话）删除。然后再将临时目录重命名为`.vite`。
+为了避免在程序运行过程中发生了错误，导致缓存不可用。`vite` 并没有将 `esbuild` 的 `outdir`（输出目录）直接配置为 `.vite` 目录，而是先将构建产物存放到了一个临时目录。当构建完成后，才将原来旧的 `.vite`（如果有的话）删除。然后再将临时目录重命名为 `.vite`。
 
 已预构建的依赖请求使用 HTTP 头 `max-age=31536000, immutable` 进行强缓存，以提高开发期间页面重新加载的性能。一旦被缓存，这些请求将永远不会再次访问开发服务器。
 
@@ -407,7 +409,7 @@ import { oneMethod } from 'my-dev'
 
 `node` 环境下进行的打包，所以会调用 `rollup.rullop()` 生成 `bundle`。并且会应用上面创建好的 `baseRullupPlugin`、`buildHtmlPlugin`。
 
-调用 `bundle.generate` 生成 `output` （对象），包含每一个 `chunk` 内容，最后通过遍历，并调用 `fs` 模块生成 `chunk` 文件，结束打包。
+调用 `bundle.generate` 生成 `output` （对象），包含每一个 `chunk` 内容，最后通过遍历，并调用 `fs` 模块生成 `chunk` 文件，结束打包。d
 
 **CSS 内容的打包**
 
@@ -419,7 +421,7 @@ Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出
 
 ### CSS 代码分割 
 
-Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 `<link>` 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content#:~:text=A flash of unstyled content,before all information is retrieved.) 。
+Vite 会自动地将一个异步 chunk 模块中使用到的 CSS 代码抽取出来并为其生成一个单独的文件。这个 CSS 文件将在该异步 chunk 加载完成时自动通过一个 `<link>` 标签载入，该异步 chunk 会保证只在 CSS 加载完毕后再执行，避免发生 [FOUC](https://en.wikipedia.org/wiki/Flash_of_unstyled_content) A flash of unstyled content,before all information is retrieved.
 
 如果你更倾向于将所有的 CSS 抽取到一个文件中，你可以通过设置 [`build.cssCodeSplit`](https://cn.vitejs.dev/config/build-options.html#build-csscodesplit) 为 `false` 来禁用 CSS 代码分割。
 
