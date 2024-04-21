@@ -1,9 +1,10 @@
 // @ts-check
 // Note: type annotations allow type checking and IDEs autocompletion
-
-const {themes} = require('prism-react-renderer');
-const lightCodeTheme = themes.github;
-const darkCodeTheme = themes.dracula;
+// import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants'
+import { themes } from 'prism-react-renderer'
+// const  = require();
+const lightCodeTheme = themes.github
+const darkCodeTheme = themes.dracula
 
 /** @type {import('@docusaurus/types').Config} */
 const config = {
@@ -25,7 +26,7 @@ const config = {
   // to replace "en" with "zh-Hans".
   i18n: {
     defaultLocale: 'zh-CN',
-    locales: ['zh-CN'],
+    locales: ['zh-CN']
   },
 
   presets: [
@@ -37,7 +38,7 @@ const config = {
           path: './my-docs',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容
-          numberPrefixParser(filename) {
+          numberPrefixParser (filename) {
             // // Implement your own logic to extract a potential number prefix
             // const numberPrefix = findNumberPrefix(filename);
             // // Prefix found: return it with the cleaned filename
@@ -48,20 +49,20 @@ const config = {
             //   };
             // }
             // No number prefix found
-            return { numberPrefix: undefined, filename };
-          },
+            return { numberPrefix: undefined, filename }
+          }
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容，删除则全删除
+          editUrl: 'https://github.com/' // 点击编辑此页的时候弹出的内容，删除则全删除
         },
         theme: {
-          customCss: require.resolve('./src/css/custom.css'),
-        },
-      }),
-    ],
+          customCss: require.resolve('./src/css/custom.css')
+        }
+      })
+    ]
   ],
 
   themeConfig:
@@ -71,21 +72,21 @@ const config = {
         title: 'Fall 的笔记本',
         logo: {
           alt: 'My Site Logo',
-          src: './img/logo.svg',
+          src: './img/logo.svg'
         },
         items: [
           {
             type: 'doc',
             docId: 'README',
             position: 'left',
-            label: '笔记',
+            label: '笔记'
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
             href: 'https://github.com/Fall-zhang',
             label: 'GitHub',
-            position: 'right',
-          },
+            position: 'right'
+          }
         ],
         hideOnScroll: true
       },
@@ -106,39 +107,39 @@ const config = {
             items: [
               {
                 label: '掘金',
-                href: 'https://juejin.cn/user/1565342280463325',
+                href: 'https://juejin.cn/user/1565342280463325'
               },
               {
                 label: 'Github',
-                href: 'https://github.com/Fall-zhang',
+                href: 'https://github.com/Fall-zhang'
               },
               {
                 label: '思否segmentfault',
-                href: 'https://segmentfault.com/u/fall_zhang0',
-              },
-            ],
+                href: 'https://segmentfault.com/u/fall_zhang0'
+              }
+            ]
           },
           {
             title: '联系',
             items: [
               {
                 label: '微信号：mymicrowings',
-                to: '#',
+                to: '#'
               },
               {
                 label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus',
-              },
-            ],
-          },
+                href: 'https://github.com/facebook/docusaurus'
+              }
+            ]
+          }
         ],
-        copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.`,
+        copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.`
       },
       prism: {
         theme: lightCodeTheme,
-        darkTheme: darkCodeTheme,
-      },
-    }),
-};
+        darkTheme: darkCodeTheme
+      }
+    })
+}
 
-module.exports = config;
+export default config
