@@ -64,6 +64,13 @@ const config = {
       })
     ]
   ],
+  markdown: {
+    mdx1Compat: {
+      comments: true, // 允许在 mdx 中使用 HTML
+      admonitions: false, // 允许自定义模块宽松的模式 :::title my title -> :::title [my title]
+      headingIds: true
+    }
+  },
 
   themeConfig:
     /** @type {import('@docusaurus/preset-classic').ThemeConfig} */

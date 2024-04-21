@@ -17,6 +17,9 @@ importers:
       '@docusaurus/preset-classic':
         specifier: ^3.2.1
         version: 3.2.1(@algolia/client-search@4.23.3)(@types/react@18.2.79)(eslint@8.57.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(search-insights@2.9.0)(typescript@5.4.5)
+      '@docusaurus/theme-classic':
+        specifier: ^3.2.1
+        version: 3.2.1(@types/react@18.2.79)(eslint@8.57.0)(react-dom@18.2.0(react@18.2.0))(react@18.2.0)(typescript@5.4.5)
       '@mdx-js/react':
         specifier: ^3.0.1
         version: 3.0.1(@types/react@18.2.79)(react@18.2.0)
