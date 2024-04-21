@@ -1,28 +1,37 @@
-# Website
+# 笔记博客
 
-This website is built using [Docusaurus 2](https://docusaurus.io/), a modern static website generator.
+将个人笔记和发布的文章，翻译等内容放置在该网站内
 
-### Installation
-
-```
-$ yarn
-```
-
-### Local Development
+### 安装和启动
 
 ```
-$ yarn start
+pnpm i
+pnpm dev
 ```
 
 This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
-### Build
+### 打包
 
 ```
-$ yarn build
+pnpm build
 ```
 
-This command generates static content into the `build` directory and can be served using any static contents hosting service.
+## 项目计划
+
+- [ ] 使用 github workflow 一键布局功能
+- [ ] 将 article-release 项目也放到里面
+- [ ] 考虑使用 ts
+- [ ] 添加 eslint 格式化
+- [ ] 更新使用 es 导出
+- [ ] 支持 tailwind
+
+## 可选内容
+
+- React-Live 交互式代码块
+- remark-emoji 提供 emoji 支持
+- Mermaid 更加丰富的图形绘制
+- 
 
 ### Deployment
 
