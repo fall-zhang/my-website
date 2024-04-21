@@ -1,7 +1,7 @@
-import React from 'react';
-import clsx from 'clsx';
-import Link from '@docusaurus/Link';
-import styles from './styles.module.css';
+import React from 'react'
+import clsx from 'clsx'
+import Link from '@docusaurus/Link'
+import styles from './styles.module.css'
 
 const FeatureList = [
   {
@@ -12,7 +12,7 @@ const FeatureList = [
       <>
         像安装npm插件一样安装开发环境！ VS code 这个强大的工具都有哪些快捷键，以及开发中常用的插件。
       </>
-    ),
+    )
   },
   {
     title: 'TypeScript 声明？声明空间？',
@@ -22,7 +22,7 @@ const FeatureList = [
       <>
         声明空间：就是声明类型和声明变量所在的不同空间。 全局模块：就是任何文件都可以访问的模块。
       </>
-    ),
+    )
   },
   {
     title: 'git 功能查找',
@@ -32,9 +32,9 @@ const FeatureList = [
       <>
         最实用的 git 功能查找笔记 一篇文章实现快速查找绝大多数功能，功能的意义，配置文件，以及功能的查找，一篇文章全部搞定。
       </>
-    ),
-  },
-];
+    )
+  }
+]
 
 function Feature ({ Svg, title, description, link }) {
   return (
@@ -57,7 +57,7 @@ function Feature ({ Svg, title, description, link }) {
         </p>
       </div>
     </div>
-  );
+  )
 }
 
 export default function HomepageFeatures () {
@@ -71,5 +71,5 @@ export default function HomepageFeatures () {
         </div>
       </div>
     </section>
-  );
+  )
 }

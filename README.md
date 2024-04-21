@@ -31,7 +31,7 @@ pnpm build
 - React-Live 交互式代码块
 - remark-emoji 提供 emoji 支持
 - Mermaid 更加丰富的图形绘制
-- 
+- remark-math rehype-katex 提供数学符号的支持
 
 ### Deployment
 
