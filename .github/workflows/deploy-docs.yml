@@ -4,7 +4,7 @@ on:
   # 在指定的分支发生变化的时候运行
   push:
     branches:
-      - root
+      - source
     paths:
       - ".github/workflows/deploy-docs.yml"
       - "my-docs/**"
