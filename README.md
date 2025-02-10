@@ -1,6 +1,6 @@
 # 笔记博客
 
-将个人笔记和发布的文章，翻译等内容放置在该网站内
+将个人笔记和发布的文章，翻译等 Markdown 内容放置在该网站内
 
 ### 安装和启动
 
@@ -19,7 +19,7 @@ pnpm build
 
 ## 项目计划
 
-- [ ] 使用 github workflow 一键布局功能
+- [ ] 使用 github workflow 一键部署功能
 - [ ] 将 article-release 项目也放到里面
 - [ ] 考虑使用 ts
 - [ ] 添加 eslint 格式化
