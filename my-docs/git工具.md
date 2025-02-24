@@ -1,5 +1,5 @@
 > Create by **fall** on 18 Nov 2020
-> Recently revised in 14 Mar 2024
+> Recently revised in 21 Apr 2024
 
 > **下载：** 从淘宝镜像上下载 git
 >
@@ -66,11 +66,11 @@
 **配置文件的语法**
 
 ```swift
-以斜杠/开头表示目录；
-以星号*通配多个字符；
-以问号?通配单个字符
-以方括号[]包含单个字符的匹配列表；
-以叹号!表示不忽略(跟踪)匹配到的文件或目录；
+以斜杠 / 开头表示目录；
+以星号 * 通配多个字符；
+以问号 ? 通配单个字符
+以方括号 [] 包含单个字符的匹配列表；
+以叹号 ! 表示不忽略(跟踪)匹配到的文件或目录；
 ```
 
 **配置文件示例**
@@ -92,7 +92,7 @@ c、规则：
 
 - 根目录下右键选择“Git Bash Here”进入bash命令窗口；
 - 输入 `vim .gitignore` 或 `touch .gitignore` 命令，打开文件（没有文件会自动创建）；
-- 按 i 键切换到编辑状态，输入规则，例如 node_modules/，然后按Esc键退出编辑，输入 `:wq` 保存退出。
+- 按 i 键切换到编辑状态，输入规则，例如 node_modules/，然后按 Esc 键退出编辑，输入 `:wq` 保存退出。
 
 
 > **生成密钥**
@@ -275,8 +275,10 @@ $ git reflog # 显示当前分支的最近几次提交
 
 # 查看日期范围内添加量和删除量
 git log --since=2022-01-01 --until=2022-12-31 --pretty=tformat: --numstat | awk '{ add += $1; subs += $2} END { printf "added lines: %s, removed lines: %s\n", add, subs }'
-# 查看代码总行数
+# 通过日志查看代码总行数
 git log --pretty=tformat: --numstat | awk '{sum += $1 - $2 } END { printf "total lines: %s\n", sum }'
+# 查看代码总行数
+git ls-files | xargs wc -l
 ```
 
 ### 文件配置

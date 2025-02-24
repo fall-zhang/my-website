@@ -1,5 +1,5 @@
 > Create by **fall** on 04 Apr 2023
-> Recently revised in 04 Apr 2023
+> Recently revised in 27 Nov 2024
 
 ## 样式的初始化
 
@@ -84,4 +84,64 @@ pre,code,kbd,samp {
   font-family: 'SFMono-Regular', Consolas, 'Liberation Mono', Menlo, Courier, monospace;
 }
 ```
+
+
+
+### box-shadow
+
+```css
+.default-shadow{
+    box-shadow: 1px 1px 4px rgba(0, 0, 0, .07), 0 1px 4px rgba(0, 0, 0, .07), 0 1px 4px rgba(0, 0, 0, .1), 0 2px 6px rgba(0, 0, 0, .08);
+}
+```
+
+### switch
+
+```html
+<input type="checkbox" class="switch">
+```
+
+```css
+.switch{
+  appearance:none;
+  position:relative;
+  display:inline-block;
+  background:lightgrey;
+  height:1.65rem;
+  width:2.75rem;
+  vertical-align:middle;
+  border-radius:2rem;
+  box-shadow:0px 1px 3px #0003 inset;
+  transition: 0.25s linear background;
+}
+.switch::before{
+  content:'';
+  display:block;
+  width:1.25rem;
+  height:1.25rem;
+  background:#fff;
+  border-radius:1.2rem;
+  position:absolute;
+  top:0.2rem;
+  left:0.2rem;
+  box-shadow:0 1px 3px #0003;
+  transition:0.25s linear transform;
+  transform:translateX(0rem);
+}
+.switch:checked{
+  background:green;
+}
+.switch::before{
+  transform:translateX(1rem);
+}
+.switch:focus-visible{
+  outline:2px solid dodgerblue;
+}
+.switch:focus{
+  /* 不建议使用 outline:none; */
+  outline-color:transparent;
+}
+```
+
+
 

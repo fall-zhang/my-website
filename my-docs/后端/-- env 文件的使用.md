@@ -57,5 +57,15 @@ VUE_APP_CALLBACKURL="嘛玩意"
 
 
 
+## 命令
 
+```bash
+node --env-file .env env1.js
+```
+
+21.7.0 中也添加了 
+
+```js
+process.loadEnvFile();
+```
 

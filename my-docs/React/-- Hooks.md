@@ -1,5 +1,5 @@
-> Create by **fall** on 2021-12-26
-> Recently revised in 2022-01-27
+> Create by **fall** on 26 Dec 2021
+> Recently revised in 07 Aug 2024
 
 使用 Hooks 的原因
 
@@ -10,13 +10,15 @@
 注意事项
 
 - 只能在函数内部的最外层调用 Hook，不要在循环、条件判断或者子函数中调用
-- 只能在 React 的函数组件中调用 Hook，不要在其他 JavaScript 函数中调用（例外：自定义 Hook）
+- 除自定义 Hook 外，只能在 React 的函数组件中调用 Hook
 
 三神柱：`useState` `useEffect` `useCallback`，这么一看，必须掌握的只有三个。还蛮简单的.jpg
 
 ## useState
 
- useState 总是替换变量而不是 class 组件中的合并。
+useState 总是替换变量而不是 class 组件中的合并。
+
+**设置 state 只会为下一次渲染变更 state 的值**
 
 ```jsx
 import { useState } from 'react'
@@ -80,6 +82,50 @@ function Compp(props){
 }
 ```
 
+## useRef
+
+生成一个和 react 响应式无关的值，有两种用法
+
+- 获取 DOM
+- 在不同渲染中缓存的值
+
+获取 DOM
+
+```jsx
+import {useState,useRef} from 'react'
+function MyComponent(){
+  const [count,setCount]= useState(0)
+  const onAdd = ()=>{
+    setCount(count+1)
+  }
+  const onShow= ()=>{
+    alert()
+  }
+  const myInput = useRef(null)
+  return (
+  	<div>
+    	<h2>当前显卡数量为：{count}</h2>
+      <input type="text" ref={myInput}></input>
+      <button onClick={onAdd}>给我加卡</button>
+      <button onClick={onShow}>我有多少卡？</button>
+    </div>
+  )
+}
+```
+
+useState 在设置新的值时会触发更新，如果设置了一值在函数内，下次执行时就会变为默认，useRef 是存储后，不会改变
+
+```jsx
+function MyText(){
+  const currenRef = useRef('InitialData')
+  return (
+    <div>
+      {}
+    </div>
+  )
+}
+```
+
 ## useReduce
 
 处理全局状态
@@ -113,8 +159,6 @@ const DemoUseReducer = ()=>{
 )
 }
 ```
-
-
 
 ## useEffect
 
@@ -243,15 +287,35 @@ const DemoUseLayoutEffect = () => {
 
 
 
-
-
 ## useCallback
 
+一般用于优化，传入一个函数以及该函数的依赖
 
+每次重新渲染一个组件时，如果不使用 useCallback 包裹，函数每次都会重新声明一次（该函数和之前的函数不同）
 
+```jsx
+export default function ProductPage({ productId, referrer, theme }) {
+  const handleSubmit = useCallback((orderDetails) => {
+    post('/product/' + productId + '/buy', {
+      referrer,
+      orderDetails,
+    });
+  }, [productId, referrer]);
 
+  return (
+    <div className={theme}>
+      <ShippingForm onSubmit={handleSubmit} />
+    </div>
+  );
+}
+```
 
+tips：
 
+- 自定义 hooks 时，需要对返回的函数添加 `useCallback`
+- 一般同 memo 一起使用，用于让保证 props 中的函数相同
+- 作为 useEffect 的依赖时，用来保证每次都触发 useEffect
+- 不要在除性能优化之外的情况下使用 useEffect
 
 ## useMemo
 
@@ -260,47 +324,9 @@ const DemoUseLayoutEffect = () => {
 - 类组件通过 `pureComponent`
 - 函数组件通过 `React.memo`，将组件传递给 memo 之后，返回一个新的组件，如果接收到的属性不变，就不会重新渲染
 
-## useRef
-
-获取 DOM
-
-```jsx
-function MyComponent(){
-  const [count,setCount]= React.useState(0)
-  const onAdd = ()=>{
-    setCount(count+1)
-  }
-  const onShow= ()=>{
-    alert()
-  }
-  const myInput = React.useRef(null)
-  return (
-  	<div>
-    	<h2>当前显卡数量为：{count}</h2>
-      <input type="text" ref={myInput}></input>
-      <button onClick={onAdd}>给我加卡</button>
-      <button onClick={onShow}>我有多少卡？</button>
-    </div>
-  )
-}
-```
-
-useState 在设置新的值时会触发更新，如果设置了一值在函数内，下次执行时就会变为默认，useRef 是存储后，不会改变
-
-```jsx
-function MyText(){
-  const currenRef = useRef('InitialData')
-  return (
-    <div>
-      {}
-    </div>
-  )
-}
-```
-
 ## useContext
 
-我们可以使用 useContext，来获取父级组件传递过来的context值，这个当前值就是最近的父级组件 Provider 设置的value 值。
+我们可以使用 useContext，来获取父级组件传递过来的 context 值，这个当前值就是最近的父级组件 Provider 设置的 value 值。
 
 ```jsx
 type ActionOne ={
@@ -337,59 +363,123 @@ const DemoUseReducer = () => {
 }
 ```
 
-## 自定义 Hooks
+只有在找不到 provider 的时候，才会使用 createContext 的默认值
 
-定义
+### createContext
 
-```jsx
-// useFriendStatus.js
-import React,{useState,useEffect} from 'react'
-function useFriendStatus(friendId){
-  const [isOnline,setIsOnline] = useState(null)
-  function handleStatusChange(status){
-    setIsOnline(status.isOnline)
-  }
-  useEffect(()=>{
-    ChatAPI.subscribeToFriendStatus(friendId,handleStatusChange)
-    return()=>{
-      ChatAPI.unsubscribeToFriendStatus(friendId,handleStatusChange)
-    }
-  })
-  return isOnline
-}
-export default useFriendStatus
+- 创建一个 Context
+
+```tsx
+const ThemeContext = createContext('dark');
 ```
 
-使用
+## useSyncExternalStore
+
+对于外部内容的订阅，一般用于
+
+- 订阅原有的系统（如果你的应用完全由 React 构建，我们推荐使用 React state 替代）
+- 订阅浏览器 API
 
 ```jsx
-// FriendStatus.jsx
-import React,{useState,useEffect} from 'react'
-import useFriendStatus from 'useFriendStatus.js'
-function FriendStatus(props){
-  const isOnline = useFriendStatus(props.friend.id)
-  if(isOnline === null){
-    return 'loading...'
-  }
-  return isOnline ? 'online' : 'offline'
-}
-// FriendListItem.jsx
-import React,{useState,useEffect} from 'react'
-import useFriendStatus from 'useFriendStatus.js'
-function FriendListItem(props){
-  const isOnline = useFriendStatus(props.friend.id)
-  if(isOnline === null){
-    return 'loading...'
-  }
+// App.jsx
+// 订阅原有系统
+import { useSyncExternalStore } from 'react';
+import { todosStore } from './todoStore.js';
+
+export default function TodosApp() {
+  const todos = useSyncExternalStore(todosStore.subscribe, todosStore.getSnapshot);
   return (
-  <div style={isOnline?{color:green}:{color:red}}>
-   	{props.friend.name}
-  </div>
-  )
+    <>
+      <button onClick={() => todosStore.addTodo()}>Add todo</button>
+      <hr />
+      <ul>
+        {todos.map(todo => (
+          <li key={todo.id}>{todo.text}</li>
+        ))}
+      </ul>
+    </>
+  );
 }
 ```
 
-- 
+```js
+// todoStore.js
+// 这是一个第三方 store 的例子，
+// 你可能需要把它与 React 集成。
+
+let nextId = 0;
+let todos = [{ id: nextId++, text: 'Todo #1' }];
+let listeners = [];
+
+export const todosStore = {
+  addTodo() {
+    todos = [...todos, { id: nextId++, text: 'Todo #' + nextId }]
+    emitChange();
+  },
+  subscribe(listener) {
+    listeners = [...listeners, listener];
+    return () => {
+      listeners = listeners.filter(l => l !== listener);
+    };
+  },
+  getSnapshot() {
+    return todos;
+  }
+};
+
+function emitChange() {
+  for (let listener of listeners) {
+    listener();
+  }
+}
+```
+
+## useDeferredValue
+
+它将“滞后”于实际值，并自动触发非阻塞的重新渲染以“追赶”新值。
+
+使用场景
+
+- 新的内容还在加载期间，代替旧内容进行展示
+- 数据渲染很慢，无法简单优化，避免阻塞 UI 时
+
+```tsx
+const App = ()=>{
+  const [state,setState] = useState()
+  const deferedState = useDeferredValue(state)
+	if(deferedState !== state){
+    return <div> Loading </div>
+  }
+  return <>
+  <input onChange={(e)=>setState(e.target.value)}></input>
+  {new Array(999).fill('').map(item=>{
+    return <>{deferedState}</>
+  })}
+  </>
+} 
+```
+
+
+
+## useTransition
+
+用于设置新的状态，直到新状态加载完成后，更新页面渲染。在期间可以更改为其他新的状态。
+
+使用场景
+
+- 点击一个导航菜单，在加载时点击进入另一个菜单
+- 实现一个可中断的路由导航，在进入新的页面前，用户可以点击进入其它页面
+- 启用 [Suspense](https://react.docschina.org/reference/react/Suspense) 的路由默认情况下会将页面导航更新包装为 transition。
+
+> 注意事项，不能用于 input 等内容的绑定，输入事件的更新应该是同步的
+
+```jsx
+
+```
+
+
+
+
 
 ## 参考文章
 

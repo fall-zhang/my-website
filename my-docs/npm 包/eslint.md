@@ -1,5 +1,5 @@
 > Create by **fall** on -- Aug 2020
-> Recently revised in 04 Feb 2024
+> Recently revised in 13 Feb 2025
 
 ## Eslint
 
@@ -59,7 +59,7 @@ module.exports = {
 // eslint-disable-next-line no-unused-vars
 ```
 
-> eslint 支持层叠配置，默认使用离需检测的文件最近的 .eslintrc 配置文件
+> eslint 支持层叠配置，默认使用离需检测的文件最近的 `.eslintrc`、`eslint.config.js` 配置文件
 
 ### 插件
 
@@ -109,11 +109,95 @@ Vue 语法检查，使用时需替换解析器为 vue-eslint-parser
 
 ## 推荐配置
 
+v7、v8 配置文件和 v9 不同，但 rules 可以复用，因此单独把 rules 提取出来，然后区分不同版本的配置文件
+
+package.json 中的 type 属性为 module 时，eslint 识别会混乱无法格式化代码，确保使用 `.cjs` 做为后缀，即 `.eslintrc.cjs`
+
+如果不确定配置是否正确，可以使用命令行运行 `eslint`
+
+### 推荐规则配置
+
+```js
+const rules = {
+  // js 处理
+  'no-unused-vars': 1, // 未使用的变量
+  'comma-dangle': 0,
+  'space-before-function-paren': 0, // function 前面的空格
+  eqeqeq: 1, // 必须使用全等
+  semi: [2, 'never'], // 语句不使用分号结尾
+  quotes: [  // 引号类型 `` "" ''
+    2,
+    'single',
+    {
+      avoidEscape: true,
+      allowTemplateLiterals: true
+    }
+  ],
+  'no-irregular-whitespace': 2, // 不能有不规则的空格
+  'eol-last': 0, // 所有文件结尾必须包括换行
+  'no-else-return': 2, //如果 if 语句里面有 return 后面不能跟 else 语句
+  'max-lines-per-function': [ // 每个方法最多多少行
+    2,
+    { max: 300, skipComments: true, skipBlankLines: true }
+  ],
+  'no-confusing-arrow': 2,
+  'no-nested-ternary': 2,
+  'no-console': 1,
+  'no-debugger': 1, // 使用 debugger 会警告
+  'no-multiple-empty-lines': [2, { max: 2 }], // 空行最多不能超过2行
+  'no-multi-spaces': 2, // 不能用多余的空格
+  'no-trailing-spaces': 2, // 一行结束后面不要有空格
+  'no-proto': 1, // 禁止使用__proto__属性
+  'no-sparse-arrays': 2, // 禁止稀疏数组， [1,,2]
+  'no-param-reassign': [
+    2,
+    { props: true, ignorePropertyModificationsFor: ['draft'] }
+  ],
+  'indent': [1, 2, { SwitchCase: 1 }],
+  // 异步处理
+  'no-promise-executor-return': 2, // 禁止 promise 中使用 return
+  'no-await-in-loop': 2, // 禁止循环中使用 await
+  'max-nested-callbacks': ['error', 3], // 异步最大回调数
+  'no-return-await': 2,
+  'prefer-promise-reject-errors': 2, // 使用 new Error 追踪错误
+  'func-call-spacing': 0,
+
+  // typescript
+  'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
+  '@typescript-eslint/no-explicit-any': 1, // 使用 any 时警告
+  '@typescript-eslint/no-this-alias': 0, // 是否禁止 this 的别名
+
+  // vue 错误
+  'vue/no-unused-vars': 1,
+  'vue/multiline-html-element-content-newline': 0,
+  'vue/first-attribute-linebreak': 0,
+  'vue/html-closing-bracket-newline': 0,
+  'vue/html-indent': 0,
+  'vue/no-multiple-template-root': 0,
+  'vue/html-self-closing': 0,
+  'vue/max-attributes-per-line': [
+    1,
+    {
+      singleline: 5,
+      multiline: 4
+    }
+  ],
+  // react
+  'react/no-this-in-sfc': 0,
+  'react/prop-types': 0,
+  'react/display-name': 'off',
+  'react/jsx-uses-react': 'off', // React ^16.14.0 以及 V17 以后将支持新的语法转换器
+  'react/react-in-jsx-scope': 'off', // 新的语法转换器不必引入 React
+}
+```
+
+
+
+
+
 ### node
 
 纯 node 的后端项目，只需要安装 eslint
-
-package.json 中的 type 属性为 module 时，eslint 识别会混乱无法格式化代码，确保使用 `.cjs` 做为后缀
 
 ```js
 // .eslintrc.cjs
@@ -129,29 +213,7 @@ module.exports = {
     sourceType: 'module'
   },
   rules: {
-    // js 处理
-    'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
-    'no-unused-vars': 1, // 未使用的变量
-    'comma-dangle': 0,
-    'space-before-function-paren': 0, // function 前面的空格
-    quotes: [
-      2,
-      'single',
-      {
-        avoidEscape: true,
-        allowTemplateLiterals: true
-      }
-    ],
-    semi: [2, 'never'],
-    'no-irregular-whitespace': 2, // 不能有不规则的空格
-    'eol-last': 0, // 所有文件结尾必须包括换行
-    // 异步处理
-    'no-promise-executor-return': 2, // 禁止 promise 中使用 return
-    'no-await-in-loop': 2, // 禁止循环中使用 await
-    'max-nested-callbacks': ['error', 3], // 异步最大回调数
-    'no-return-await': 2,
-    'prefer-promise-reject-errors': 2, // 使用 new Error 追踪错误
-    'func-call-spacing': 0,
+    // 选择你需要的规则
   }
 }
 ```
@@ -163,25 +225,52 @@ TypeScript 也是使用 eslint 进行格式化，tslint 已经不再维护，而
 安装：除了 `eslint`、`typescript` 之外，还需要安装 `@typescript-eslint/parser`、`@typescript-eslint/eslint-plugin`
 
 ```js
-// .eslintrc.cjs || cjs:commonjs
 module.exports = {
-  extends: ['eslint:recommended', 'plugin:@typescript-eslint/recommended'],
-  parser: '@typescript-eslint/parser', // 修改解析器
-  plugins: ['@typescript-eslint'], // 添加插件
-  root: true,
-  // ts 会使用类型检查，检查未使用的变量，如果不想使用 ts 的类型检查，可以启用 globals，选择忽略一些全局定义的变量
-  // globals: {
-  //   defineProps: true,
-  // },
-  rules:{
-    "no-undef": 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
-    "@typescript-eslint/await-thenable":2, // 禁止 await 非异步方法
-    "@typescript-eslint/no-floating-promises":2, // 必须捕获 Promise 错误
-    "@typescript-eslint/no-misused-promises":2, // 禁止将异步方法直接作为判断条件
-    "@typescript-eslint/promise-function-async":2, // 异步方法返回有 async
+  env: {
+    es2022: true,
+    node: true
+  },
+  extends: [
+    'eslint:recommended',
+    'plugin:@typescript-eslint/recommended'
+  ],
+  parser: '@typescript-eslint/parser',
+  parserOptions: {
+    ecmaVersion: 12,
+    sourceType: 'module'
+  },
+  plugins: ['@typescript-eslint'],
+  rules: {
+   // 选择你需要的规则
   }
 }
 ```
+
+```ts
+import js from '@eslint/js'
+import globals from 'globals'
+import tseslint from 'typescript-eslint'
+
+export default tseslint.config(
+  { ignores: ['dist'] },
+  {
+    extends: [js.configs.recommended, ...tseslint.configs.recommended],
+    files: ['**/*.{ts,tsx}'],
+    languageOptions: {
+      ecmaVersion: 2020,
+      globals: globals.browser,
+    },
+    plugins: {
+    },
+    rules: {
+    
+    },
+  },
+)
+
+```
+
+
 
 ### Vue
 
@@ -211,45 +300,7 @@ module.exports = {
   },
   plugins: ['vue', '@typescript-eslint'],
   rules: {
-    'no-undef': 0, // 未命名变量不报错：当未命名变量的检查交给 ts 类型检查器时使用
-    'no-unused-vars': 1, // 未使用的变量
-    'comma-dangle': 0,
-    'func-call-spacing': 0,
-    'space-before-function-paren': 0, // function 前面的空格
-    quotes: [
-      2,
-      'single',
-      {
-        avoidEscape: true,
-        allowTemplateLiterals: true
-      }
-    ],
-    semi: [2, 'never'],
-    'no-irregular-whitespace': 2,
-    'eol-last': 0, // 所有文件结尾必须包括换行
-    // 异步处理
-    'no-promise-executor-return': 2, // 禁止 promise 中使用 return
-    'no-await-in-loop': 2, // 禁止循环中使用 await
-    'max-nested-callbacks': ['error', 3], // 异步最大回调数
-    'no-return-await': 2,
-    'prefer-promise-reject-errors': 2, // 使用 new Error 追踪错误
-    // vue 错误
-    'vue/no-unused-vars': 1,
-    'vue/multiline-html-element-content-newline': 0,
-    'vue/first-attribute-linebreak': 0,
-    'vue/html-closing-bracket-newline': 0,
-    'vue/html-indent': 0,
-    'vue/no-multiple-template-root': 0,
-    'vue/html-self-closing': 0,
-    'vue/max-attributes-per-line': [
-      1,
-      {
-        singleline: 5,
-        multiline: 4
-      }
-    ],
-     // ts 错误处理
-    '@typescript-eslint/no-explicit-any': 1
+   // 选择你需要的规则
   }
 }
 ```
@@ -278,44 +329,7 @@ module.exports = {
   },
   plugins: ['react', '@typescript-eslint'],
   rules: {
-    // js
-    'no-else-return': 2, //如果 if 语句里面有 return 后面不能跟 else 语句
-    'max-lines-per-function': [
-      2,
-      { max: 300, skipComments: true, skipBlankLines: true }
-    ],
-    'no-unused-vars': 1,
-    'comma-dangle': 0,
-    semi: [2, 'never'], // 语句不使用分号结尾
-    'no-confusing-arrow': 2,
-    'no-nested-ternary': 2,
-    'no-console': 1,
-    'no-debugger': 1, // 使用 debugger 会警告
-    'no-multiple-empty-lines': [2, { max: 2 }], // 空行最多不能超过2行
-    'no-multi-spaces': 2, // 不能用多余的空格
-    'no-trailing-spaces': 2, // 一行结束后面不要有空格
-    eqeqeq: 1, // 必须使用全等
-    'no-proto': 1, // 禁止使用__proto__属性
-    'no-sparse-arrays': 2, // 禁止稀疏数组， [1,,2]
-    quotes: [1, 'single'], // 引号类型 `` "" ''
-    'no-param-reassign': [
-      2,
-      { props: true, ignorePropertyModificationsFor: ['draft'] }
-    ],
-    // 异步处理
-    'no-promise-executor-return': 2, // 禁止 promise 中使用 return
-    'no-await-in-loop': 2, // 禁止循环中使用 await
-    'max-nested-callbacks': ['error', 3], // 异步最大回调数
-    'no-return-await': 2,
-    'prefer-promise-reject-errors': 2, // 使用 new Error 追踪错误
-    // react
-    'react/no-this-in-sfc': 0,
-    'react/prop-types': 0,
-    'react/display-name': 'off',
-    'react/jsx-uses-react': 'off', // React ^16.14.0 以及 V17 以后将支持新的语法转换器
-    'react/react-in-jsx-scope': 'off', // 新的语法转换器不必引入 React
-    // typescript
-    '@typescript-eslint/no-this-alias': 0, // 是否禁止 this 的别名
+   // 选择你需要的规则
   }
 }
 ```
@@ -330,9 +344,9 @@ module.exports = {
 
 ```json
 {
-  "eslint.enable": true, // 是否开启 vscode 的 eslint
-  "eslint.autoFixOnSave": true, // 是否在保存的时候自动fix eslint
-  "eslint.options": { // 指定vscode的eslint所处理的文件的后缀
+  "eslint.enable": true, // 开启 vscode 的 eslint 作为格式化工具
+  "eslint.autoFixOnSave": true, // 是否在保存的时候自动 fix eslint
+  "eslint.options": { // 指定 vscode 的 eslint 所处理的文件的后缀
     "extensions": [
       ".js",
       ".vue",
@@ -365,7 +379,7 @@ module.exports = {
 
 ## Eslint 语法配置清单
 
-> P.S.我认为经常使用的会优先排列在前面
+> P.S. 我认为经常使用的会优先排列在前面
 
 ```json
 {
@@ -548,7 +562,7 @@ module.exports = {
 
 | 作者        | 文章名称                                                     |
 | ----------- | ------------------------------------------------------------ |
-| yuxiaoliang | [在Typescript项目中，如何优雅的使用ESLint和Prettier](https://juejin.cn/post/6844903880006844424) |
+| yuxiaoliang | [在 Typescript 项目中，如何优雅的使用 ESLint 和 Prettier](https://juejin.cn/post/6844903880006844424) |
 | 爱心发电丶  | [Eslint该如何配置？Eslint使用以及相关配置说明](https://zhuanlan.zhihu.com/p/548306020) |
 |             | [14 Linting Rules To Help You Write Asynchronous Code in JavaScript](https://maximorlov.com/linting-rules-for-asynchronous-code-in-javascript/) |
 

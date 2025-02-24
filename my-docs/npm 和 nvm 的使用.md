@@ -254,7 +254,7 @@ npm init --scope=username
 
 ## corepack
 
-corepack 是 node V16.13 后用来管理包管理器的工具
+corepack 是 node V16.13 后用来**管理**如（npm、pnpm、yarn）包管理器的工具
 
 通过以下方式即可启用改管理工具
 
