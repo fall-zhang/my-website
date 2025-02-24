@@ -14,7 +14,7 @@ const config = {
   baseUrl: '/my-website/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
-  favicon: './img/favicon.ico',
+  favicon: './svg/fallen_leaf.svg',
   // isMDXComponent: true,
   // GitHub pages deployment config.
   // If you aren't using GitHub pages, you don't need these.
@@ -79,7 +79,7 @@ const config = {
         title: 'Fall 的笔记本',
         logo: {
           alt: 'My Site Logo',
-          src: './img/logo.svg'
+          src: './svg/boy_avatar.svg'
         },
         items: [
           {
