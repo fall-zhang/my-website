@@ -19,9 +19,7 @@ const FeatureList = [
     link: '/blog/TypeScript声明',
     Svg: require('@site/static/home-page/circle-three.svg').default,
     description: (
-      <>
-        声明空间：就是声明类型和声明变量所在的不同空间。 全局模块：就是任何文件都可以访问的模块。
-      </>
+        '声明空间：就是声明类型和声明变量所在的不同空间。 全局模块：就是任何文件都可以访问的模块。'
     )
   },
   {
