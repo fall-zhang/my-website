@@ -9,13 +9,18 @@
   position: relative;
   overflow: hidden;
   background: var(--ifm-hero-background-color);
+  --ifm-hero-background-color: #dfdfdf;
 }
 
-@media screen and (max-width: 996px) {
+
+html[data-theme='dark'] {
   .heroBanner {
-    padding: 2rem;
+    background: #383838;
+    --ifm-hero-background-color: #383838;
   }
 }
+
+
 
 .buttons {
   display: flex;
@@ -30,7 +35,7 @@
   }
 } */
 
-.headerText{
+.headerText {
   width: 360px;
   display: flex;
   align-items: center;
@@ -38,10 +43,22 @@
   gap: 10px;
   /* background: #000; */
 }
+
 .container {
   display: flex;
   align-items: center;
   justify-content: space-evenly;
+}
+
+
+@media screen and (max-width: 996px) {
+  .heroBanner {
+    padding: 2rem;
+  }
+
+  .container {
+    flex-direction: column;
+  }
 }
 
 .hero__title {}

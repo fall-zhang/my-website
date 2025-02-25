@@ -11,7 +11,7 @@ import { RandomLogo } from './components/random-logo/random-logo'
 function HomepageHeader () {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--secondary', styles.heroBanner)}>
+    <header className={clsx('hero ', styles.heroBanner)}>
       <div className={clsx('container',styles.container)}>
         <div className={styles.headerText}>
           {/* <h1 className="hero__title">Fall</h1> */}

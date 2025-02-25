@@ -40,3 +40,7 @@
   background-color: var(--ifm-color-secondary);
   border-radius: 50%;
 }
+
+.g-cursor-pointer {
+  cursor: pointer;
+}
