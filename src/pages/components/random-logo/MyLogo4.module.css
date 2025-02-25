@@ -1,9 +1,13 @@
 .name3 {
   position: relative;
   display: inline-block;
-  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
-  color: white;
   font-style: italic;
+  width: 200px;
+  height: 52px;
+  font-family: 'Franklin Gothic Medium',
+    'Arial Narrow',
+    Arial,
+    sans-serif;
   -webkit-text-stroke-color: #000;
   -webkit-text-stroke-width: .4px;
   font-size: 40px;
@@ -12,19 +16,36 @@
   background-clip: text;
   font-weight: 600;
 
-  &::before {
+  &::after {
+    position: absolute;
     content: "Fall Zhang";
-    font-style: italic;
-    transform-origin: center;
-    -webkit-text-stroke-width: 0;
-    color: blue;
+    display: inline-block;
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    -webkit-text-stroke-color: #000;
+    -webkit-text-stroke-width: .4px;
     left: 0px;
-    text-align: justify;
-    letter-spacing: 12px;
+    font-size: 40px;
+    line-height: 46px;
+    background-clip: text;
+    text-align: center;
     width: 100%;
+    font-weight: 600;
+    z-index: 10;
+  }
+
+  &::before {
+    position: absolute;
+    content: "拥有选择 获取自由";
+    -webkit-text-stroke-width: 0;
+    color: hsl(281, 70%, 53%);
+    letter-spacing: 14px;
+    padding-left: 7px;
+    width: 140%;
+    margin-left: -20%;
     line-height: 46px;
     font-size: 12px;
-    position: absolute;
+    left: 0px;
+    z-index: 9;
     text-align: center;
   }
 }
