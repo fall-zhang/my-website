@@ -10,7 +10,7 @@ const eslintConfig = [
     name: 'app/files-to-lint',
     files: ['src/**/*.{js,mjs,jsx,ts,tsx}'],
     languageOptions: {
-      ecmaVersion: 2020,
+      ecmaVersion: 2022,
       parserOptions: {
         ecmaFeatures: {
           jsx: true
@@ -24,9 +24,10 @@ const eslintConfig = [
       'react-refresh': reactRefresh
     },
     rules: {
-      ...eslintReact.configs.flat.recommended, // This is not a plugin object, but a shareable config object
-      ...eslintReact.configs.flat['jsx-runtime'],
+      ...eslintReact.configs.flat.recommended.rules, // This is not a plugin object, but a shareable config object
+      ...eslintReact.configs.flat['jsx-runtime'].rules,
       ...js.configs.recommended.rules,
+      ...reactHooks.configs.recommended.rules,
       // js
       'max-lines-per-function': [
         2,
