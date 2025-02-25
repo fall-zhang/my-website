@@ -6,9 +6,9 @@
   flex-wrap: wrap;
 
   .infoContent {
-    width: 200px;
-    height: 100px;
-    line-height: 100px;
+    width: 300px;
+    height: 150px;
+    line-height: 150px;
     background-color: #61dafb;
     cursor: pointer;
     color: black;
@@ -112,9 +112,10 @@
   font-weight: 600;
   font-family: emoji;
   text-align: left;
-  padding: 10px;
-  height: 80px;
-  width: 80px;
+  padding: 20px;
+  font-size: 2em;
+  height: 160px;
+  width: 160px;
   text-decoration: underline;
-  box-shadow: 15px 12px 60px -10px #838383ee, 15px 17px 40px -10px #868686ee;
+  box-shadow: 15px 6px 80px -10px #838383ee, 15px 17px 40px -10px #868686ee;
 }
