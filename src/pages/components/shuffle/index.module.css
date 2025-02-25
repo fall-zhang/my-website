@@ -1,0 +1,120 @@
+.doc {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 100px;
+  text-align: center;
+  flex-wrap: wrap;
+
+  .infoContent {
+    width: 200px;
+    height: 100px;
+    line-height: 100px;
+    background-color: #61dafb;
+    cursor: pointer;
+    color: black;
+    box-shadow: var(--my-shadow-3);
+  }
+}
+
+.head {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+}
+
+.name {
+  position: relative;
+  display: inline-block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 0 16px 0 12px;
+  font-size: 36px;
+  font-style: italic;
+  box-shadow: -3px -3px 0 0 #000;
+  background-color: rgb(76, 204, 255);
+
+  &::before {
+    content: "Fall";
+    padding: 0 16px 0 12px;
+    left: 3px;
+    position: absolute;
+    color: white;
+    text-align: center;
+  }
+}
+
+.nameZone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.name2 {
+  position: relative;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: .4px;
+  display: inline-block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  font-style: italic;
+  font-size: 40px;
+  transform-origin: center;
+  transform: rotate(-2deg);
+  font-weight: 600;
+
+  &::after {
+    content: "Fall Zhang";
+    /* // padding: 0 16px 0 12px; */
+    font-style: italic;
+    transform-origin: center;
+    transform: rotate(2deg);
+    left: 0px;
+    position: absolute;
+    color: #000;
+    text-align: center;
+  }
+}
+
+.name3 {
+  position: relative;
+  display: inline-block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  font-style: italic;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: .4px;
+  font-size: 40px;
+  line-height: 46px;
+  transform-origin: center;
+  background-clip: text;
+  font-weight: 600;
+
+  &::before {
+    content: "Fall Zhang";
+    font-style: italic;
+    transform-origin: center;
+    -webkit-text-stroke-width: 0;
+    color: blue;
+    left: 0px;
+    text-align: justify;
+    letter-spacing: 12px;
+    width: 100%;
+    line-height: 46px;
+    font-size: 12px;
+    position: absolute;
+    text-align: center;
+  }
+}
+
+.fame {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+  font-weight: 600;
+  font-family: emoji;
+  text-align: left;
+  padding: 10px;
+  height: 80px;
+  width: 80px;
+  text-decoration: underline;
+  box-shadow: 15px 12px 60px -10px #838383ee, 15px 17px 40px -10px #868686ee;
+}
