@@ -1,0 +1,25 @@
+.name {
+  position: relative;
+  display: inline-block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  padding: 0 16px 0 12px;
+  font-size: 36px;
+  font-style: italic;
+  box-shadow: -3px -3px 0 0 #000;
+  background-color: rgb(76, 204, 255);
+
+  &::before {
+    content: "Fall";
+    padding: 0 16px 0 12px;
+    left: 3px;
+    position: absolute;
+    color: white;
+    text-align: center;
+  }
+}
+
+.nameZone {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

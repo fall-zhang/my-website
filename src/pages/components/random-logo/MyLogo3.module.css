@@ -1,0 +1,25 @@
+.name2 {
+  position: relative;
+  -webkit-text-stroke-color: #000;
+  -webkit-text-stroke-width: .4px;
+  display: inline-block;
+  font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+  color: white;
+  font-style: italic;
+  font-size: 40px;
+  transform-origin: center;
+  transform: rotate(-2deg);
+  font-weight: 600;
+
+  &::after {
+    content: "Fall Zhang";
+    /* padding: 0 16px 0 12px; */
+    font-style: italic;
+    transform-origin: center;
+    transform: rotate(2deg);
+    left: 0px;
+    position: absolute;
+    color: #000;
+    text-align: center;
+  }
+}
