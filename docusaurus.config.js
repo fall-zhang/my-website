@@ -20,6 +20,17 @@ const config = {
   // If you aren't using GitHub pages, you don't need these.
   organizationName: 'fall_zhang', // Usually your GitHub org/user name.
   projectName: 'front-end-note', // Usually your repo name.
+  // 实验特性
+  future: {
+    experimental_faster: {
+      swcJsLoader: true, // Use SWC to transpile JS (instead of Babel)
+      swcJsMinimizer: true, //  Use SWC to minify JS (instead of Terser)
+      swcHtmlMinimizer: true, // Use SWC to minify HTML and inlined JS/CSS (instead of html-minifier-terser)
+      lightningCssMinimizer: true, // Use Lightning CSS to minify CSS (instead of cssnano and clean-css)
+      rspackBundler: true, // Use Rspack to bundle your app (instead of webpack)
+      mdxCrossCompilerCache: true // Compile MDX files once for both browser/Node.js environments instead of twice
+    }
+  },
 
   // Even if you don't use internalization, you can use this field to set useful
   // metadata like html lang. For example, if your site is Chinese, you may want
