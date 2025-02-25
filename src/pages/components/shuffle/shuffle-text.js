@@ -10,7 +10,7 @@ class ShuffleText {
    * @type {string}
    * @default 'キスト文字列です停止しテキストを設定しますます文字列です'
    */
-  sourceRandomCharacter = 'キスト文字列です停止しテキストを設定しますます文字列です'
+  sourceRandomCharacter = 'キスト文字列です停止しテキストを設定しますます空离眛'
   /**
    * The string for effect space.
    * 空白に用いる文字列です。

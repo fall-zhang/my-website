@@ -16,4 +16,4 @@ const ShuffleText = () => {
 
 export {
   ShuffleText
-} 
+}
