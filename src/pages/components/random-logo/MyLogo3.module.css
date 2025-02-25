@@ -23,3 +23,14 @@
     text-align: center;
   }
 }
+
+html[data-theme='dark'] {
+  .name2 {
+    -webkit-text-stroke-color: hsl(263, 68%, 65%);
+    color: rgb(135, 135, 135);
+
+    &::after {
+      color: white;
+    }
+  }
+}
