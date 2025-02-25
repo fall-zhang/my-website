@@ -8,6 +8,7 @@
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: var(--ifm-hero-background-color);
 }
 
 @media screen and (max-width: 996px) {
@@ -22,16 +23,25 @@
   justify-content: center;
 }
 
-@media screen and (max-width: 600px) {
+/* @media screen and (max-width: 600px) {
   .container {
     display: block;
     justify-content: flex-start;
   }
-}
+} */
 
+.headerText{
+  width: 360px;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  gap: 10px;
+  /* background: #000; */
+}
 .container {
   display: flex;
-  justify-content: space-between;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 .hero__title {}

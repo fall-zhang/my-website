@@ -4,20 +4,23 @@ import clsx from 'clsx'
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
 import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
-
+import { HomeIntroduce } from './components/HomeIntroduce'
 import styles from './index.module.css'
-
+import {ShuffleText} from './components/shuffle/shuffle'
+import { RandomLogo } from './components/random-logo/random-logo'
 function HomepageHeader () {
   const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero hero--primary', styles.heroBanner)}>
-      <div className={clsx("container",styles.container)}>
-        <div>
-        <h1 className="hero__title">Fall</h1>
-        <p className="hero__subtitle">{siteConfig.tagline}</p>
+    <header className={clsx('hero hero--secondary', styles.heroBanner)}>
+      <div className={clsx('container',styles.container)}>
+        <div className={styles.headerText}>
+          {/* <h1 className="hero__title">Fall</h1> */}
+          <RandomLogo />
+          {/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
+          <ShuffleText />
         </div>
         <div className=''>
-          <img src="./svg/media-work.svg" height={400} width={400} alt="" />
+          <img src="./svg/media-work.svg" height={512} width={512} alt="" />
         </div>
       </div>
     </header>
@@ -31,6 +34,7 @@ export default function Home () {
       title={`Hello from ${siteConfig.title}`}
       description="Description will go into a meta tag in <head />">
       <HomepageHeader />
+      {/* <HomeIntroduce /> */}
       <main>
         <HomepageFeatures />
       </main>
