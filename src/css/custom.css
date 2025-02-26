@@ -44,3 +44,6 @@
 .g-cursor-pointer {
   cursor: pointer;
 }
+.g-user-select-none {
+  user-select: none;
+}
