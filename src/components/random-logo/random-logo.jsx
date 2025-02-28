@@ -4,7 +4,7 @@ import MyLogo2 from './MyLogo2'
 import MyLogo3 from './MyLogo3'
 import MyLogo4 from './MyLogo4'
 import MyLogo5 from './MyLogo5'
-export const RandomLogo = ()=>{
+export default function RandomLogo(){
   const [current,setCurrent] = useState(Math.floor(Math.random() * 4))
   let RenderLogo = <></>
   if(current === 0){
