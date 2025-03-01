@@ -295,7 +295,7 @@ Ant Design 在 package.json 里设置了如下的 sideEffects，来告知 webpac
   "repository":"github:nodejscn/node-api-cn",
   "repository": {
     "type": "git",
-    "url": "https://github.com/Fall-zhang/vite-vue3-TS-lint"
+    "url": "https://github.com/fall-zhang/vite-vue3-TS-lint"
   },
 }
 ```

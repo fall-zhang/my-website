@@ -101,7 +101,7 @@ const config = {
           },
           { to: '/blog', label: 'Blog', position: 'left' },
           {
-            href: 'https://github.com/Fall-zhang',
+            href: 'https://github.com/fall-zhang',
             label: 'GitHub',
             position: 'right'
           }
@@ -129,7 +129,7 @@ const config = {
               },
               {
                 label: 'Github',
-                href: 'https://github.com/Fall-zhang'
+                href: 'https://github.com/fall-zhang'
               },
               {
                 label: '思否segmentfault',
