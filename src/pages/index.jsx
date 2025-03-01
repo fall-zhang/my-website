@@ -6,8 +6,8 @@ import Layout from '@theme/Layout'
 import HomepageFeatures from '@site/src/components/HomepageFeatures'
 import { HomeIntroduce } from './components/HomeIntroduce'
 import styles from './index.module.css'
-import {ShuffleText} from './components/shuffle/shuffle'
-import { RandomLogo } from './components/random-logo/random-logo'
+import ShuffleText from '@site/src/components/shuffle/shuffle'
+import RandomLogo from '@site/src/components/random-logo/random-logo'
 function HomepageHeader () {
   const { siteConfig } = useDocusaurusContext()
   return (
