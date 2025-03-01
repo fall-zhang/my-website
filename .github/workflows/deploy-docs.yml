@@ -48,12 +48,13 @@ jobs:
       - name: Build doc
         run: pnpm build
 
-      # - name: Deploy Doc 🚀
-      #   uses: JamesIves/github-pages-deploy-action@v4
-      #   with:
-      #     branch: github-pages
-      #     folder: ./build
-      #     clean: false
+      - name: Deploy Doc 🚀
+        uses: JamesIves/github-pages-deploy-action@v4
+        with:
+          branch: github-pages
+          folder: ./build
+          clean: false
+
       - name: Deploy Doc 🚀
         uses: actions/upload-pages-artifact@v3
         with:
