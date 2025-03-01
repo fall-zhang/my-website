@@ -16,6 +16,7 @@ on:
 
 # 部署到 GitHub Pages 时 GITHUB_TOKEN 的权限
 permissions:
+  id-token: write
   contents: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
