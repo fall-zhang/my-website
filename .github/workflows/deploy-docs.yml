@@ -63,7 +63,7 @@ jobs:
         with:
           branch: github-pages
           folder: ./build
-          clean: true
+          clean: false
 
   # Deployment job
   # deploy:
