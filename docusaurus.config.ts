@@ -2,12 +2,13 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 // import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants'
 import { themes } from 'prism-react-renderer'
+import type {Config} from '@docusaurus/types';
+import type * as Preset from '@docusaurus/preset-classic';
 // const  = require();
 const lightCodeTheme = themes.github
 const darkCodeTheme = themes.dracula
 
-/** @type {import('@docusaurus/types').Config} */
-const config = {
+const config:Config = {
   title: 'Fall 的笔记本',
   tagline: '未来的前端艺术家',
   url: 'https://fall-zhang.github.io',
@@ -44,8 +45,7 @@ const config = {
   presets: [
     [
       'classic',
-      /** @type {import('@docusaurus/preset-classic').Options} */
-      ({
+      {
         docs: {
           path: './my-docs',
           sidebarPath: require.resolve('./sidebars.js'),
@@ -73,7 +73,7 @@ const config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
-      })
+      } satisfies Preset.Options,
     ]
   ],
   markdown: {
@@ -84,9 +84,7 @@ const config = {
     }
   },
 
-  themeConfig:
-    /** @type {import('@docusaurus/preset-classic').ThemeConfig} */
-    ({
+  themeConfig:    {
       navbar: {
         title: 'Fall 的笔记本',
         logo: {
@@ -158,7 +156,7 @@ const config = {
         theme: lightCodeTheme,
         darkTheme: darkCodeTheme
       }
-    })
+    }satisfies Preset.ThemeConfig,
 }
 
 export default config
