@@ -2,8 +2,8 @@
 // Note: type annotations allow type checking and IDEs autocompletion
 // import { DEFAULT_PLUGIN_ID } from '@docusaurus/constants'
 import { themes } from 'prism-react-renderer'
-import type {Config} from '@docusaurus/types';
-import type * as Preset from '@docusaurus/preset-classic';
+import type { Config } from '@docusaurus/types'
+import type * as Preset from '@docusaurus/preset-classic'
 // const  = require();
 const lightCodeTheme = themes.github
 const darkCodeTheme = themes.dracula
@@ -73,7 +73,7 @@ const config:Config = {
         theme: {
           customCss: require.resolve('./src/css/custom.css')
         }
-      } satisfies Preset.Options,
+      } satisfies Preset.Options
     ]
   ],
   markdown: {
@@ -84,79 +84,79 @@ const config:Config = {
     }
   },
 
-  themeConfig:    {
-      navbar: {
-        title: 'Fall 的笔记本',
-        logo: {
-          alt: 'My Site Logo',
-          src: './svg/boy_avatar.svg'
+  themeConfig: {
+    navbar: {
+      title: 'Fall 的笔记本',
+      logo: {
+        alt: 'My Site Logo',
+        src: './svg/boy_avatar.svg'
+      },
+      items: [
+        {
+          type: 'doc',
+          docId: 'README',
+          position: 'left',
+          label: '笔记'
         },
-        items: [
-          {
-            type: 'doc',
-            docId: 'README',
-            position: 'left',
-            label: '笔记'
-          },
-          { to: '/blog', label: 'Blog', position: 'left' },
-          {
-            href: 'https://github.com/fall-zhang',
-            label: 'GitHub',
-            position: 'right'
-          }
-        ],
-        hideOnScroll: true
-      },
-      footer: {
-        style: 'dark',
-        links: [
-          // {
-          //   title: 'Docs',
-          //   items: [
-          //     {
-          //       label: 'Tutorial',
-          //       to: '/docs/intro',
-          //     },
-          //   ],
-          // },
-          {
-            title: '社区',
-            items: [
-              {
-                label: '掘金',
-                href: 'https://juejin.cn/user/1565342280463325'
-              },
-              {
-                label: 'Github',
-                href: 'https://github.com/fall-zhang'
-              },
-              {
-                label: '思否segmentfault',
-                href: 'https://segmentfault.com/u/fall_zhang0'
-              }
-            ]
-          },
-          {
-            title: '联系',
-            items: [
-              {
-                label: '微信号：mymicrowings',
-                to: '#'
-              },
-              {
-                label: 'GitHub',
-                href: 'https://github.com/facebook/docusaurus'
-              }
-            ]
-          }
-        ],
-        copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.`
-      },
-      prism: {
-        theme: lightCodeTheme,
-        darkTheme: darkCodeTheme
-      }
-    }satisfies Preset.ThemeConfig,
+        { to: '/blog', label: 'Blog', position: 'left' },
+        {
+          href: 'https://github.com/fall-zhang',
+          label: 'GitHub',
+          position: 'right'
+        }
+      ],
+      hideOnScroll: true
+    },
+    footer: {
+      style: 'dark',
+      links: [
+        // {
+        //   title: 'Docs',
+        //   items: [
+        //     {
+        //       label: 'Tutorial',
+        //       to: '/docs/intro',
+        //     },
+        //   ],
+        // },
+        {
+          title: '社区',
+          items: [
+            {
+              label: '掘金',
+              href: 'https://juejin.cn/user/1565342280463325'
+            },
+            {
+              label: 'Github',
+              href: 'https://github.com/fall-zhang'
+            },
+            {
+              label: '思否segmentfault',
+              href: 'https://segmentfault.com/u/fall_zhang0'
+            }
+          ]
+        },
+        {
+          title: '联系',
+          items: [
+            {
+              label: '微信号：mymicrowings',
+              to: '#'
+            },
+            {
+              label: 'GitHub',
+              href: 'https://github.com/facebook/docusaurus'
+            }
+          ]
+        }
+      ],
+      copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.`
+    },
+    prism: {
+      theme: lightCodeTheme,
+      darkTheme: darkCodeTheme
+    }
+  } satisfies Preset.ThemeConfig
 }
 
 export default config
