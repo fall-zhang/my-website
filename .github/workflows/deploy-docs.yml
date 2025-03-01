@@ -16,6 +16,7 @@ on:
 
 # 部署到 GitHub Pages 时 GITHUB_TOKEN 的权限
 permissions:
+  pages: write
   id-token: write
   contents: write
 
