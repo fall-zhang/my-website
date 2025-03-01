@@ -16,8 +16,6 @@ on:
 
 # 部署到 GitHub Pages 时 GITHUB_TOKEN 的权限
 permissions:
-  pages: write
-  id-token: write
   contents: write
 
 # Allow only one concurrent deployment, skipping runs queued between the run in-progress and latest queued.
@@ -47,25 +45,19 @@ jobs:
       - name: Install dependencies
         run: pnpm i --frozen-lockfile
 
-      # - name: Setup Pages
-      #   uses: actions/configure-pages@v4
-      # - name: Build with Jekyll
-      #   uses: actions/jekyll-build-pages@v1
-      #   with:
-      #     source: ./
-      #     destination: ./_site
-      # - name: Upload artifact
-      #   uses: actions/upload-pages-artifact@v3
-
       - name: Build doc
         run: pnpm build
 
+      # - name: Deploy Doc 🚀
+      #   uses: JamesIves/github-pages-deploy-action@v4
+      #   with:
+      #     branch: github-pages
+      #     folder: ./build
+      #     clean: false
       - name: Deploy Doc 🚀
-        uses: JamesIves/github-pages-deploy-action@v4
+        uses: actions/upload-pages-artifact@v3
         with:
-          branch: github-pages
-          folder: ./build
-          clean: false
+          path: build
 
   # Deployment job
   deploy:
@@ -74,6 +66,9 @@ jobs:
       url: ${{ steps.deployment.outputs.page_url }}
     runs-on: ubuntu-latest
     needs: build
+    permissions:
+      pages: write
+      id-token: write
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
