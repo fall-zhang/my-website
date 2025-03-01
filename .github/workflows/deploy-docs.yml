@@ -8,6 +8,7 @@ on:
     paths:
       - ".github/workflows/deploy-docs.yml"
       - "my-docs/**"
+      - "docusaurus.config.ts"
       - "src/**"
       - "package.json"
   # Allows you to run this workflow manually from the Actions tab
