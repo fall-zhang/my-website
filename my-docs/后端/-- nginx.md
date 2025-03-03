@@ -1,9 +1,13 @@
+---
+sidebar_position: 9
+---
+
 > Create by **fall** on 12 Apr 2023
 > Recently revised in 26 Dec 2024
 
 ## Nginx
 
-开源、高性能、可靠的 web 反向代理服务器。
+开源、高性能、可靠的 web 代理服务器。
 
 高性能：其占用内存少、并发能力强、能支持高达 5w 个并发连接数。
 
