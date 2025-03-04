@@ -150,7 +150,7 @@ const config:Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.`
+      copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.<br>`
     },
     prism: {
       theme: lightCodeTheme,

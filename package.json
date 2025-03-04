@@ -58,5 +58,14 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@swc/core"
+    ],
+    "ignoredBuiltDependencies": [
+      "core-js",
+      "core-js-pure"
+    ]
   }
 }

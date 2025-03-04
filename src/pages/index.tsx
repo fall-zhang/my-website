@@ -1,4 +1,4 @@
-import React from 'react'
+import  { useState } from 'react'
 import clsx from 'clsx'
 // import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -28,6 +28,7 @@ function HomepageHeader () {
 
 export default function Home () {
   const { siteConfig } = useDocusaurusContext()
+  const [visible,setVisible]  = useState()
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
