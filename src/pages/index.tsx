@@ -20,7 +20,7 @@ function HomepageHeader () {
           <ShuffleText />
         </div>
         <div className=''>
-          <img src="./svg/media-work.svg" height={512} width={512} alt="" />
+          <img src="/svg/media-work.svg" height={460} width={460} alt="" />
         </div>
       </div>
     </header>
