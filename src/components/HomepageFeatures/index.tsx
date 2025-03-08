@@ -20,7 +20,7 @@ const FeatureList = [
   {
     title: '发现更多 npm 包',
     link: '/blog/npm前端包',
-    Svg:svg2,
+    Svg: svg2,
     description: (
       '不用再为找不到想要 npm 依赖而发愁，实现想做的功能前，先看看这里是否有吧'
     )
