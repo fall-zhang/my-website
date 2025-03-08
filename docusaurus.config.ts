@@ -12,7 +12,7 @@ const config:Config = {
   title: 'Fall 的笔记本',
   tagline: '未来的前端艺术家',
   url: 'https://fall-zhang.github.io',
-  baseUrl: '/my-website/',
+  baseUrl: '/',
   // baseUrl: '/',
   onBrokenLinks: 'warn',
   onBrokenMarkdownLinks: 'warn',
