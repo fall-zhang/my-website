@@ -1,0 +1,41 @@
+.toolsContainer {
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  align-items: center;
+  background: #383838;
+  --ifm-hero-background-color: #383838;
+}
+
+.toolsHeader {
+  font-size: 2.1rem;
+  align-items: center;
+}
+
+.toolsDescription {
+  color: hsl(263, 68%, 66%);
+  font-size: 0.85rem;
+  align-items: center;
+}
+
+.imageContainer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0 40px;
+  /* display: grid;
+  grid-template-columns: repeat(4, 1fr); */
+  grid-gap: 1rem;
+
+  .small {
+    width: 64px;
+    height: 64px;
+    margin: 1em;
+    background-position: cover;
+  }
+
+  .big {
+    width: 160px;
+    height: 80px;
+    margin: 1em;
+  }
+}
