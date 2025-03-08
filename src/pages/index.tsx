@@ -1,4 +1,4 @@
-import  { useState } from 'react'
+import { useState } from 'react'
 import clsx from 'clsx'
 // import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -7,11 +7,12 @@ import HomepageFeatures from '@site/src/components/HomepageFeatures'
 import styles from './index.module.css'
 import ShuffleText from '@site/src/components/shuffle/shuffle'
 import RandomLogo from '@site/src/components/random-logo/random-logo'
+import { LanguageTools } from '@site/src/components/LanguageTools/LanguageTools'
 function HomepageHeader () {
   const { siteConfig } = useDocusaurusContext()
   return (
     <header className={clsx('hero ', styles.heroBanner)}>
-      <div className={clsx('container',styles.container)}>
+      <div className={clsx('container', styles.container)}>
         <div className={styles.headerText}>
           {/* <h1 className="hero__title">Fall</h1> */}
           <RandomLogo />
@@ -28,7 +29,7 @@ function HomepageHeader () {
 
 export default function Home () {
   const { siteConfig } = useDocusaurusContext()
-  const [visible,setVisible]  = useState()
+  const [visible, setVisible] = useState()
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
@@ -38,6 +39,7 @@ export default function Home () {
       <main>
         <HomepageFeatures />
       </main>
+      <LanguageTools />
     </Layout>
   )
 }
