@@ -4,7 +4,7 @@
 import { themes } from 'prism-react-renderer'
 import type { Config } from '@docusaurus/types'
 import type * as Preset from '@docusaurus/preset-classic'
-// const  = require();
+
 const lightCodeTheme = themes.github
 const darkCodeTheme = themes.dracula
 
@@ -150,7 +150,7 @@ const config:Config = {
           ]
         }
       ],
-      copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.<br>`
+      copyright: `Copyright © ${new Date().getFullYear()} Fall. Built with Docusaurus.<br><a href="https://beian.miit.gov.cn">豫ICP备2025114533号</a>`
     },
     prism: {
       theme: lightCodeTheme,
