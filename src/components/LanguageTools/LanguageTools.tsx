@@ -113,7 +113,7 @@ const usingToolList:UsingTool[] = [
   },
   {
     name: 'linux',
-    image: 'logo/linux.svg',
+    image: 'logo/Linux.svg',
     noteUrl: '/docs/Linux%20&%20命令行/1.1-linux',
     imgStyle: 'small'
   },
