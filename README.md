@@ -1,6 +1,6 @@
 # 笔记博客
 
-将个人笔记和发布的文章，翻译等 Markdown 内容放置在该网站内
+将个人笔记和发布的文章，翻译等内容都在该项目内
 
 ### 安装和启动
 
@@ -8,8 +8,6 @@
 pnpm i
 pnpm dev
 ```
-
-This command starts a local development server and opens up a browser window. Most changes are reflected live without having to restart the server.
 
 ### 打包
 
@@ -19,10 +17,10 @@ pnpm build
 
 ## 项目计划
 
-- [ ] 使用 github workflow 一键部署功能
+- [x] 使用 github workflow 一键部署功能
+- [x] 考虑使用 ts
+- [x] 添加 eslint 格式化 V9
 - [ ] 将 article-release 项目也放到里面
-- [ ] 考虑使用 ts
-- [ ] 添加 eslint 格式化
 - [ ] 更新使用 es 导出
 - [ ] 支持 tailwind
 
@@ -33,21 +31,9 @@ pnpm build
 - Mermaid 更加丰富的图形绘制
 - remark-math rehype-katex 提供数学符号的支持
 
-### Deployment
+### 部署
 
-Using SSH:
-
-```
-$ USE_SSH=true yarn deploy
-```
-
-Not using SSH:
-
-```
-$ GIT_USER=<Your GitHub username> yarn deploy
-```
-
-If you are using GitHub pages for hosting, this command is a convenient way to build the website and push to the `gh-pages` branch.
+使用 github workflows 进行部署，详情可看 `.github\workflows\deploy-docs.yml`
 
 ## 资源引用
 
