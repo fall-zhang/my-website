@@ -13,6 +13,8 @@ sidebar_position: 9
 
 支持协议：Nginx 仅支持 http、https 和 Email 协议
 
+> 对比 apache，nginx 的事件处理代替了 apache 的线程处理请求，支持更高的并发
+
 ### 应用场景
 
 **Web 服务器**
