@@ -9,7 +9,7 @@ import ShuffleText from '@site/src/components/shuffle/shuffle'
 import RandomLogo from '@site/src/components/random-logo/random-logo'
 import { LanguageTools } from '@site/src/components/LanguageTools/LanguageTools'
 function HomepageHeader () {
-  const { siteConfig } = useDocusaurusContext()
+  // const { siteConfig } = useDocusaurusContext()
   return (
     <header className={clsx('hero ', styles.heroBanner)}>
       <div className={clsx('container', styles.container)}>
