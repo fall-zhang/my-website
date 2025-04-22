@@ -2,8 +2,8 @@
 sidebar_position: 2
 ---
 
-> Create by fall on:2022-02-10
-> Recently revised in:2022-02-10
+> Create by fall on 10 Feb 2022<br/>
+> Recently revised in 10 Feb 2022
 
 ## 块级格式上下文
 

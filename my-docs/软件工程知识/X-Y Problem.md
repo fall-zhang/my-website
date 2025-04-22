@@ -1,4 +1,4 @@
-> Create by **fall** on 10 Oct 2023
+> Create by **fall** on 10 Oct 2023<br/>
 > Recently revised in 10 Oct 2023
 
 X-Y Problem，就像是，有一个问题需要解决，你想了原因在于 A，向别人请教关于 A 的问题，别人给出了 A 的解决方案，但你使用 A 并不能解决问题，然后继续添加解决问题的条件，继续问，不能一语中的。（提出的问题，不能解决问题）

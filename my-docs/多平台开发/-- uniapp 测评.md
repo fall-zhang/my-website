@@ -1,6 +1,8 @@
 ---
 sidebar_position: 1
 ---
+> Create by **fall** on 24 Feb 2025<br/>
+> Recently revised in 10 Apr 2025
 
 uniapp 测评
 
