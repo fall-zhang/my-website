@@ -14,7 +14,7 @@
         <updated>2025-02-20T00:00:00.000Z</updated>
         <summary type="html"><![CDATA[Create by fall on 02 Mar 2023]]></summary>
         <content type="html"><![CDATA[<blockquote>
-<p>Create by <strong>fall</strong> on 02 Mar 2023
+<p>Create by <strong>fall</strong> on 02 Mar 2023<br>
 Recently revised in 11 Feb 2025</p>
 </blockquote>
 <p>所有的包名称就是 npm 中的包名称，可以直接在 npm 官网进行搜索</p>
@@ -34,7 +34,7 @@ Recently revised in 11 Feb 2025</p>
 <table><thead><tr><th>包名称</th><th>英文介绍</th><th>介绍</th></tr></thead><tbody><tr><td>quick-lint-js</td><td>finds bugs in JavaScript programs.</td><td>快速分析 js 中的语法错误，C++</td></tr><tr><td>sugarss</td><td>Indent-based CSS syntax for <a href="https://github.com/postcss/postcss" target="_blank" rel="noopener noreferrer">PostCSS</a>.</td><td>强缩进 CSS 语法检测</td></tr><tr><td>@biomejs/biome</td><td>fast formatter for JavaScript, TypeScript, JSX, and JSON</td><td>rust 重写的格式化工具，快！</td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
 <h3 class="anchor anchorWithHideOnScrollNavbar_U9aG" id="测试">测试<a href="https://fall-zhang.github.io/blog/npm%E5%89%8D%E7%AB%AF%E5%8C%85#%E6%B5%8B%E8%AF%95" class="hash-link" aria-label="测试的直接链接" title="测试的直接链接">​</a></h3>
 <table><thead><tr><th>包名称</th><th>英文介绍</th><th>介绍</th></tr></thead><tbody><tr><td>jest</td><td>User-friendly glob matching.Based on <code>fast-glob</code></td><td>筛选文件目录</td></tr><tr><td>autocannon</td><td>HTTP/1.1 基准测试工具</td><td></td></tr><tr><td>vitest</td><td></td><td>基于 vite 的测试，开箱可用 import 语法</td></tr><tr><td>jsdom</td><td></td><td>纯 JS 实现的 DOM</td></tr><tr><td>fetch-mock</td><td></td><td>请求 mock</td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
-<h3 class="anchor anchorWithHideOnScrollNavbar_U9aG" id="语法转换">语法转换<a href="https://fall-zhang.github.io/blog/npm%E5%89%8D%E7%AB%AF%E5%8C%85#%E8%AF%AD%E6%B3%95%E8%BD%AC%E6%8D%A2" class="hash-link" aria-label="语法转换的直接链接" title="语法转换的直接链接">​</a></h3>
+<h3 class="anchor anchorWithHideOnScrollNavbar_U9aG" id="语法转换">语法转换<a href="https://fall-zhang.github.io/blog/npm%E5%89%8D%E7%AB%AF%E5%8C%85#%E8%AF%AD%E6%B3%95%E8%BD%AC%E6%8D%A2" class="hash-link" aria-label="语法转换的直接链接" title="语法�转换的直接链接">​</a></h3>
 <table><thead><tr><th>包名称</th><th>官方介绍</th><th>介绍</th></tr></thead><tbody><tr><td>sucrase</td><td>Sucrase is about 20x faster than Babel</td><td>babel 的替代品，允许更快地构建</td></tr><tr><td>unplugin</td><td>Unified plugin system for build tools.</td><td>制作所有打包平台都可以使用的插件</td></tr><tr><td>swc</td><td>super-fast TypeScript / JavaScript compiler written in Rust.</td><td>超快的 ts / js 编译器</td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr><tr><td></td><td></td><td></td></tr></tbody></table>
 <h2 class="anchor anchorWithHideOnScrollNavbar_U9aG" id="通用工具">通用工具<a href="https://fall-zhang.github.io/blog/npm%E5%89%8D%E7%AB%AF%E5%8C%85#%E9%80%9A%E7%94%A8%E5%B7%A5%E5%85%B7" class="hash-link" aria-label="通用工具的直接链接" title="通用工具的直接链接">​</a></h2>
 <p>这些工具是不依赖于 DOM，前后端通用的 package</p>
