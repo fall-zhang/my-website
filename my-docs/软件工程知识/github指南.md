@@ -16,7 +16,7 @@ github 快捷方式：
 
 `.` 快速查看代码
 
-项目 `.com` 改为 `.dev`
+将网页的 `.com` 改为 `.dev`，你就可以打开在线的 vscode 编辑该项目
 
 ## workflow
 
