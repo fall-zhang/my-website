@@ -49,7 +49,7 @@ const config:Config = {
         docs: {
           path: './my-docs',
           sidebarPath: require.resolve('./sidebars.js'),
-          editUrl: 'https://github.com/', // 点击编辑此页的时候弹出的内容
+          editUrl: 'https://github.com/fall-zhang/fall-zhang.github.io/tree/source', // 点击编辑此页的时候弹出的内容
           numberPrefixParser (filename) {
             // // Implement your own logic to extract a potential number prefix
             // const numberPrefix = findNumberPrefix(filename);
@@ -68,7 +68,7 @@ const config:Config = {
           showReadingTime: true,
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: 'https://github.com/' // 点击编辑此页的时候弹出的内容，删除则全删除
+          editUrl: 'https://github.com/fall-zhang/fall-zhang.github.io/tree/source' // 点击编辑此页的时候弹出的内容
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css')

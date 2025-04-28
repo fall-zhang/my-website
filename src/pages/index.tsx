@@ -29,7 +29,7 @@ function HomepageHeader () {
 
 export default function Home () {
   const { siteConfig } = useDocusaurusContext()
-  const [visible, setVisible] = useState()
+  // const [visible, setVisible] = useState()
   return (
     <Layout
       title={`Hello from ${siteConfig.title}`}
