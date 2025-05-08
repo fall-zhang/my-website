@@ -41,3 +41,5 @@ pnpm build
 
 - https://github.com/facebook/docusaurus
 - https://iconpark.oceanengine.com/
+
+把我写的应用，对应的技术都放在下面
