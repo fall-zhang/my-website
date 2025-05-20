@@ -28,9 +28,12 @@ LTS 版本：Long Term Support（[长期支持版本](https://nodejs.org/en/abou
 
 `npm config set registry https://registry.npmmirror.com` 
 
+- 默认地址：`https://registry.npmjs.org/`
 - 最新镜像地址：`https://registry.npmmirror.com` 
 - 淘宝原镜像（已过期）：`https://registry.npm.taobao.org`
 
+> 可选（不建议）
+>
 > 安装 cnpm：`npm install -g cnpm --registry=https://registry.npm.taobao.org`
 >
 > 安装完成之后就可以通过 cnpm 代替 npm 的所有命令（有些插件使用 cnpm 安装，可能会出现问题）

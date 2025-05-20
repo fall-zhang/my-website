@@ -21,8 +21,9 @@ pnpm build
 - [x] 考虑使用 ts
 - [x] 添加 eslint 格式化 V9
 - [ ] 将 article-release 项目也放到里面
-- [ ] 更新使用 es 导出
+- [x] 更新使用 es 导出
 - [ ] 支持 tailwind
+- [ ] 把所有的 meme 图也放到我的网站
 
 ## 可选内容
 

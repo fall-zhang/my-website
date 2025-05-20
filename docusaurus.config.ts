@@ -131,7 +131,7 @@ const config:Config = {
               href: 'https://github.com/fall-zhang'
             },
             {
-              label: '思否segmentfault',
+              label: '思否 SegmentFault',
               href: 'https://segmentfault.com/u/fall_zhang0'
             }
           ]
@@ -144,7 +144,7 @@ const config:Config = {
               to: '#'
             },
             {
-              label: 'GitHub',
+              label: 'Docusaurus',
               href: 'https://github.com/facebook/docusaurus'
             }
           ]
