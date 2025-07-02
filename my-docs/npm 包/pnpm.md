@@ -114,6 +114,38 @@ shamefully-hoist=true
 enable-pre-post-scripts=true
 ```
 
+
+
+## 打包
+
+### 使用 docker
+
+```dockerfile
+// 使用 slim 尽可能减小打包大小
+FROM node:20-slim AS base
+ENV PNPM_HOME="/pnpm"
+ENV PATH="$PNPM_HOME:$PATH"
+RUN corepack enable
+COPY . /app
+WORKDIR /app
+
+// 安装依赖
+FROM base AS prod-deps
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --prod --frozen-lockfile
+// 打包内容
+FROM base AS build
+RUN --mount=type=cache,id=pnpm,target=/pnpm/store pnpm install --frozen-lockfile
+RUN pnpm run build
+
+FROM base
+COPY --from=prod-deps /app/node_modules /app/node_modules // 将安装的依赖复制到应用
+COPY --from=build /app/dist /app/dist  // 将打包内容复制到对应路径
+EXPOSE 8000
+CMD [ "pnpm", "start" ]
+```
+
+
+
 ## 参考文章
 
 | 作者 | 链接 |
