@@ -287,3 +287,32 @@ const vm = new Vue({
     el: '#app'
 })
 ```
+
+### Vue.extend 作用和原理
+
+官方解释：Vue.extend 使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+
+其实就是一个子类构造器 是 Vue 组件的核心 api 实现思路就是使用原型继承的方法返回了 Vue 的子类 并且利用 mergeOptions 把传入组件的 options 和父类的 options 进行了合并
+
+相关代码如下
+
+```
+export default function initExtend(Vue) {
+  let cid = 0; //组件的唯一标识
+  // 创建子类继承Vue父类 便于属性扩展
+  Vue.extend = function (extendOptions) {
+    // 创建子类的构造函数 并且调用初始化方法
+    const Sub = function VueComponent(options) {
+      this._init(options); //调用Vue初始化方法
+    };
+    Sub.cid = cid++;
+    Sub.prototype = Object.create(this.prototype); // 子类原型指向父类
+    Sub.prototype.constructor = Sub; //constructor指向自己
+    Sub.options = mergeOptions(this.options, extendOptions); //合并自己的options和父类的options
+    return Sub;
+  };
+} 
+```
+
+
+
