@@ -15,16 +15,6 @@ pnpm dev
 pnpm build
 ```
 
-## 项目计划
-
-- [x] 使用 github workflow 一键部署功能
-- [x] 考虑使用 ts
-- [x] 添加 eslint 格式化 V9
-- [ ] 将 article-release 项目也放到里面
-- [x] 更新使用 es 导出
-- [ ] 支持 tailwind
-- [ ] 把所有的 meme 图也放到我的网站
-
 ## 可选内容
 
 - React-Live 交互式代码块
@@ -36,11 +26,14 @@ pnpm build
 
 使用 github workflows 进行部署，详情可看 `.github\workflows\deploy-docs.yml`
 
-## 资源引用
+## 项目资源引用
 
 本项目使用了资源有：
 
 - https://github.com/facebook/docusaurus
 - https://iconpark.oceanengine.com/
 
-把我写的应用，对应的技术都放在下面
+### 作者的其它应用
+
+- [fruit-navigate](https://github.com/fall-zhang/fruit-navigation) js 实现的全栈导航
+- [vue-fantable](https://github.com/fall-zhang/vue-fantable) vue 大型数据表格渲染方案，vue 实现 Excel
