@@ -3,9 +3,9 @@ import Link from '@docusaurus/Link'
 import svg1 from '@site/static/home-page/circle-four.svg'
 import svg2 from '@site/static/home-page/circle-three.svg'
 import svg3 from '@site/static/home-page/six-point.svg'
-import svg4 from '@site/static/home-page/cube-2.svg'
-import svg5 from '@site/static/home-page/cube-3.svg'
-import svg6 from '@site/static/home-page/cube-1.svg'
+import svg4 from '@site/static/home-page/cube-1.svg'
+import svg5 from '@site/static/home-page/cube-2.svg'
+import svg6 from '@site/static/home-page/cube-3.svg'
 import { useState } from 'react'
 
 const FeatureList = [
