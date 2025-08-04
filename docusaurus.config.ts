@@ -156,7 +156,19 @@ const config:Config = {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme
     }
-  } satisfies Preset.ThemeConfig
+  } satisfies Preset.ThemeConfig,
+  plugins: [
+    function tailwindPlugin (context, options) {
+      return {
+        name: 'docusaurus-tailwindcss',
+        configurePostCss (postcssOptions) {
+          // Appends TailwindCSS and AutoPrefixer.
+          postcssOptions.plugins.push(['@tailwindcss/postcss', {}])
+          return postcssOptions
+        }
+      }
+    }
+  ]
 }
 
 export default config
