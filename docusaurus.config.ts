@@ -158,6 +158,7 @@ const config:Config = {
     }
   } satisfies Preset.ThemeConfig,
   plugins: [
+    // tailwindcss 的插件
     function tailwindPlugin (context, options) {
       return {
         name: 'docusaurus-tailwindcss',
@@ -169,6 +170,26 @@ const config:Config = {
       }
     }
   ]
+  // scripts: [
+  //   // giscus 第三方开源评论模块
+  //   {
+  //     src: 'https://giscus.app/client.js',
+  //     'data-repo': 'fall-zhang/fall-zhang.github.io',
+  //     'data-repo-id': 'R_kgDOHd9XKQ',
+  //     'data-category': 'Announcements',
+  //     'data-category-id': 'DIC_kwDOHd9XKc4Ctw9F',
+  //     'data-mapping': 'pathname',
+  //     'data-strict': '0',
+  //     'data-reactions-enabled': '1',
+  //     'data-emit-metadata': '0',
+  //     'data-input-position': 'top',
+  //     'data-theme': 'preferred_color_scheme',
+  //     'data-lang': 'zh-CN',
+  //     'data-loading': 'lazy',
+  //     crossOrigin: 'anonymous',
+  //     async: true
+  //   }
+  // ]
 }
 
 export default config

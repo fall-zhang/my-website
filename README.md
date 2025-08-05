@@ -15,12 +15,11 @@ pnpm dev
 pnpm build
 ```
 
-## 可选内容
+## 额外内容
 
-- React-Live 交互式代码块
-- remark-emoji 提供 emoji 支持
-- Mermaid 更加丰富的图形绘制
-- remark-math rehype-katex 提供数学符号的支持
+- giscus 第三方开源评论模块
+- github workflow 文档部署工作流
+- tailwindcss tailwind 书写样式
 
 ### 部署
 

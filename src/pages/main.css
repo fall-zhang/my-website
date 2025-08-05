@@ -3,3 +3,8 @@
 ul {
   list-style: disc;
 }
+
+.navbar__logo {
+  background: #fff;
+  border-radius: 50%;
+}
