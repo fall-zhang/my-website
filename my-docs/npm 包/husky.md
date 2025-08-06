@@ -1,9 +1,9 @@
-> Create by **fall** on 2022-04-05<br/>
-> Recently revised in 2022-05-30
+> Create by **fall** on 05 Apr 2022<br/>
+> Recently revised in 24 Jul 2025
 
 ## husky
 
-用于将代码推送到 git 上
+用于将代码推送到 git 上时的一些钩子
 
 ```bash
 npm i lint-staged husky -D

@@ -18,7 +18,7 @@ export default function RandomLogo () {
   } else if (current === 4) {
     RenderLogo = <MyLogo5 />
   }
-  return <div className='g-cursor-pointer g-user-select-none' onClick={() => setCurrent((pre) => {
+  return <div className='cursor-pointer select-none ' onClick={() => setCurrent((pre) => {
     const newState = Math.floor(Math.random() * 4)
     if (pre === newState) {
       return 4

@@ -81,7 +81,8 @@ Prettier：
 
 ```json
 "scripts":{
-	"lint": "eslint --fix --ext .js,.ts,.vue ./src"
+	"lint": "eslint --fix --ext .js,.ts,.vue ./src",
+  "lint:quiet": "eslint --fix --ext .js,.ts,.vue ./src --quiet", // 不输出 warn，只输出 error
 }
 ```
 

@@ -1,10 +1,12 @@
-import React from 'react'
 import clsx from 'clsx'
 import Link from '@docusaurus/Link'
-import styles from './styles.module.css'
-import svg1 from '@site/static/home-page/cube-1.svg'
+import svg1 from '@site/static/home-page/circle-four.svg'
 import svg2 from '@site/static/home-page/circle-three.svg'
 import svg3 from '@site/static/home-page/six-point.svg'
+import svg4 from '@site/static/home-page/cube-1.svg'
+import svg5 from '@site/static/home-page/cube-2.svg'
+import svg6 from '@site/static/home-page/cube-3.svg'
+import { useState } from 'react'
 
 const FeatureList = [
   {
@@ -36,12 +38,32 @@ const FeatureList = [
     )
   }
 ]
+const WorkList = [
+  {
+    title: 'fruit-nav',
+    link: 'https://github.com/fall-zhang/fruit-nav',
+    Svg: svg4,
+    description: '鲜果导航，一个保持新鲜的导航。使用 ts 写的全栈应用'
+  },
+  {
+    title: 'vue-fantable',
+    link: 'https://github.com/fall-zhang/vue-fantable',
+    Svg: svg5,
+    description: '前端大型表格数据渲染解决方案、vue 实现 Excel '
+  },
+  {
+    title: 'tillandsia-ui',
+    link: 'https://github.com/fall-zhang/tillandsia-ui',
+    Svg: svg6,
+    description: '凤梨 UI，使用最少的配置，即可获取 UI 并添加到项目中。'
+  }
+]
 
 function Feature ({ Svg, title, description, link }) {
   return (
     <div className={clsx('col col--4')}>
-      <div className="text--center">
-        <Svg className={styles.featureSvg} role="img" />
+      <div className="flex justify-center items-center">
+        <Svg className='size-36' role="img" />
       </div>
       <div className="text--center padding-horiz--md">
         {/* <a href={link} target="_blank"><h3>{title}</h3></a> */}
@@ -62,11 +84,26 @@ function Feature ({ Svg, title, description, link }) {
 }
 
 export default function HomepageFeatures () {
+  const [renderList, setRenderList] = useState<'feature'|'work'>(() => {
+    if (Math.random() > 0.5) {
+      return 'work'
+    }
+    return 'feature'
+  })
   return (
-    <section className={styles.features}>
+    <section className='flex items-center py-6 w-full'>
       <div className="container">
+        <div className="flex justify-center">
+          <div className='flex items-center justify-center border border-(--ifm-link-hover-color) rounded'>
+            <div className={clsx('px-6 py-1 cursor-pointer  ', renderList === 'work' && 'bg-(--ifm-link-hover-color)')} onClick={() => setRenderList('work')}>项目</div>
+            <div className={clsx('px-6 py-1 cursor-pointer  ', renderList === 'feature' && 'bg-(--ifm-link-hover-color)')} onClick={() => setRenderList('feature')}>笔记</div>
+          </div>
+        </div>
         <div className="row">
-          {FeatureList.map((props, idx) => (
+          {renderList === 'feature' && FeatureList.map((props, idx) => (
+            <Feature key={idx} {...props} />
+          ))}
+          {renderList === 'work' && WorkList.map((props, idx) => (
             <Feature key={idx} {...props} />
           ))}
         </div>

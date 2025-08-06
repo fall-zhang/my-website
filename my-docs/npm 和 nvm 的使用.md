@@ -44,7 +44,7 @@ LTS 版本：Long Term Support（[长期支持版本](https://nodejs.org/en/abou
 
 #### 包管理
 
-**安装包**
+**安装方式**
 
 - 本地的安装包：使用 `npm install <package-name>` 安装，并且放置在 `node_modules` 文件夹中
 - 全局的安装包：`npm install <package-name> -g` 全局安装，并放在固定的位置。

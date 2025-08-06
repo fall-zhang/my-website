@@ -149,6 +149,65 @@ unbind：只调用一次，指令与元素解绑时调用。
 - 无法进行极致优化：虽然虚拟 DOM + 合理的优化，足以应对绝大部分应用的性能需求，但在一些性能要求极高的应用中虚拟 DOM 无法进行针对性的极致优化。
 - 首次渲染大量 DOM 时，由于多了一层虚拟 DOM 的计算，会比 innerHTML 插入慢。
 
+### Vue.mixin 的使用场景和原理
+
+在日常的开发中，我们经常会遇到在不同的组件中经常会需要用到一些相同或者相似的代码，这些代码的功能相对独立，可以通过 Vue 的 mixin 功能抽离公共的业务逻辑，原理类似“对象的继承”，当组件初始化时会调用 mergeOptions  方法进行合并，采用策略模式针对不同的属性进行合并。当组件和混入对象含有同名选项时，这些选项将以恰当的方式进行“合并”。
+
+相关代码如下
+
+```js
+export default function initMixin(Vue){
+  Vue.mixin = function (mixin) {
+    //   合并对象
+      this.options=mergeOptions(this.options,mixin)
+  };
+}
+};
+
+// src/util/index.js
+// 定义生命周期
+export const LIFECYCLE_HOOKS = [
+  "beforeCreate",
+  "created",
+  "beforeMount",
+  "mounted",
+  "beforeUpdate",
+  "updated",
+  "beforeDestroy",
+  "destroyed",
+];
+
+// 合并策略
+const strats = {};
+// mixin核心方法
+export function mergeOptions(parent, child) {
+  const options = {};
+  // 遍历父亲
+  for (let k in parent) {
+    mergeFiled(k);
+  }
+  // 父亲没有 儿子有
+  for (let k in child) {
+    if (!parent.hasOwnProperty(k)) {
+      mergeFiled(k);
+    }
+  }
+
+  //真正合并字段方法
+  function mergeFiled(k) {
+    if (strats[k]) {
+      options[k] = strats[k](parent[k], child[k]);
+    } else {
+      // 默认策略
+      options[k] = child[k] ? child[k] : parent[k];
+    }
+  }
+  return options;
+} 
+```
+
+
+
 ### v-model 原理
 
 v-model 只是语法糖而已
@@ -189,8 +248,6 @@ Vue.component('currency-input', {
  props: ['value'],
 }) 
 ```
-
-
 
 ### vue-router 路由钩子函数是什么 执行顺序是什么
 
@@ -287,3 +344,32 @@ const vm = new Vue({
     el: '#app'
 })
 ```
+
+### Vue.extend 作用和原理
+
+官方解释：Vue.extend 使用基础 Vue 构造器，创建一个“子类”。参数是一个包含组件选项的对象。
+
+其实就是一个子类构造器 是 Vue 组件的核心 api 实现思路就是使用原型继承的方法返回了 Vue 的子类 并且利用 mergeOptions 把传入组件的 options 和父类的 options 进行了合并
+
+相关代码如下
+
+```
+export default function initExtend(Vue) {
+  let cid = 0; //组件的唯一标识
+  // 创建子类继承Vue父类 便于属性扩展
+  Vue.extend = function (extendOptions) {
+    // 创建子类的构造函数 并且调用初始化方法
+    const Sub = function VueComponent(options) {
+      this._init(options); //调用Vue初始化方法
+    };
+    Sub.cid = cid++;
+    Sub.prototype = Object.create(this.prototype); // 子类原型指向父类
+    Sub.prototype.constructor = Sub; //constructor指向自己
+    Sub.options = mergeOptions(this.options, extendOptions); //合并自己的options和父类的options
+    return Sub;
+  };
+} 
+```
+
+
+

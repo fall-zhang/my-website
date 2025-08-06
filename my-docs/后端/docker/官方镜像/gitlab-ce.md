@@ -1,3 +1,67 @@
+> Create by **fall** on 16 Aug 2022<br/>
+> Recently revised in 26 Jul 2023
+
+## Gitlab
+
+一个开源的 git 管理工具
+
+> 使用该镜像时，确保如果是 win 系统，请不要使用目录映射，会产生未知错误
+
+```powershell
+docker run -d -p 5020:22 -p 5080:80 -p 5040:443 `
+ --name my-gitlab `
+ --hostname gitlab.example.com `
+ --restart unless-stopped `
+ --shm-size 256m `
+ -v gitlab_config:/etc/gitlab `
+ -v gitlab_logs:/var/log/gitlab `
+ -v gitlab_data:/var/opt/gitlab `
+ gitlab/gitlab-ce
+ # gitlab-ce:16.11.10-ce.0 ce Community Edition
+ # --hostname 匹配你访问 gitlab 的域名
+```
+
+进入到容器中，使用该命令获取 root 用户的密码（密码会在第一次配置重启 24 小时后自动删除）
+
+```bash
+docker exec -it my-gitlab grep 'Password:' /etc/gitlab/initial_root_password
+# seRWjNOwSGZdqi9eheOQAqNXOqGzHQ5kVG1hnrc4PUI=
+```
+
+### compose
+
+为方便使用，这是 `docker-compose.yml` 文件
+
+使用 `docker compose up -d` 即可切出该应用
+
+```yaml
+# 该容器使用 4*** 端口
+name: my-gitlab
+version: '1.0'
+services:
+  gitlab:
+    image: gitlab/gitlab-ce:16.11.10-ce.0 # 镜像名称以及版本
+    restart: unless-stopped
+    container_name: gitlab-service # 容器名称
+    hostname: 'fallzhang.top'
+    environment:
+      GITLAB_OMNIBUS_CONFIG: |
+        external_url 'http://fallzhang.top:4080'
+        gitlab_rails['gitlab_shell_ssh_port'] = 4022
+    ports:
+      - "4080:4080"
+      - "4443:443"
+      - "4022:22"
+    # 指定挂载目录
+    volumes:
+      - "./config:/etc/gitlab"
+      - "./logs:/var/log/gitlab"
+      - "./data:/var/opt/gitlab"
+    shm_size: '256m'
+
+
+```
+
 > Create by **fall** on 07 Feb 2025<br/>
 > Recently revised in 08 Feb 2025
 
@@ -57,10 +121,6 @@ docker exec -it gitlab-service grep 'Password:' /etc/gitlab/initial_root_passwor
 # Xrpm5QnZ3yb1ZOWM0WZB3G3ooEVOidQoi8vEMfso7yc=
 ```
 
-
-
-
-
 ### 可选配置
 
 - 配置文件所在位置 `/etc/gitlab/gitlab.rb`
@@ -82,6 +142,3 @@ docker daemon，docker 的守护进程，可以 通过 dockerd -v 查看安装
 windows 系统中，可以运行 docker desktop，然后 wsl 的 docker 可以找到 docker daemon 为 server
 
 启动 docker daemon 时，要关闭 docker
-
-
-

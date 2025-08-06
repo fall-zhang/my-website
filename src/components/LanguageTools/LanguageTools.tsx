@@ -132,7 +132,7 @@ const usingToolList:UsingTool[] = [
   {
     name: 'Next_logo',
     image: 'logo/Next_logo.svg',
-    noteUrl: '/docs/React/5.1-Next%20服务端渲染',
+    noteUrl: '/docs/后端/next/1.1-next%20概述',
     imgStyle: 'big'
   },
   {

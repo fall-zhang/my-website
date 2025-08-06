@@ -4,7 +4,6 @@
  */
 
 .heroBanner {
-  padding: 4rem 0;
   text-align: center;
   position: relative;
   overflow: hidden;
@@ -20,8 +19,6 @@ html[data-theme='dark'] {
   }
 }
 
-
-
 .buttons {
   display: flex;
   align-items: center;
@@ -34,31 +31,3 @@ html[data-theme='dark'] {
     justify-content: flex-start;
   }
 } */
-
-.headerText {
-  width: 360px;
-  display: flex;
-  align-items: center;
-  flex-direction: column;
-  gap: 10px;
-  /* background: #000; */
-}
-
-.container {
-  display: flex;
-  align-items: center;
-  justify-content: space-evenly;
-}
-
-
-@media screen and (max-width: 996px) {
-  .heroBanner {
-    padding: 2rem;
-  }
-
-  .container {
-    flex-direction: column;
-  }
-}
-
-.hero__title {}

@@ -1,4 +1,3 @@
-import { useState } from 'react'
 import clsx from 'clsx'
 // import Link from '@docusaurus/Link';
 import useDocusaurusContext from '@docusaurus/useDocusaurusContext'
@@ -8,12 +7,13 @@ import styles from './index.module.css'
 import ShuffleText from '@site/src/components/shuffle/shuffle'
 import RandomLogo from '@site/src/components/random-logo/random-logo'
 import { LanguageTools } from '@site/src/components/LanguageTools/LanguageTools'
+import './main.css'
 function HomepageHeader () {
   // const { siteConfig } = useDocusaurusContext()
   return (
-    <header className={clsx('hero ', styles.heroBanner)}>
-      <div className={clsx('container', styles.container)}>
-        <div className={styles.headerText}>
+    <header className={clsx('hero max-lg:p-8 py-4 ', styles.heroBanner)}>
+      <div className={clsx('container max-lg:flex-col flex items-center justify-evenly')}>
+        <div className="w-90 flex items-center flex-col gap2.5 ">
           {/* <h1 className="hero__title">Fall</h1> */}
           <RandomLogo />
           {/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
