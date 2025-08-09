@@ -163,11 +163,11 @@ const config:Config = {
       // Public API key: it is safe to commit it
       apiKey: 'ef33d89a3cd0aef85051088a6c9a47be',
 
-      indexName: 'fall_zhang_github_io_65516rydmq_pages',
+      indexName: 'my-blog-crawler',
 
       // Optional: see doc section below
-      // contextualSearch: true,
-
+      contextualSearch: false,
+      placeholder: '请输入关键字'
       // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
       // externalUrlRegex: 'external\\.com|domain\\.com',
 
@@ -178,13 +178,16 @@ const config:Config = {
       // },
 
       // Optional: Algolia search parameters
-      searchParameters: {},
+      // searchParameters: {
+      //   // facetFilters: [],
+      //   // filters: '*'
+      // },
 
       // Optional: path for search page that enabled by default (`false` to disable it)
-      searchPagePath: false,
+      // searchPagePath: false,
 
       // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
-      insights: false
+      // insights: false
 
       // ... other Algolia params
     }
