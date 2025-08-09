@@ -22,6 +22,7 @@ pnpm build
 - giscus 第三方开源评论模块
 - github workflow 文档部署工作流
 - tailwindcss tailwind 书写样式
+- algolia 内容查询
 
 ### 部署
 
