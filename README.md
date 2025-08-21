@@ -1,6 +1,8 @@
-# 笔记博客
+## 笔记博客
 
-将个人笔记和发布的文章，翻译等内容都在该项目内
+前端冒险家的全栈之旅。
+
+个人学习笔记、发布的文章，翻译等都在该项目内
 
 ### 安装和启动
 
@@ -15,12 +17,12 @@ pnpm dev
 pnpm build
 ```
 
-## 可选内容
+## 额外内容
 
-- React-Live 交互式代码块
-- remark-emoji 提供 emoji 支持
-- Mermaid 更加丰富的图形绘制
-- remark-math rehype-katex 提供数学符号的支持
+- giscus 第三方开源评论模块
+- github workflow 文档部署工作流
+- tailwindcss tailwind 书写样式
+- algolia 内容查询
 
 ### 部署
 

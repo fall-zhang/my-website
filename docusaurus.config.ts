@@ -155,9 +155,42 @@ const config:Config = {
     prism: {
       theme: lightCodeTheme,
       darkTheme: darkCodeTheme
+    },
+    algolia: {
+      // The application ID provided by Algolia
+      appId: '65516RYDMQ',
+
+      // Public API key: it is safe to commit it
+      apiKey: 'ef33d89a3cd0aef85051088a6c9a47be',
+
+      indexName: 'fall_zhang_github_io_65516rydmq_pages',
+
+      // Optional: see doc section below
+      // contextualSearch: true,
+
+      // Optional: Specify domains where the navigation should occur through window.location instead on history.push. Useful when our Algolia config crawls multiple documentation sites and we want to navigate with window.location.href to them.
+      // externalUrlRegex: 'external\\.com|domain\\.com',
+
+      // Optional: Replace parts of the item URLs from Algolia. Useful when using the same search index for multiple deployments using a different baseUrl. You can use regexp or string in the `from` param. For example: localhost:3000 vs myCompany.com/docs
+      // replaceSearchResultPathname: {
+      //   from: '/docs/', // or as RegExp: /\/docs\//
+      //   to: '/'
+      // },
+
+      // Optional: Algolia search parameters
+      searchParameters: {},
+
+      // Optional: path for search page that enabled by default (`false` to disable it)
+      searchPagePath: false,
+
+      // Optional: whether the insights feature is enabled or not on Docsearch (`false` by default)
+      insights: false
+
+      // ... other Algolia params
     }
   } satisfies Preset.ThemeConfig,
   plugins: [
+    // tailwindcss 的插件
     function tailwindPlugin (context, options) {
       return {
         name: 'docusaurus-tailwindcss',
@@ -169,6 +202,26 @@ const config:Config = {
       }
     }
   ]
+  // scripts: [
+  //   // giscus 第三方开源评论模块
+  //   {
+  //     src: 'https://giscus.app/client.js',
+  //     'data-repo': 'fall-zhang/fall-zhang.github.io',
+  //     'data-repo-id': 'R_kgDOHd9XKQ',
+  //     'data-category': 'Announcements',
+  //     'data-category-id': 'DIC_kwDOHd9XKc4Ctw9F',
+  //     'data-mapping': 'pathname',
+  //     'data-strict': '0',
+  //     'data-reactions-enabled': '1',
+  //     'data-emit-metadata': '0',
+  //     'data-input-position': 'top',
+  //     'data-theme': 'preferred_color_scheme',
+  //     'data-lang': 'zh-CN',
+  //     'data-loading': 'lazy',
+  //     crossOrigin: 'anonymous',
+  //     async: true
+  //   }
+  // ]
 }
 
 export default config
