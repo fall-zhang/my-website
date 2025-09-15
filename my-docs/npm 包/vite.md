@@ -1,5 +1,5 @@
 > Create by **fall** on 13 Aug 2021<br/>
-> Recently revised in 14 Apr 2023
+> Recently revised in 15 Sep 2025
 
 ## Vite
 
@@ -7,7 +7,7 @@
 
 `pnpm create vite` 然后选择所需的技术栈搭建项目。
 
-Vite 需要 [Node.js](https://nodejs.org/en/) 版本 14.18+，16+，使用前确保 Node 版本。
+Vite v3 需要 [Node.js](https://nodejs.org/en/) 版本 14.18+，16+，使用前确保 Node 版本。
 
 > 我的两个模板项目：
 >
