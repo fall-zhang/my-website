@@ -133,6 +133,8 @@
 </div>
 ```
 
+<br />
+
 ## fixed 相对于父级定位
 
 父元素使用 `transform` 即可。
@@ -212,11 +214,9 @@
 <div class="detail" style="background: #aaa">详情4</div>
 ```
 
-
-
 ## 参考文章
 
-| 作者（文章名称） | 链接                                         |
-| ---------------- | -------------------------------------------- |
-| 一些 CSS 怪癖    | https://blog-purocean.vercel.app/css-quirks/ |
+| 作者（文章名称）  | 链接                                             |
+| --------- | ---------------------------------------------- |
+| 一些 CSS 怪癖 | <https://blog-purocean.vercel.app/css-quirks/> |
 
