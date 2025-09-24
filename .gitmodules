@@ -1,0 +1,3 @@
+[submodule "my-note"]
+	path = my-note
+	url = https://github.com/fall-zhang/full-stack-note.git
