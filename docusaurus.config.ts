@@ -47,7 +47,7 @@ const config:Config = {
       'classic',
       {
         docs: {
-          path: './my-docs',
+          path: './my-note',
           sidebarPath: require.resolve('./sidebars.js'),
           editUrl: 'https://github.com/fall-zhang/fall-zhang.github.io/tree/source', // 点击编辑此页的时候弹出的内容
           numberPrefixParser (filename) {

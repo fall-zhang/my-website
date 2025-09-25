@@ -1,1 +1,0 @@
-`flutter doctor` 用于判断模块的安装
