@@ -6,14 +6,20 @@
 
 ### 安装和启动
 
+首先需要初始化其它相关子仓库
+
+``` bash
+git submodule init
 ```
+
+``` bash
 pnpm i
 pnpm dev
 ```
 
 ### 打包
 
-```
+``` bash
 pnpm build
 ```
 
@@ -23,6 +29,9 @@ pnpm build
 - github workflow 文档部署工作流
 - tailwindcss tailwind 书写样式
 - algolia 内容查询
+- git submodule 关联两个仓库
+  - my-note 我的笔记
+  - article 我写的文章
 
 ### 部署
 
