@@ -1,4 +1,4 @@
-import standard from './eslint-standard.config.mjs'
+import standard from 'eslint-config-standard-new'
 import lintReact from 'eslint-plugin-react'
 import jslint from '@eslint/js'
 import lintReactHooks from 'eslint-plugin-react-hooks'

@@ -8,7 +8,7 @@ import type * as Preset from '@docusaurus/preset-classic'
 const lightCodeTheme = themes.github
 const darkCodeTheme = themes.dracula
 
-const config:Config = {
+const config: Config = {
   title: 'Fall 的笔记本',
   tagline: '未来的前端艺术家',
   url: 'https://fall-zhang.github.io',
@@ -24,7 +24,7 @@ const config:Config = {
   projectName: 'front-end-note', // Usually your repo name.
   // 实验特性
   future: {
-    experimental_faster: {
+    faster: {
       swcJsLoader: true, // Use SWC to transpile JS (instead of Babel)
       swcJsMinimizer: true, //  Use SWC to minify JS (instead of Terser)
       swcHtmlMinimizer: true, // Use SWC to minify HTML and inlined JS/CSS (instead of html-minifier-terser)
