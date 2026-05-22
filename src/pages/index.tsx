@@ -8,6 +8,7 @@ import ShuffleText from '@site/src/components/shuffle/shuffle'
 import RandomLogo from '@site/src/components/random-logo/random-logo'
 import { LanguageTools } from '@site/src/components/LanguageTools/LanguageTools'
 import './main.css'
+import GameMinesweeper from '../components/game/minesweeper'
 function HomepageHeader () {
   // const { siteConfig } = useDocusaurusContext()
   return (
@@ -19,8 +20,8 @@ function HomepageHeader () {
           {/* <p className="hero__subtitle">{siteConfig.tagline}</p> */}
           <ShuffleText />
         </div>
-        <div className=''>
-          <img src="/svg/media-work.svg" height={460} width={460} alt="" />
+        <div className='game'>
+          <GameMinesweeper />
         </div>
       </div>
     </header>

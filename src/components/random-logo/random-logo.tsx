@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import { useState } from 'react'
 import MyLogo1 from './MyLogo1'
 import MyLogo2 from './MyLogo2'
 import MyLogo3 from './MyLogo3'

@@ -32,16 +32,16 @@ class ShuffleText {
   _originalLength = 0
   _timeCurrent = 0
   _timeStart = 0
-  _randomIndex= []
+  _randomIndex: Array<number> = []
   _element
   _requestAnimationFrameId = 0
-  constructor (element) {
+  constructor (element: HTMLElement) {
     this.contentText = element.textContent
     this.setText(this.contentText ?? '')
     this._element = element
   }
 
-  setText (text) {
+  setText (text: string) {
     this._originalStr = text
     this._originalLength = text.length
   }

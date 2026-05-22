@@ -4,11 +4,11 @@ import Link from '@docusaurus/Link'
 
 type UsingTool = {
   name: string,
-  imgStyle:'big' | 'small'
+  imgStyle: 'big' | 'small'
   image: string
   noteUrl: string
 }
-const usingToolList:UsingTool[] = [
+const usingToolList: UsingTool[] = [
   {
     name: 'HTML5',
     image: 'logo/HTML5_logo_and_wordmark.svg',

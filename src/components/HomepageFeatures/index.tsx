@@ -6,7 +6,7 @@ import svg3 from '@site/static/home-page/six-point.svg'
 import svg4 from '@site/static/home-page/cube-1.svg'
 import svg5 from '@site/static/home-page/cube-2.svg'
 import svg6 from '@site/static/home-page/cube-3.svg'
-import { useState } from 'react'
+import { FC, ReactNode, useState } from 'react'
 
 const FeatureList = [
   {
@@ -59,11 +59,16 @@ const WorkList = [
   }
 ]
 
-function Feature ({ Svg, title, description, link }) {
+function Feature ({ title, description, link, children }: {
+  children: ReactNode
+  title: string
+  description: ReactNode
+  link: string
+}) {
   return (
     <div className={clsx('col col--4')}>
       <div className="flex justify-center items-center">
-        <Svg className='size-36' role="img" />
+        {children}
       </div>
       <div className="text--center padding-horiz--md">
         {/* <a href={link} target="_blank"><h3>{title}</h3></a> */}
@@ -84,7 +89,7 @@ function Feature ({ Svg, title, description, link }) {
 }
 
 export default function HomepageFeatures () {
-  const [renderList, setRenderList] = useState<'feature'|'work'>(() => {
+  const [renderList, setRenderList] = useState<'feature' | 'work'>(() => {
     if (Math.random() > 0.5) {
       return 'work'
     }
@@ -101,10 +106,14 @@ export default function HomepageFeatures () {
         </div>
         <div className="row">
           {renderList === 'feature' && FeatureList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+            <Feature key={idx} {...props} >
+              {<props.Svg></props.Svg>}
+            </Feature>
           ))}
           {renderList === 'work' && WorkList.map((props, idx) => (
-            <Feature key={idx} {...props} />
+            <Feature key={idx} {...props} >
+              {<props.Svg></props.Svg>}
+            </Feature>
           ))}
         </div>
       </div>

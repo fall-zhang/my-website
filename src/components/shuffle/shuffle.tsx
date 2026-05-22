@@ -10,6 +10,6 @@ export default function ShuffleText () {
     }
   }, [])
   return <>
-    <h2 className={styles.head} ref={shuffleDOM}>未来的前端艺术家</h2>
+    <h2 className={styles.head} ref={shuffleDOM}>前端探险家的全栈之旅</h2>
   </>
 }
