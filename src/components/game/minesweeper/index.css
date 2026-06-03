@@ -76,8 +76,6 @@
 
 .btn-restart {
   background: var(--accent);
-  color: white;
-  border: none;
   padding: 8px 18px;
   border-radius: 8px;
   font-weight: 600;

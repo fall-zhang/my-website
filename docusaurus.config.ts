@@ -15,7 +15,6 @@ const config: Config = {
   baseUrl: '/',
   // baseUrl: '/',
   onBrokenLinks: 'warn',
-  onBrokenMarkdownLinks: 'warn',
   favicon: './svg/fallen_leaf.svg',
   // isMDXComponent: true,
   // GitHub pages deployment config.
@@ -77,6 +76,9 @@ const config: Config = {
     ]
   ],
   markdown: {
+    hooks: {
+      onBrokenMarkdownLinks: 'warn'
+    },
     mdx1Compat: {
       comments: true, // 允许在 mdx 中使用 HTML
       admonitions: false, // 允许自定义模块宽松的模式 :::title my title -> :::title [my title]

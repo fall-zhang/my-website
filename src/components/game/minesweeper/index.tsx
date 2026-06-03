@@ -117,7 +117,7 @@ export default function App () {
   } else if (state.status === 'playing') {
     statusText = '⏳ 游戏中'
   } else {
-    statusText = '⚙️ 点击任意格开始'
+    statusText = ''
   }
   function onStartGame () {
     dispatch({
@@ -129,16 +129,26 @@ export default function App () {
     setCelebrated(false)
   }
   return (
-    <div className="app-wrapper">
-      <div className="glass-panel">
+    <div className="app-wrapper w-100">
+      <div className="glass-panel min-w-100 min-h-120">
         <header className="hud">
-          <div className="hud-item"><span className="hud-icon">⏱️</span><span className="hud-value">{String(state.time).padStart(3, '0')}</span></div>
-          <button className="btn-restart" onClick={onStartGame}>
+          <div className="hud-item">
+            <span className="hud-icon">⏱️</span>
+            <span className="hud-value">{String(state.time).padStart(3, '0')}</span>
+          </div>
+          {/* <button className="btn-restart text-white border-none" onClick={onStartGame}>
             {state.status === 'idle' ? '🎮 开始游戏' : '🔄 重新开始'}
-          </button>
-          <div className="hud-item"><span className="hud-icon">🚩</span><span className="hud-value">{MINES - state.flags}</span></div>
+          </button> */}
+          <div className="status-bar">{statusText}</div>
+          <div className="hud-item">
+            <span className="hud-icon">🚩</span>
+            <span className="hud-value">{MINES - state.flags}</span>
+          </div>
         </header>
-        <div className="status-bar">{statusText}</div>
+
+        <button className="btn-restart text-white border-none" onClick={onStartGame}>
+          {state.status === 'idle' ? '🎮 开始游戏' : '🔄 重新开始'}
+        </button>
         <div className="board" style={{ gridTemplateColumns: `repeat(${COLS}, 1fr)` }}>
           {state.board.length > 0 && state.board.map((row, ri) => row.map((cell, ci) => (
             <CellComponent
